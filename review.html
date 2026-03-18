@@ -12,168 +12,166 @@
 <p class="sub">One-page mental walkthrough &mdash; what tool for what job</p>
 <h2>Data Import &amp; File I/O</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Load a CSV file into a DataFrame</td><td class="fn">pd.read_csv()</td><td class="go">For Excel files use pd.read_excel(). Path strings on Windows need raw prefix r&quot;...&quot; or forward slashes.</td></tr>
-<tr><td>Load an Excel file into a DataFrame</td><td class="fn">pd.read_excel()</td><td class="go">Requires openpyxl or xlrd installed. Default reads the first sheet.</td></tr>
-<tr><td>View the first N rows of a DataFrame</td><td class="fn">df.head()</td><td class="go">head() does not modify the DataFrame; it returns a view.</td></tr>
-<tr><td>View the last N rows of a DataFrame</td><td class="fn">df.tail()</td><td class="go"></td></tr>
-<tr><td>Check DataFrame shape (rows and columns count)</td><td class="fn">df.shape</td><td class="go">shape is an attribute, not a method — no parentheses.</td></tr>
-<tr><td>Inspect column data types and non-null counts</td><td class="fn">df.info()</td><td class="go">info() prints to console and returns None. Useful for spotting missing values and wrong dtypes.</td></tr>
-<tr><td>Get summary statistics for numeric columns</td><td class="fn">df.describe()</td><td class="go">Only summarizes numeric columns by default. For object columns call df[[&#x27;col&#x27;]].describe().</td></tr>
-<tr><td>List all column names in a DataFrame</td><td class="fn">df.columns</td><td class="go">Returns an Index object, not a plain list. Use list(df.columns) if needed.</td></tr>
+<tr><td>Load a CSV file into a DataFrame</td><td class="fn">pd.read_csv()</td><td class="go">For Excel use pd.read_excel(). Windows paths need r&quot;...&quot;.</td></tr>
+<tr><td>Load an Excel file</td><td class="fn">pd.read_excel()</td><td class="go">Requires openpyxl. Default reads first sheet.</td></tr>
+<tr><td>View first N rows</td><td class="fn">df.head()</td><td class="go">Returns a view, does not modify.</td></tr>
+<tr><td>View last N rows</td><td class="fn">df.tail()</td><td class="go"></td></tr>
+<tr><td>Check DataFrame shape</td><td class="fn">df.shape</td><td class="go">Attribute not method - no parentheses.</td></tr>
+<tr><td>Inspect column types and non-null counts</td><td class="fn">df.info()</td><td class="go">Prints to console, returns None.</td></tr>
+<tr><td>Get summary statistics for numeric columns</td><td class="fn">df.describe()</td><td class="go">Only numeric by default. For objects: df[[&#x27;col&#x27;]].describe().</td></tr>
+<tr><td>List all column names</td><td class="fn">df.columns</td><td class="go">Returns Index object. list(df.columns) for a list.</td></tr>
 </table>
 <h2>Data Cleaning &amp; Preprocessing</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Fill missing numeric values with the column mean</td><td class="fn">fillna(), .mean()</td><td class="go">inplace=True modifies the original DataFrame. Without it, fillna returns a new DataFrame.</td></tr>
-<tr><td>Fill missing values with a constant (zero or string)</td><td class="fn">fillna()</td><td class="go">Choose a fill value that makes domain sense. Zero may distort statistics.</td></tr>
-<tr><td>Fill missing values using another column as fallback</td><td class="fn">np.where(), .isna()</td><td class="go">np.where(condition, if_true, if_false) is element-wise.</td></tr>
-<tr><td>Drop rows where a specific column has missing values</td><td class="fn">df.dropna()</td><td class="go">subset= specifies which columns to check. Without it, any row with any NaN is dropped. .copy() avoids SettingWithCopyWarning.</td></tr>
-<tr><td>Drop a column from a DataFrame</td><td class="fn">df.drop()</td><td class="go">axis=1 means columns, axis=0 means rows. Without inplace=True you must reassign.</td></tr>
-<tr><td>Count missing values per column</td><td class="fn">isnull().sum()</td><td class="go">isnull() and isna() are identical in pandas.</td></tr>
-<tr><td>Create dummy variables (one-hot encoding) for a categorical column</td><td class="fn">pd.get_dummies(), pd.concat()</td><td class="go">get_dummies creates k columns for k categories. Use drop_first=True to avoid multicollinearity in regression. dtype=int forces 0/1 instead of True/False.</td></tr>
-<tr><td>One-hot encode multiple categorical columns at once</td><td class="fn">pd.get_dummies()</td><td class="go">Passing a list to columns= encodes all at once. Original columns are automatically dropped.</td></tr>
-<tr><td>Map categorical string values to numeric codes</td><td class="fn">.map()</td><td class="go">Values not in the mapping dictionary become NaN.</td></tr>
-<tr><td>Clip values to a valid range</td><td class="fn">.clip()</td><td class="go">clip(lower, upper) caps values at both ends.</td></tr>
-<tr><td>Replace out-of-range values with the column mean</td><td class="fn">.loc[], .mean()</td><td class="go">The mean is computed before replacement, so outliers affect it.</td></tr>
-<tr><td>Cap percentage columns to 0-100 range</td><td class="fn">.loc[]</td><td class="go">Always validate rate/percentage columns in real data.</td></tr>
-<tr><td>Replace negative values with zero</td><td class="fn">.loc[]</td><td class="go"></td></tr>
-<tr><td>Convert a column to numeric type, coercing errors to NaN</td><td class="fn">pd.to_numeric()</td><td class="go">errors=&#x27;coerce&#x27; turns unparseable strings into NaN instead of raising an error.</td></tr>
-<tr><td>Convert a column to datetime and extract date parts</td><td class="fn">pd.to_datetime(), .dt accessor</td><td class="go">dt.weekday: Monday=0 through Sunday=6. errors=&#x27;coerce&#x27; turns bad dates into NaT.</td></tr>
-<tr><td>Compute the number of days between two date columns</td><td class="fn">datetime subtraction, .dt.days</td><td class="go">Result is timedelta; use .dt.days to get an integer. NaT produces NaN.</td></tr>
-<tr><td>Parse a time string and extract the hour</td><td class="fn">pd.to_datetime(), .dt.hour</td><td class="go">Specify format= to match your time string pattern.</td></tr>
-<tr><td>Convert a boolean column to integer 0/1</td><td class="fn">.astype(int)</td><td class="go">True becomes 1, False becomes 0. NaN values will cause an error.</td></tr>
-<tr><td>Convert milliseconds to minutes</td><td class="fn">arithmetic</td><td class="go"></td></tr>
-<tr><td>Standardize (z-score normalize) numeric features</td><td class="fn">StandardScaler, fit_transform()</td><td class="go">Always fit on training data only, then transform both train and test. fit_transform on test leaks info.</td></tr>
-<tr><td>Apply log transformation to skewed numeric columns</td><td class="fn">np.log1p()</td><td class="go">log1p(x) = log(1+x), safe when x=0. Cannot handle negatives — clip first.</td></tr>
-<tr><td>Create a binary flag column using a condition</td><td class="fn">np.where()</td><td class="go">np.where returns an array. Assigning to a DataFrame column works fine.</td></tr>
-<tr><td>Create polynomial / interaction features</td><td class="fn">arithmetic</td><td class="go">Too many interaction terms can cause overfitting.</td></tr>
-<tr><td>Create ratio features with safe division</td><td class="fn">arithmetic</td><td class="go">Adding a small constant to the denominator prevents division by zero.</td></tr>
-<tr><td>Identify categorical vs numeric columns automatically</td><td class="fn">select_dtypes()</td><td class="go">&#x27;object&#x27; catches strings. Boolean columns may need include=[&#x27;bool&#x27;].</td></tr>
-<tr><td>Fill all missing numeric values with column means at once</td><td class="fn">fillna(), .mean()</td><td class="go">numeric_only=True skips non-numeric columns.</td></tr>
-<tr><td>Fill remaining NaN values with column median</td><td class="fn">fillna(), .median()</td><td class="go">Median is more robust to outliers than mean.</td></tr>
-<tr><td>Look up US ZIP codes to get county/state names</td><td class="fn">pgeocode.Nominatim, query_postal_code()</td><td class="go">Requires pip install pgeocode. ZIP codes must be strings.</td></tr>
-<tr><td>Check skewness of numeric columns</td><td class="fn">.skew()</td><td class="go">Absolute skewness &gt; 3 indicates strong skew. Consider log transform.</td></tr>
+<tr><td>Fill missing values with column mean</td><td class="fn">fillna(), .mean()</td><td class="go">inplace=True modifies original. Without it returns new DataFrame.</td></tr>
+<tr><td>Fill missing values with a constant</td><td class="fn">fillna()</td><td class="go">Choose domain-appropriate fill value.</td></tr>
+<tr><td>Fill missing values using another column</td><td class="fn">np.where(), .isna()</td><td class="go">np.where(cond, if_true, if_false) is element-wise.</td></tr>
+<tr><td>Drop rows where a column has missing values</td><td class="fn">df.dropna()</td><td class="go">subset= specifies columns. .copy() avoids warnings.</td></tr>
+<tr><td>Drop a column</td><td class="fn">df.drop()</td><td class="go">axis=1 columns, axis=0 rows.</td></tr>
+<tr><td>Count missing values per column</td><td class="fn">isnull().sum()</td><td class="go">isnull() and isna() are identical.</td></tr>
+<tr><td>Create dummy variables (one-hot encoding)</td><td class="fn">pd.get_dummies(), pd.concat()</td><td class="go">drop_first=True avoids multicollinearity. dtype=int for 0/1.</td></tr>
+<tr><td>One-hot encode multiple columns at once</td><td class="fn">pd.get_dummies()</td><td class="go">Original columns auto-dropped with columns= param.</td></tr>
+<tr><td>Map string values to numeric codes</td><td class="fn">.map()</td><td class="go">Unmapped values become NaN.</td></tr>
+<tr><td>Clip values to a valid range</td><td class="fn">.clip()</td><td class="go">clip(lower, upper) caps both ends.</td></tr>
+<tr><td>Replace out-of-range values with mean</td><td class="fn">.loc[], .mean()</td><td class="go">Mean computed before replacement, so outliers affect it.</td></tr>
+<tr><td>Cap percentage columns to 0-100</td><td class="fn">.loc[]</td><td class="go">Always validate rate columns in real data.</td></tr>
+<tr><td>Convert column to numeric, coercing errors</td><td class="fn">pd.to_numeric()</td><td class="go">errors=&#x27;coerce&#x27; turns bad strings into NaN.</td></tr>
+<tr><td>Convert to datetime and extract parts</td><td class="fn">pd.to_datetime(), .dt</td><td class="go">weekday: Mon=0..Sun=6. Bad dates become NaT.</td></tr>
+<tr><td>Compute days between two dates</td><td class="fn">.dt.days</td><td class="go">.dt.days for integer. NaT produces NaN.</td></tr>
+<tr><td>Parse time string and extract hour</td><td class="fn">pd.to_datetime(), .dt.hour</td><td class="go">Specify format= to match your pattern.</td></tr>
+<tr><td>Convert boolean to 0/1</td><td class="fn">.astype(int)</td><td class="go">NaN causes error - fill first.</td></tr>
+<tr><td>Standardize numeric features</td><td class="fn">StandardScaler</td><td class="go">Fit on train only. transform() on test. fit_transform on test leaks info.</td></tr>
+<tr><td>Log-transform skewed columns</td><td class="fn">np.log1p()</td><td class="go">log1p(0)=0, safe for zeros. Cannot handle negatives.</td></tr>
+<tr><td>Create binary flag from condition</td><td class="fn">np.where()</td><td class="go">Returns array, assigns to column fine.</td></tr>
+<tr><td>Create polynomial/interaction features</td><td class="fn">arithmetic</td><td class="go">Too many can overfit.</td></tr>
+<tr><td>Create ratio features safely</td><td class="fn">arithmetic</td><td class="go">Small constant in denominator prevents /0.</td></tr>
+<tr><td>Identify categorical vs numeric columns</td><td class="fn">select_dtypes()</td><td class="go">&#x27;object&#x27; catches strings.</td></tr>
+<tr><td>Fill all numeric NaN with means at once</td><td class="fn">fillna(), .mean()</td><td class="go">numeric_only=True skips non-numeric.</td></tr>
+<tr><td>Fill NaN with median</td><td class="fn">fillna(), .median()</td><td class="go">Median more robust to outliers than mean.</td></tr>
+<tr><td>Look up ZIP codes for location</td><td class="fn">pgeocode</td><td class="go">pip install pgeocode. ZIP must be string.</td></tr>
+<tr><td>Check column skewness</td><td class="fn">.skew()</td><td class="go">Skewness &gt; 3 = strong skew, consider log transform.</td></tr>
 </table>
 <h2>Data Selection &amp; Filtering</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Select specific columns from a DataFrame by name</td><td class="fn">df[[col1, col2]]</td><td class="go">Double brackets [[ ]] return a DataFrame; single brackets return a Series.</td></tr>
-<tr><td>Select rows and columns by integer position</td><td class="fn">df.iloc[]</td><td class="go">iloc uses exclusive end index (like Python slicing). iloc[0:2] returns rows 0 and 1, not 2.</td></tr>
-<tr><td>Select rows and columns by label names</td><td class="fn">df.loc[]</td><td class="go">loc end index is inclusive — loc[0:2] returns rows 0, 1, AND 2.</td></tr>
-<tr><td>Filter rows by a single condition</td><td class="fn">df.loc[condition]</td><td class="go">Use == for comparison, not =. The result keeps the original index.</td></tr>
-<tr><td>Filter rows by multiple conditions (AND / OR)</td><td class="fn">df.loc[], &amp; | operators</td><td class="go">Each condition must be in parentheses. Use &amp; for AND, | for OR — not Python and/or.</td></tr>
-<tr><td>Create a filtered subset of a DataFrame for analysis</td><td class="fn">df.loc[]</td><td class="go">The filtered DataFrame shares memory with the original. Use .copy() to modify safely.</td></tr>
-<tr><td>Separate features (X) and target (y) for modeling</td><td class="fn">df.drop(), df.iloc[]</td><td class="go">Make sure X does not contain the target column.</td></tr>
-<tr><td>Collect column names matching a prefix pattern</td><td class="fn">list comprehension</td><td class="go">Case-sensitive unless you use .lower().</td></tr>
-<tr><td>Remove cancellations and invalid rows from retail data</td><td class="fn">boolean indexing, .str.startswith(), .str.contains()</td><td class="go">~ is the NOT operator. na=False in str.contains prevents NaN errors.</td></tr>
+<tr><td>Select columns by name</td><td class="fn">df[[col1, col2]]</td><td class="go">Double [[ ]] = DataFrame; single [ ] = Series.</td></tr>
+<tr><td>Select by integer position</td><td class="fn">df.iloc[]</td><td class="go">Exclusive end: iloc[0:2] = rows 0,1 not 2.</td></tr>
+<tr><td>Select by label names</td><td class="fn">df.loc[]</td><td class="go">Inclusive end: loc[0:2] = rows 0,1,2.</td></tr>
+<tr><td>Filter rows by a single condition</td><td class="fn">df.loc[condition]</td><td class="go">Use == not =.</td></tr>
+<tr><td>Filter rows by multiple conditions (AND/OR)</td><td class="fn">df.loc[], &amp; |</td><td class="go">Each condition in parentheses. Use &amp; | not and/or.</td></tr>
+<tr><td>Create filtered subset for analysis</td><td class="fn">df.loc[]</td><td class="go">Use .copy() if you plan to modify the subset.</td></tr>
+<tr><td>Separate features (X) and target (y)</td><td class="fn">df.drop(), df.iloc[]</td><td class="go">Ensure X does not contain the target.</td></tr>
+<tr><td>Collect columns matching a prefix</td><td class="fn">list comprehension</td><td class="go">Case-sensitive unless you use .lower().</td></tr>
+<tr><td>Remove cancellations and invalid rows</td><td class="fn">boolean indexing, .str methods</td><td class="go">~ is NOT. na=False prevents NaN errors.</td></tr>
 </table>
 <h2>Aggregation &amp; Grouping</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Count occurrences of each unique value in a column</td><td class="fn">value_counts()</td><td class="go">Returns a Series sorted by count descending. NaN excluded by default — use dropna=False to include.</td></tr>
-<tr><td>Get relative frequencies (proportions) of unique values</td><td class="fn">value_counts(normalize=True)</td><td class="go">normalize=True converts counts to proportions summing to 1.0.</td></tr>
-<tr><td>Count the number of unique values in a column</td><td class="fn">.nunique()</td><td class="go">nunique() excludes NaN by default.</td></tr>
-<tr><td>List all unique values in a column</td><td class="fn">.unique()</td><td class="go">Returns a NumPy array, not a list. Includes NaN if present.</td></tr>
-<tr><td>Describe summary statistics for a subset of columns</td><td class="fn">.describe()</td><td class="go">Shows count, mean, std, min, 25%, 50%, 75%, max for numeric columns.</td></tr>
-<tr><td>Compute aggregate statistics using .agg()</td><td class="fn">.agg()</td><td class="go">agg() accepts a list of function names as strings or actual functions.</td></tr>
-<tr><td>Group by a column and count items per group using transform</td><td class="fn">groupby(), .transform()</td><td class="go">transform returns a Series with the same index as the original, so you can assign it as a new column.</td></tr>
-<tr><td>Compute cumulative count within groups</td><td class="fn">groupby().cumcount()</td><td class="go">cumcount starts at 0. Data must be sorted in the desired order first.</td></tr>
-<tr><td>Get the minimum value within each group using transform</td><td class="fn">groupby().transform(&#x27;min&#x27;)</td><td class="go">Broadcasts the group minimum back to every row in that group.</td></tr>
-<tr><td>Compute group-level means for cluster profiling</td><td class="fn">groupby().mean()</td><td class="go">mean() only works on numeric columns.</td></tr>
-<tr><td>Compute value counts within filtered subsets and combine</td><td class="fn">value_counts(), pd.concat()</td><td class="go">Each value_counts returns a Series; concat axis=1 joins them side by side.</td></tr>
-<tr><td>Analyze genre distribution within each cluster</td><td class="fn">groupby, value_counts(normalize=True)</td><td class="go">K-means does not use genre labels, but comparing clusters to genres helps interpretation.</td></tr>
+<tr><td>Count occurrences of each unique value</td><td class="fn">value_counts()</td><td class="go">Sorted descending. NaN excluded by default; dropna=False to include.</td></tr>
+<tr><td>Get relative frequencies (proportions)</td><td class="fn">value_counts(normalize=True)</td><td class="go">Proportions sum to 1.0.</td></tr>
+<tr><td>Count number of unique values</td><td class="fn">.nunique()</td><td class="go">Excludes NaN by default.</td></tr>
+<tr><td>List all unique values</td><td class="fn">.unique()</td><td class="go">Returns NumPy array. Includes NaN if present.</td></tr>
+<tr><td>Describe statistics for column subset</td><td class="fn">.describe()</td><td class="go">Shows count, mean, std, min, quartiles, max.</td></tr>
+<tr><td>Compute aggregates with .agg()</td><td class="fn">.agg()</td><td class="go">Accepts list of function names or functions.</td></tr>
+<tr><td>Group and count with transform</td><td class="fn">groupby().transform()</td><td class="go">transform returns same-length Series for direct assignment.</td></tr>
+<tr><td>Cumulative count within groups</td><td class="fn">groupby().cumcount()</td><td class="go">Starts at 0. Sort data first.</td></tr>
+<tr><td>Group minimum with transform</td><td class="fn">groupby().transform(&#x27;min&#x27;)</td><td class="go">Broadcasts group min to every row.</td></tr>
+<tr><td>Group means for cluster profiling</td><td class="fn">groupby().mean()</td><td class="go">Only numeric columns.</td></tr>
+<tr><td>Combine value_counts from filtered subsets</td><td class="fn">value_counts(), pd.concat()</td><td class="go">concat axis=1 joins side by side.</td></tr>
+<tr><td>Genre distribution within clusters</td><td class="fn">value_counts(normalize=True)</td><td class="go">Interpretation step - K-means didn&#x27;t use genre.</td></tr>
 </table>
 <h2>Merging &amp; Joining</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Concatenate DataFrames vertically (stack rows)</td><td class="fn">pd.concat(), axis=0</td><td class="go">axis=0 stacks rows (default). ignore_index=True resets the index. Without it, original indices are preserved and may duplicate.</td></tr>
-<tr><td>Concatenate DataFrames horizontally (side by side)</td><td class="fn">pd.concat(), axis=1</td><td class="go">axis=1 joins columns side by side. Rows aligned by index — mismatched indices produce NaN.</td></tr>
-<tr><td>Merge location data back into the main DataFrame</td><td class="fn">df.merge()</td><td class="go">Default how=&#x27;inner&#x27; drops non-matching rows. Use how=&#x27;left&#x27; to keep all rows from the left DataFrame.</td></tr>
+<tr><td>Concatenate DataFrames vertically (stack rows)</td><td class="fn">pd.concat(), axis=0</td><td class="go">axis=0 stacks rows (default). ignore_index resets index.</td></tr>
+<tr><td>Concatenate DataFrames horizontally</td><td class="fn">pd.concat(), axis=1</td><td class="go">Aligns by index. Mismatched indices produce NaN.</td></tr>
+<tr><td>Merge DataFrames on key columns</td><td class="fn">df.merge()</td><td class="go">Default how=&#x27;inner&#x27; drops non-matches. how=&#x27;left&#x27; keeps all left rows.</td></tr>
 </table>
 <h2>Reshaping &amp; Pivoting</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Pivot a long transaction table into a wide basket matrix</td><td class="fn">groupby().unstack()</td><td class="go">unstack moves the inner index level to columns. fill_value=0 replaces NaN for items not in that invoice.</td></tr>
-<tr><td>Transpose a DataFrame (swap rows and columns)</td><td class="fn">.T</td><td class="go">.T is shorthand for .transpose(). Column names become the new index.</td></tr>
+<tr><td>Pivot long table to wide basket matrix</td><td class="fn">groupby().unstack()</td><td class="go">fill_value=0 replaces NaN. unstack moves inner index to columns.</td></tr>
+<tr><td>Transpose a DataFrame</td><td class="fn">.T</td><td class="go">Column names become new index.</td></tr>
 </table>
 <h2>Visualization</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Plot histograms for all numeric columns in a DataFrame</td><td class="fn">df.hist(), plt.show()</td><td class="go">hist() creates one subplot per numeric column. Adjust figsize for readability.</td></tr>
-<tr><td>Plot a histogram for a single column</td><td class="fn">.hist(), plt labels</td><td class="go">Default bins=10. Increase bins for finer granularity.</td></tr>
-<tr><td>Plot a bar chart from value counts</td><td class="fn">value_counts().plot(kind=&#x27;bar&#x27;)</td><td class="go">kind=&#x27;bar&#x27; for vertical; kind=&#x27;barh&#x27; for horizontal.</td></tr>
-<tr><td>Plot a grouped bar chart comparing categories</td><td class="fn">.plot(kind=&#x27;bar&#x27;)</td><td class="go">bbox_to_anchor moves the legend outside the plot area.</td></tr>
-<tr><td>Create a scatter plot to visualize correlation</td><td class="fn">plt.scatter()</td><td class="go">Scatter plots show relationships but do not prove causation.</td></tr>
-<tr><td>Create a scatter plot with regression trend line and confidence band</td><td class="fn">sns.regplot()</td><td class="go">regplot adds a linear fit + 95% CI band by default.</td></tr>
-<tr><td>Plot a heatmap of correlations among numeric columns</td><td class="fn">sns.heatmap(), .corr()</td><td class="go">corr() computes Pearson correlation (linear only). annot=True prints values in each cell.</td></tr>
-<tr><td>Plot a confusion matrix</td><td class="fn">ConfusionMatrixDisplay</td><td class="go">from_predictions takes actual and predicted labels. from_estimator takes model + test data.</td></tr>
-<tr><td>Plot an ROC curve</td><td class="fn">RocCurveDisplay</td><td class="go">ROC curves need predicted probabilities, not class labels. Use predict_proba()[:,1].</td></tr>
-<tr><td>Plot predicted vs actual values for regression</td><td class="fn">plt.scatter(), plt.plot()</td><td class="go">Points on the diagonal = perfect predictions. Spread = error.</td></tr>
-<tr><td>Plot training vs test error to visualize overfitting</td><td class="fn">plt.plot()</td><td class="go">When train error drops but test error rises, the model is overfitting.</td></tr>
-<tr><td>Plot the elbow method for K-means clustering</td><td class="fn">KMeans.inertia_, plt.plot()</td><td class="go">inertia_ is sum of squared distances to cluster centers. Look for the elbow bend.</td></tr>
-<tr><td>Plot a 2D scatter plot colored by cluster assignment</td><td class="fn">sns.scatterplot(), hue=</td><td class="go">hue= colors points by a categorical column.</td></tr>
-<tr><td>Plot KNN accuracy or RMSE vs K to choose optimal K</td><td class="fn">plt.plot()</td><td class="go">Very small K overfits; very large K over-smooths.</td></tr>
-<tr><td>Plot feature importances from a decision tree</td><td class="fn">.feature_importances_, .plot(kind=&#x27;bar&#x27;)</td><td class="go">feature_importances_ sums to 1.0. Higher = more important for splitting.</td></tr>
-<tr><td>Plot regression coefficients as a horizontal bar chart</td><td class="fn">pd.Series, .plot(kind=&#x27;barh&#x27;)</td><td class="go">Coefficients are only comparable if features are standardized.</td></tr>
-<tr><td>Create subplots to show histograms of many columns in a grid</td><td class="fn">plt.subplots(), sns.histplot()</td><td class="go">axes.ravel() flattens the 2D array for easy looping. Turn off unused subplots.</td></tr>
+<tr><td>Plot histograms for all numeric columns</td><td class="fn">df.hist(), plt.show()</td><td class="go">Adjust figsize for readability.</td></tr>
+<tr><td>Plot a histogram for a single column</td><td class="fn">.hist(), plt labels</td><td class="go">Default bins=10. Increase for finer granularity.</td></tr>
+<tr><td>Plot a bar chart from value counts</td><td class="fn">value_counts().plot(kind=&#x27;bar&#x27;)</td><td class="go">kind=&#x27;bar&#x27; vertical; kind=&#x27;barh&#x27; horizontal.</td></tr>
+<tr><td>Plot a grouped bar chart comparing categories</td><td class="fn">.plot(kind=&#x27;bar&#x27;)</td><td class="go">bbox_to_anchor moves legend outside plot.</td></tr>
+<tr><td>Create a scatter plot to visualize correlation</td><td class="fn">plt.scatter()</td><td class="go">Shows relationships, does not prove causation.</td></tr>
+<tr><td>Scatter plot with regression trend line</td><td class="fn">sns.regplot()</td><td class="go">Adds linear fit + 95% CI band by default.</td></tr>
+<tr><td>Plot a heatmap of correlations</td><td class="fn">sns.heatmap(), .corr()</td><td class="go">corr() is Pearson (linear only). annot=True prints values.</td></tr>
+<tr><td>Plot a confusion matrix</td><td class="fn">ConfusionMatrixDisplay</td><td class="go">from_predictions takes actual and predicted labels.</td></tr>
+<tr><td>Plot an ROC curve</td><td class="fn">RocCurveDisplay</td><td class="go">Needs probabilities not class labels. Use predict_proba()[:,1].</td></tr>
+<tr><td>Plot predicted vs actual values</td><td class="fn">plt.scatter(), plt.plot()</td><td class="go">Points on diagonal = perfect. Spread = error.</td></tr>
+<tr><td>Plot train vs test error (complexity curve)</td><td class="fn">plt.plot()</td><td class="go">When train drops but test rises = overfitting.</td></tr>
+<tr><td>Plot elbow method for K-means</td><td class="fn">KMeans.inertia_, plt.plot()</td><td class="go">inertia_ is sum of squared distances. Look for elbow bend.</td></tr>
+<tr><td>2D scatter plot colored by cluster</td><td class="fn">sns.scatterplot(), hue=</td><td class="go">hue= colors points by categorical column.</td></tr>
+<tr><td>Plot KNN accuracy vs K</td><td class="fn">plt.plot()</td><td class="go">Small K overfits; large K over-smooths.</td></tr>
+<tr><td>Plot feature importances</td><td class="fn">.feature_importances_</td><td class="go">Sums to 1.0. Higher = more important for splitting.</td></tr>
+<tr><td>Plot regression coefficients</td><td class="fn">pd.Series, .plot(kind=&#x27;barh&#x27;)</td><td class="go">Only comparable if features are standardized.</td></tr>
+<tr><td>Create subplots for multiple histograms</td><td class="fn">plt.subplots(), sns.histplot()</td><td class="go">axes.ravel() flattens 2D array. Turn off unused subplots.</td></tr>
 </table>
 <h2>Statistical Analysis &amp; Regression</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Split data into training and testing sets</td><td class="fn">train_test_split()</td><td class="go">random_state ensures reproducibility. test_size=0.2 means 20% test.</td></tr>
-<tr><td>Split data with stratification to preserve class proportions</td><td class="fn">train_test_split(stratify=)</td><td class="go">stratify=y ensures both sets have similar class ratios. Essential for imbalanced data.</td></tr>
-<tr><td>Train a Decision Tree Classifier</td><td class="fn">DecisionTreeClassifier(), .fit()</td><td class="go">criterion=&#x27;entropy&#x27; uses information gain; &#x27;gini&#x27; (default) uses Gini impurity.</td></tr>
-<tr><td>Train a Decision Tree Classifier with pruning to reduce overfitting</td><td class="fn">DecisionTreeClassifier(max_depth=, min_samples_leaf=)</td><td class="go">Smaller max_depth and larger min_samples_leaf = simpler trees. These are pre-pruning parameters.</td></tr>
-<tr><td>Train a Decision Tree Regressor</td><td class="fn">DecisionTreeRegressor(), .fit()</td><td class="go">Regression trees predict continuous values. Evaluate with MAE/RMSE/R2 instead of accuracy.</td></tr>
-<tr><td>Visualize a decision tree using graphviz</td><td class="fn">tree.export_graphviz(), graphviz.Source()</td><td class="go">max_depth= in export_graphviz limits visualization depth, not the actual tree. class_names must be strings.</td></tr>
-<tr><td>Check tree complexity (node count and depth)</td><td class="fn">.tree_.node_count, .tree_.max_depth</td><td class="go">Accessed via .tree_ attribute of the fitted model.</td></tr>
-<tr><td>Predict class labels using a trained classifier</td><td class="fn">.predict()</td><td class="go">predict() returns class labels (0/1). For probabilities use predict_proba().</td></tr>
-<tr><td>Predict class probabilities using a trained classifier</td><td class="fn">.predict_proba()</td><td class="go">Returns a 2D array with columns for each class. [:,1] gets the positive class probability.</td></tr>
-<tr><td>Evaluate classification with accuracy score</td><td class="fn">accuracy_score()</td><td class="go">Accuracy can be misleading with imbalanced classes.</td></tr>
-<tr><td>Evaluate classification with precision, recall, F1, and AUC</td><td class="fn">precision_score(), recall_score(), f1_score(), roc_auc_score()</td><td class="go">Precision=TP/(TP+FP), Recall=TP/(TP+FN). AUC needs probabilities not labels. zero_division=0 avoids warnings.</td></tr>
-<tr><td>Generate a full classification report</td><td class="fn">classification_report()</td><td class="go">Shows precision, recall, F1 for each class plus macro/weighted averages.</td></tr>
-<tr><td>Compute and display a confusion matrix as a DataFrame</td><td class="fn">confusion_matrix()</td><td class="go">Rows = actual, columns = predicted. Top-left = True Negatives, bottom-right = True Positives.</td></tr>
-<tr><td>Evaluate regression with MAE, RMSE, and R-squared</td><td class="fn">mean_absolute_error(), mean_squared_error(), r2_score()</td><td class="go">sklearn returns MSE not RMSE — take np.sqrt() yourself. R2 can be negative if model is worse than predicting the mean.</td></tr>
-<tr><td>Perform 5-fold cross-validation for classification</td><td class="fn">StratifiedKFold, cross_validate()</td><td class="go">StratifiedKFold preserves class proportions. Results in cv_scores[&#x27;test_accuracy&#x27;] etc.</td></tr>
-<tr><td>Perform 5-fold cross-validation for regression</td><td class="fn">KFold, cross_validate()</td><td class="go">sklearn uses NEGATIVE MAE/RMSE for CV scoring (it maximizes). Multiply by -1 to get normal values.</td></tr>
-<tr><td>Get out-of-fold predictions from cross-validation</td><td class="fn">cross_val_predict()</td><td class="go">Each sample is predicted by a model that did NOT train on it. Useful for ROC curves from CV.</td></tr>
-<tr><td>Tune hyperparameters using GridSearchCV</td><td class="fn">GridSearchCV()</td><td class="go">refit= specifies which metric selects the best model. n_jobs=-1 uses all CPU cores. Tune on training set only.</td></tr>
-<tr><td>Inspect GridSearchCV results and rank parameter combinations</td><td class="fn">grid.cv_results_</td><td class="go">cv_results_ contains mean/std scores for every parameter combination.</td></tr>
-<tr><td>Train a baseline Linear Regression model</td><td class="fn">LinearRegression(), .fit()</td><td class="go">Linear regression has no hyperparameters to tune (OLS). Minimizes squared error.</td></tr>
-<tr><td>Interpret linear regression coefficients</td><td class="fn">.coef_, pd.Series</td><td class="go">Coefficients are only comparable if features are on the same scale. Standardize first.</td></tr>
-<tr><td>Train a Logistic Regression classifier</td><td class="fn">LogisticRegression(), .fit()</td><td class="go">Increase max_iter if you get a convergence warning. Outputs probabilities via predict_proba.</td></tr>
-<tr><td>Train a Gaussian Naive Bayes classifier</td><td class="fn">GaussianNB(), .fit()</td><td class="go">Assumes feature independence given the class. Sensitive to scale — standardize or log-transform skewed features.</td></tr>
-<tr><td>Inspect Naive Bayes class priors</td><td class="fn">.class_prior_, .classes_</td><td class="go">class_prior_ reflects the training set class distribution.</td></tr>
-<tr><td>Compare feature means between classes for interpretation</td><td class="fn">groupby, mean difference</td><td class="go">Positive difference = feature is higher for class 1.</td></tr>
-<tr><td>Train a K-Means clustering model</td><td class="fn">KMeans(), .fit_predict()</td><td class="go">Unsupervised — no target variable. n_init=10 runs 10 times and keeps best. Always standardize first.</td></tr>
-<tr><td>Compute SSD decrease per K to find optimal clusters</td><td class="fn">inertia_, percentage drop</td><td class="go">Look for where percentage drop becomes small — that is the elbow.</td></tr>
-<tr><td>Train a KNN Classifier</td><td class="fn">KNeighborsClassifier(), .fit()</td><td class="go">Distance-based — always standardize features. Small K overfits; large K over-smooths.</td></tr>
-<tr><td>Train a KNN Regressor</td><td class="fn">KNeighborsRegressor(), .fit()</td><td class="go">Predicts the average of K nearest neighbors&#x27; target values.</td></tr>
-<tr><td>Compare multiple classifiers on the same dataset</td><td class="fn">model loop</td><td class="go">Use the same train/test split for all models for fair comparison.</td></tr>
-<tr><td>Sweep a single hyperparameter and plot train vs test error</td><td class="fn">loop, accuracy_score</td><td class="go">Manual alternative to GridSearchCV for understanding one parameter.</td></tr>
-<tr><td>Find frequent itemsets using the Apriori algorithm</td><td class="fn">apriori()</td><td class="go">Input must be boolean or 0/1 DataFrame. min_support too low = slow, too high = few results.</td></tr>
-<tr><td>Generate association rules from frequent itemsets</td><td class="fn">association_rules()</td><td class="go">High confidence alone misleads if consequent is very common. Always check lift &gt; 1.</td></tr>
-<tr><td>Build product recommendations from association rules</td><td class="fn">frozenset filtering</td><td class="go">antecedents and consequents are frozensets. Use frozenset([item]) for queries.</td></tr>
-<tr><td>Find recommendations for a multi-item cart</td><td class="fn">frozenset, .issubset()</td><td class="go">issubset checks if the antecedent is fully contained in the cart.</td></tr>
-<tr><td>Compute association rule metrics manually</td><td class="fn">counting, arithmetic</td><td class="go">Lift ~ 1 = independent. Lift &gt; 1 = positive association. Leverage &gt; 0 = exceeds expectation.</td></tr>
-<tr><td>Encode a list of transactions into a boolean basket matrix</td><td class="fn">TransactionEncoder</td><td class="go">Converts list of lists into boolean DataFrame suitable for apriori().</td></tr>
-<tr><td>Interpret a decision tree node</td><td class="fn">tree visualization</td><td class="go">&#x27;value&#x27; shows proportions when proportion=True, otherwise raw counts.</td></tr>
-<tr><td>Use weighted precision/recall/F1 for multi-class classification</td><td class="fn">precision_score(average=&#x27;weighted&#x27;)</td><td class="go">&#x27;weighted&#x27; weights each class by its support. Use &#x27;macro&#x27; for equal weight per class.</td></tr>
+<tr><td>Split data into train and test sets</td><td class="fn">train_test_split()</td><td class="go">random_state for reproducibility. test_size=0.2 = 80/20.</td></tr>
+<tr><td>Split with stratification</td><td class="fn">train_test_split(stratify=)</td><td class="go">stratify=y preserves class proportions. Essential for imbalanced data.</td></tr>
+<tr><td>Train a Decision Tree Classifier</td><td class="fn">DecisionTreeClassifier(), .fit()</td><td class="go">criterion=&#x27;entropy&#x27; uses info gain; &#x27;gini&#x27; (default) uses Gini impurity.</td></tr>
+<tr><td>Train a Decision Tree with pruning</td><td class="fn">DecisionTreeClassifier(max_depth=, min_samples_leaf=)</td><td class="go">Smaller max_depth + larger min_samples_leaf = simpler tree.</td></tr>
+<tr><td>Train a Decision Tree Regressor</td><td class="fn">DecisionTreeRegressor(), .fit()</td><td class="go">Evaluate with MAE/RMSE/R2 not accuracy.</td></tr>
+<tr><td>Visualize a decision tree</td><td class="fn">tree.export_graphviz(), graphviz.Source()</td><td class="go">max_depth= in export limits viz depth, not actual tree. class_names must be strings.</td></tr>
+<tr><td>Check tree complexity</td><td class="fn">.tree_.node_count, .tree_.max_depth</td><td class="go">Accessed via .tree_ attribute.</td></tr>
+<tr><td>Predict class labels</td><td class="fn">.predict()</td><td class="go">Returns class labels (0/1). For probabilities use predict_proba().</td></tr>
+<tr><td>Predict class probabilities</td><td class="fn">.predict_proba()</td><td class="go">[:,1] gets positive class probability.</td></tr>
+<tr><td>Evaluate with accuracy</td><td class="fn">accuracy_score()</td><td class="go">Misleading with imbalanced classes.</td></tr>
+<tr><td>Evaluate with precision, recall, F1, AUC</td><td class="fn">precision_score(), recall_score(), f1_score(), roc_auc_score()</td><td class="go">AUC needs probabilities not labels. zero_division=0 avoids warnings.</td></tr>
+<tr><td>Generate a classification report</td><td class="fn">classification_report()</td><td class="go">Shows precision, recall, F1 per class plus averages.</td></tr>
+<tr><td>Compute confusion matrix as DataFrame</td><td class="fn">confusion_matrix()</td><td class="go">Rows=actual, columns=predicted. TL=TN, BR=TP.</td></tr>
+<tr><td>Evaluate regression with MAE, RMSE, R2</td><td class="fn">mean_absolute_error(), mean_squared_error(), r2_score()</td><td class="go">sklearn returns MSE not RMSE - take np.sqrt(). R2 can be negative.</td></tr>
+<tr><td>5-fold cross-validation for classification</td><td class="fn">StratifiedKFold, cross_validate()</td><td class="go">StratifiedKFold preserves class proportions.</td></tr>
+<tr><td>5-fold cross-validation for regression</td><td class="fn">KFold, cross_validate()</td><td class="go">sklearn uses NEGATIVE MAE for CV. Multiply by -1.</td></tr>
+<tr><td>Get out-of-fold predictions</td><td class="fn">cross_val_predict()</td><td class="go">Each sample predicted by model that didn&#x27;t train on it.</td></tr>
+<tr><td>Tune hyperparameters with GridSearchCV</td><td class="fn">GridSearchCV()</td><td class="go">refit= selects metric. n_jobs=-1 uses all cores. Tune on train only.</td></tr>
+<tr><td>Inspect GridSearchCV results</td><td class="fn">grid.cv_results_</td><td class="go">Contains mean/std scores for every combination.</td></tr>
+<tr><td>Train Linear Regression</td><td class="fn">LinearRegression(), .fit()</td><td class="go">No hyperparameters (OLS). Minimizes squared error.</td></tr>
+<tr><td>Interpret linear regression coefficients</td><td class="fn">.coef_, pd.Series</td><td class="go">Only comparable if features standardized.</td></tr>
+<tr><td>Train Logistic Regression</td><td class="fn">LogisticRegression(), .fit()</td><td class="go">Increase max_iter if convergence warning.</td></tr>
+<tr><td>Train Gaussian Naive Bayes</td><td class="fn">GaussianNB(), .fit()</td><td class="go">Assumes feature independence. Sensitive to scale.</td></tr>
+<tr><td>Inspect Naive Bayes class priors</td><td class="fn">.class_prior_, .classes_</td><td class="go">Reflects training class distribution.</td></tr>
+<tr><td>Compare feature means between classes</td><td class="fn">groupby, mean difference</td><td class="go">Positive = feature higher for class 1.</td></tr>
+<tr><td>Train K-Means clustering</td><td class="fn">KMeans(), .fit_predict()</td><td class="go">Unsupervised. n_init=10 runs 10 times. Always standardize.</td></tr>
+<tr><td>Compute SSD decrease per K</td><td class="fn">inertia_, percentage drop</td><td class="go">When drop becomes small = elbow.</td></tr>
+<tr><td>Train KNN Classifier</td><td class="fn">KNeighborsClassifier(), .fit()</td><td class="go">Distance-based - always standardize. Small K overfits.</td></tr>
+<tr><td>Train KNN Regressor</td><td class="fn">KNeighborsRegressor(), .fit()</td><td class="go">Predicts average of K neighbors&#x27; targets.</td></tr>
+<tr><td>Compare multiple classifiers</td><td class="fn">model loop</td><td class="go">Use same split for fair comparison.</td></tr>
+<tr><td>Sweep a hyperparameter and plot</td><td class="fn">loop, accuracy_score</td><td class="go">Manual alternative to GridSearchCV for one param.</td></tr>
+<tr><td>Find frequent itemsets with Apriori</td><td class="fn">apriori()</td><td class="go">Input must be boolean/0-1 DataFrame. min_support too low = slow.</td></tr>
+<tr><td>Generate association rules</td><td class="fn">association_rules()</td><td class="go">High confidence misleads if consequent common. Check lift&gt;1.</td></tr>
+<tr><td>Build product recommendations</td><td class="fn">frozenset filtering</td><td class="go">antecedents/consequents are frozensets.</td></tr>
+<tr><td>Find recommendations for multi-item cart</td><td class="fn">frozenset, .issubset()</td><td class="go">issubset checks if antecedent fully in cart.</td></tr>
+<tr><td>Compute association metrics manually</td><td class="fn">counting, arithmetic</td><td class="go">Lift~1=independent. Lift&gt;1=positive. Leverage&gt;0=exceeds expectation.</td></tr>
+<tr><td>Encode transactions into boolean basket</td><td class="fn">TransactionEncoder</td><td class="go">Converts list of lists into boolean DataFrame.</td></tr>
+<tr><td>Interpret a decision tree node</td><td class="fn">tree visualization</td><td class="go">value shows proportions when proportion=True, else raw counts.</td></tr>
+<tr><td>Weighted precision/recall/F1 for multi-class</td><td class="fn">precision_score(average=&#x27;weighted&#x27;)</td><td class="go">&#x27;weighted&#x27; weights by support. &#x27;macro&#x27; = equal weight per class.</td></tr>
 </table>
 <h2>String &amp; Text Operations</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Split a string by a delimiter</td><td class="fn">.split()</td><td class="go">split() with no argument splits on whitespace.</td></tr>
-<tr><td>Slice a string to extract a substring</td><td class="fn">string[start:stop]</td><td class="go">Slicing is exclusive of the stop index, like list slicing.</td></tr>
-<tr><td>Convert a string to uppercase or lowercase</td><td class="fn">.upper(), .lower()</td><td class="go">Returns new strings; originals are immutable.</td></tr>
-<tr><td>Concatenate strings with type conversion</td><td class="fn">+ operator, str()</td><td class="go">Must convert numbers to strings with str() before concatenating with +.</td></tr>
-<tr><td>Count words in a text column</td><td class="fn">.str.split().str.len()</td><td class="go">astype(str) prevents errors if column contains NaN.</td></tr>
-<tr><td>Check if a string column contains a keyword</td><td class="fn">.str.contains()</td><td class="go">case=False = case-insensitive. na=False returns False for NaN.</td></tr>
-<tr><td>Fill missing string descriptions with a fallback column</td><td class="fn">.fillna()</td><td class="go">fillna can accept a Series — fills NaN using values from another column row by row.</td></tr>
+<tr><td>Split a string by delimiter</td><td class="fn">.split()</td><td class="go">No argument splits on whitespace.</td></tr>
+<tr><td>Slice a string to extract substring</td><td class="fn">string[start:stop]</td><td class="go">Exclusive of stop index.</td></tr>
+<tr><td>Convert string to upper/lowercase</td><td class="fn">.upper(), .lower()</td><td class="go">Returns new string; originals immutable.</td></tr>
+<tr><td>Concatenate strings with type conversion</td><td class="fn">+ operator, str()</td><td class="go">Must convert numbers with str() before + concat.</td></tr>
+<tr><td>Count words in a text column</td><td class="fn">.str.split().str.len()</td><td class="go">astype(str) prevents NaN errors.</td></tr>
+<tr><td>Check if column contains a keyword</td><td class="fn">.str.contains()</td><td class="go">case=False = case-insensitive. na=False for NaN safety.</td></tr>
+<tr><td>Fill missing string descriptions with fallback</td><td class="fn">.fillna()</td><td class="go">fillna accepts a Series - fills row by row.</td></tr>
 </table>
 <h2>Other</h2>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
-<tr><td>Perform basic arithmetic in Python</td><td class="fn">+ - * / // **</td><td class="go">/ always returns float. // rounds DOWN (floor), so -3//2 = -2.</td></tr>
-<tr><td>Use comparison operators</td><td class="fn">==, !=, &gt;=, &lt;=</td><td class="go">== checks equality; = is assignment. Common beginner mistake.</td></tr>
-<tr><td>Use conditional logic with if/elif/else</td><td class="fn">if, elif, else</td><td class="go">Use and/or in if statements, not &amp;/|. &amp;/| are for pandas Series.</td></tr>
-<tr><td>Create and manipulate a Python list</td><td class="fn">list, .append(), len(), indexing</td><td class="go">Indexing starts at 0. Negative indices count from end: -1 is last.</td></tr>
-<tr><td>Combine two lists</td><td class="fn">+ operator</td><td class="go">+ creates a new list; does not modify originals.</td></tr>
-<tr><td>Loop through a list using range</td><td class="fn">for, range(), len()</td><td class="go">range(n) produces 0..n-1. range(i,j) produces i..j-1.</td></tr>
-<tr><td>Check the type of a variable</td><td class="fn">type()</td><td class="go">type() returns the class. Use isinstance() for type checking in conditions.</td></tr>
-<tr><td>Convert between numeric types</td><td class="fn">float(), int(), str()</td><td class="go">int() truncates toward zero, does not round. int(-3.7) = -3.</td></tr>
-<tr><td>Define a reusable function</td><td class="fn">def, return</td><td class="go">Functions must be defined before called. return sends output back.</td></tr>
+<tr><td>Basic arithmetic in Python</td><td class="fn">+ - * / // **</td><td class="go">/ always float. // rounds DOWN: -3//2 = -2.</td></tr>
+<tr><td>Use comparison operators</td><td class="fn">==, !=, &gt;=, &lt;=</td><td class="go">== checks equality; = is assignment.</td></tr>
+<tr><td>Conditional logic with if/elif/else</td><td class="fn">if, elif, else</td><td class="go">Use and/or in if, not &amp;/|. &amp;/| for pandas Series.</td></tr>
+<tr><td>Create and manipulate a list</td><td class="fn">list, .append(), len()</td><td class="go">Index starts at 0. -1 is last element.</td></tr>
+<tr><td>Combine two lists</td><td class="fn">+ operator</td><td class="go">Creates new list; does not modify originals.</td></tr>
+<tr><td>Loop through a list with range</td><td class="fn">for, range(), len()</td><td class="go">range(n) = 0..n-1. range(i,j) = i..j-1.</td></tr>
+<tr><td>Check variable type</td><td class="fn">type()</td><td class="go">Use isinstance() for type checking in conditions.</td></tr>
+<tr><td>Convert between numeric types</td><td class="fn">float(), int(), str()</td><td class="go">int() truncates toward zero, does not round.</td></tr>
+<tr><td>Define a reusable function</td><td class="fn">def, return</td><td class="go">Must be defined before called. return sends output back.</td></tr>
 </table>
 <div class="confused"><h2>Commonly Confused Pairs</h2>
 <table><tr><th>Pair</th><th>Distinction</th></tr>
