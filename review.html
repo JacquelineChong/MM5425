@@ -18,12 +18,15 @@ tr:nth-child(even){background:#f8f9fb}
 .go{color:#b71c1c;font-size:.85em}
 .confused{margin-top:30px}
 .confused table td:first-child{font-weight:600;white-space:nowrap;width:30%}
+.concept{background:#eef2ff;border-left:3px solid #4a6fa5;padding:6px 10px;margin:4px 0 8px;font-size:.86em;border-radius:0 4px 4px 0;line-height:1.5}
+.concept-title{font-weight:700;color:#2c3e50}
 @media print{body{padding:10px;font-size:11px}h1{font-size:1.3em}h2{font-size:1em;margin:14px 0 8px}table{font-size:.8em;page-break-inside:auto}td,th{padding:4px 6px}tr{page-break-inside:avoid}}
 </style></head><body>
 <div class="nav"><a href="repository.html">&#8594; Code Repository</a></div>
 <h1>MM5425 Quick Review Sheet</h1>
 <p class="sub">One-page mental walkthrough &mdash; what tool for what job</p>
 <h2>Data Import &amp; File I/O</h2>
+<div class="concept"><span class="concept-title">Data Exploration Workflow</span> &mdash; df.info() for types/nulls, df.describe() for stats, df.shape for dimensions, value_counts() for categories, isnull().sum() for missing. Histograms + heatmaps.</div>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
 <tr><td>Load a CSV file into a DataFrame</td><td class="fn">pd.read_csv()</td><td class="go">For Excel use pd.read_excel(). Windows paths need r&quot;...&quot;.</td></tr>
 <tr><td>Load an Excel file into a DataFrame</td><td class="fn">pd.read_excel()</td><td class="go">Requires openpyxl. Default reads first sheet.</td></tr>
@@ -35,6 +38,10 @@ tr:nth-child(even){background:#f8f9fb}
 <tr><td>List all column names in a DataFrame</td><td class="fn">df.columns</td><td class="go">Returns an Index object. list(df.columns) for a plain list.</td></tr>
 </table>
 <h2>Data Cleaning &amp; Preprocessing</h2>
+<div class="concept"><span class="concept-title">Why Standardize Features</span> &mdash; X_std=(X-mean)/std. Distance-based methods (KNN, K-means) dominated by large-scale features. Regularized models affected by scale. After standardization, coefficients comparable.</div>
+<div class="concept"><span class="concept-title">Why Log-Transform Skewed Features</span> &mdash; Skewed: most small, few very large. GaussianNB works better with bell-shaped. log1p(x)=log(1+x) shrinks extremes. Safe for zeros. Cannot handle negatives. |skew|&gt;3 = strong.</div>
+<div class="concept"><span class="concept-title">Feature Engineering Rationale</span> &mdash; Create new predictors from existing columns. Add small constant to denominators. Linear regression is linear in parameters — can add log, polynomial, interaction terms. More features != better.</div>
+<div class="concept"><span class="concept-title">One-Hot Encoding Explained</span> &mdash; Most sklearn models need numbers. One-hot: categorical → multiple 0/1 columns. drop_first=True avoids multicollinearity. For 2-value columns, .map() to 0/1 is simpler.</div>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
 <tr><td>Fill missing numeric values with the column mean</td><td class="fn">fillna(), .mean()</td><td class="go">inplace=True modifies original. Without it returns new DataFrame.</td></tr>
 <tr><td>Fill missing values with a constant (zero or string)</td><td class="fn">fillna()</td><td class="go">Choose a fill value that makes domain sense.</td></tr>
@@ -66,6 +73,7 @@ tr:nth-child(even){background:#f8f9fb}
 <tr><td>Check skewness of numeric columns</td><td class="fn">.skew()</td><td class="go">Absolute skewness &gt; 3 indicates strong skew. Consider log transform.</td></tr>
 </table>
 <h2>Data Selection &amp; Filtering</h2>
+<div class="concept"><span class="concept-title">Comparing Groups</span> &mdash; Filter subsets with df.loc. Compare describe(). Check median and 75%. Plot histograms. Use value_counts(normalize=True).</div>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
 <tr><td>Select specific columns from a DataFrame by name</td><td class="fn">df[[col1, col2]]</td><td class="go">Double brackets [[ ]] return a DataFrame; single brackets return a Series.</td></tr>
 <tr><td>Select rows and columns by integer position</td><td class="fn">df.iloc[]</td><td class="go">iloc uses exclusive end index. iloc[0:2] returns rows 0 and 1, not 2.</td></tr>
@@ -104,6 +112,10 @@ tr:nth-child(even){background:#f8f9fb}
 <tr><td>Transpose a DataFrame (swap rows and columns)</td><td class="fn">.T</td><td class="go">.T is shorthand for .transpose(). Column names become the new index.</td></tr>
 </table>
 <h2>Visualization</h2>
+<div class="concept"><span class="concept-title">Predicted vs Actual Plot</span> &mdash; Diagonal = perfect. Points close = good. Systematic curves = model missing nonlinear relationship.</div>
+<div class="concept"><span class="concept-title">ROC Curve</span> &mdash; TPR vs FPR at different thresholds. Perfect=top-left (AUC=1). Random=diagonal (AUC=0.5). Needs probabilities.</div>
+<div class="concept"><span class="concept-title">Complexity Curve</span> &mdash; Train/test error vs complexity. Train decreases. Test decreases then increases = overfitting. Sweet spot = lowest test error.</div>
+<div class="concept"><span class="concept-title">Elbow Method</span> &mdash; SSD vs k. Always decreases. Look for bend where adding clusters gives diminishing returns.</div>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
 <tr><td>Plot histograms for all numeric columns in a DataFrame</td><td class="fn">df.hist(), plt.show()</td><td class="go">hist() creates one subplot per numeric column. Adjust figsize for readability.</td></tr>
 <tr><td>Plot a histogram for a single column</td><td class="fn">.hist(), plt labels</td><td class="go">Default bins=10. Increase bins for finer granularity.</td></tr>
@@ -124,6 +136,24 @@ tr:nth-child(even){background:#f8f9fb}
 <tr><td>Create subplots to show histograms of many columns in a grid</td><td class="fn">plt.subplots(), sns.histplot()</td><td class="go">axes.ravel() flattens the 2D array for easy looping. Turn off unused subplots.</td></tr>
 </table>
 <h2>Statistical Analysis &amp; Regression</h2>
+<div class="concept"><span class="concept-title">Supervised vs Unsupervised Learning</span> &mdash; Supervised: target variable y to predict. Unsupervised: no target, discover patterns. Decision Trees, Linear/Logistic Regression, KNN, Naive Bayes are supervised. K-means and Association Rules are unsupervised.</div>
+<div class="concept"><span class="concept-title">What is Overfitting and How to Reduce It</span> &mdash; Model memorizes training noise. Signs: low train error, high test error. Pre-pruning: max_depth, min_samples_split, min_samples_leaf, max_leaf_nodes, max_features. Post-pruning: ccp_alpha.</div>
+<div class="concept"><span class="concept-title">How to Read a Decision Tree Node</span> &mdash; Each node: (1) Split rule e.g. Age&lt;=42.5. (2) samples = % of data. (3) value = class distribution. (4) class = majority prediction. proportion=True shows proportions.</div>
+<div class="concept"><span class="concept-title">Entropy vs Gini Impurity</span> &mdash; criterion=&#x27;entropy&#x27; uses information gain. &#x27;gini&#x27; (default) uses Gini impurity. Usually similar trees. Entropy tends to produce slightly more balanced splits.</div>
+<div class="concept"><span class="concept-title">Classification Metrics</span> &mdash; Accuracy=(TP+TN)/total. Precision=TP/(TP+FP). Recall=TP/(TP+FN). F1=harmonic mean. ROC AUC ranks positives above negatives. Confusion matrix: rows=actual, cols=predicted.</div>
+<div class="concept"><span class="concept-title">Regression Metrics</span> &mdash; MAE=avg|actual-predicted|. RMSE=sqrt(avg squared errors), penalizes large errors. R2=variance explained. R2=1 perfect, 0=no better than mean, &lt;0=worse.</div>
+<div class="concept"><span class="concept-title">Cross-Validation</span> &mdash; K-fold: train on k-1 folds, validate on held-out fold, rotate k times. More reliable than single split. When tuning with GridSearchCV, tune on train only, evaluate best on test.</div>
+<div class="concept"><span class="concept-title">StratifiedKFold vs KFold</span> &mdash; StratifiedKFold preserves class proportions — use for classification. KFold does not — use for regression.</div>
+<div class="concept"><span class="concept-title">GridSearchCV Workflow</span> &mdash; Tries every param_grid combination with k-fold CV. refit= selects best metric. best_estimator_ refit on full train. Evaluate once on test. n_jobs=-1 for all cores.</div>
+<div class="concept"><span class="concept-title">Linear Regression Concepts</span> &mdash; y_hat = theta_0 + theta_1*x1 + ... Minimizes squared errors (OLS). Positive coef = increases prediction. Coefficients comparable only after standardization. No hyperparameters.</div>
+<div class="concept"><span class="concept-title">Logistic Regression Concepts</span> &mdash; Predicts P(y=1). Class 1 if prob &gt;= 0.5. Learned by MLE = minimizing log loss. Increase max_iter if convergence warning. predict_proba()[:,1] for positive class.</div>
+<div class="concept"><span class="concept-title">Naive Bayes Concepts</span> &mdash; Learns feature distributions per class. Combines evidence for class probability. &#x27;Naive&#x27; = assumes independence given class. Sensitive to scale. Interpret by comparing feature means.</div>
+<div class="concept"><span class="concept-title">K-Means Clustering</span> &mdash; Unsupervised. Groups into k clusters minimizing SSD/inertia. Always standardize. Elbow Method: plot SSD vs k. n_init=10 runs 10 times. Interpret via cluster profiles.</div>
+<div class="concept"><span class="concept-title">KNN Concepts</span> &mdash; Memory-based. Classification: majority class. Regression: average target. Always standardize. Small K overfits, large K over-smooths. KNN is supervised (unlike K-means).</div>
+<div class="concept"><span class="concept-title">Association Rules</span> &mdash; Unsupervised, counting co-occurrences. Support=frequency. Confidence=P(B|A). Lift=observed/expected. Lift&gt;1=positive. HIGH CONFIDENCE CAN MISLEAD when consequent common. Check lift.</div>
+<div class="concept"><span class="concept-title">Apriori Algorithm</span> &mdash; If itemset NOT frequent, no superset can be. Prunes search space. Workflow: (1) frequent itemsets (min support). (2) rules (min confidence). (3) filter lift&gt;1.</div>
+<div class="concept"><span class="concept-title">Train/Test Split Purpose</span> &mdash; Estimates generalization. test_size=0.2. random_state=reproducible. stratify=y for classification. When using GridSearchCV, tune on train, evaluate on test.</div>
+<div class="concept"><span class="concept-title">Comparing Multiple Models</span> &mdash; Same pattern: fit, predict, predict_proba. Same split for fair comparison. Hardest part is often cleaning data and feature engineering, not the model.</div>
 <table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>
 <tr><td>Split data into training and testing sets</td><td class="fn">train_test_split()</td><td class="go">random_state ensures reproducibility. test_size=0.2 means 20% test.</td></tr>
 <tr><td>Split data with stratification to preserve class proportions</td><td class="fn">train_test_split(stratify=)</td><td class="go">stratify=y ensures both sets have similar class ratios. Essential for imbalanced data.</td></tr>

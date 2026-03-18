@@ -55,11 +55,11 @@ df = pd.read_csv(&#x27;filename.csv&#x27;) data import &amp; file i/o">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Load a CSV file into a DataFrame</span><span class="badge" style="background:#2196f3">Data Import &amp; File I/O</span></div>
 <div class="card-fn">pd.read_csv()</div>
 <div class="card-body"><pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
-df = pd.read_csv(&<span class=<span class="st">"cm"</span>>#x27;filename.csv&#x27;)</span></pre><div class="gotcha">For Excel use pd.read_excel(). Windows paths need r&quot;...&quot;.</div><div class="cmp">read_csv for .csv, read_excel for .xlsx</div></div></div>
+df = pd.read_csv(<span class="st">&#x27;filename.csv&#x27;</span>)</pre><div class="gotcha">For Excel use pd.read_excel(). Windows paths need r&quot;...&quot;.</div><div class="cmp">read_csv for .csv, read_excel for .xlsx</div></div></div>
 <div class="card" data-cat="Data Import &amp; File I/O" data-search="load an excel file into a dataframe pd.read_excel() requires openpyxl. default reads first sheet. df = pd.read_excel(&#x27;filename.xlsx&#x27;) data import &amp; file i/o">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Load an Excel file into a DataFrame</span><span class="badge" style="background:#2196f3">Data Import &amp; File I/O</span></div>
 <div class="card-fn">pd.read_excel()</div>
-<div class="card-body"><pre>df = pd.read_excel(&<span class=<span class="st">"cm"</span>>#x27;filename.xlsx&#x27;)</span></pre><div class="gotcha">Requires openpyxl. Default reads first sheet.</div></div></div>
+<div class="card-body"><pre>df = pd.read_excel(<span class="st">&#x27;filename.xlsx&#x27;</span>)</pre><div class="gotcha">Requires openpyxl. Default reads first sheet.</div></div></div>
 <div class="card" data-cat="Data Import &amp; File I/O" data-search="view the first n rows of a dataframe df.head() returns a view, does not modify the dataframe. df.head()
 df.head(3) data import &amp; file i/o">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">View the first N rows of a DataFrame</span><span class="badge" style="background:#2196f3">Data Import &amp; File I/O</span></div>
@@ -89,13 +89,13 @@ df.head(<span class="num">3</span>)</pre><div class="gotcha">Returns a view, doe
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="fill missing numeric values with the column mean fillna(), .mean() inplace=true modifies original. without it returns new dataframe. df[&#x27;income&#x27;].fillna(df[&#x27;income&#x27;].mean(), inplace=true) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Fill missing numeric values with the column mean</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">fillna(), .mean()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Income<span class="st">&#x27;].fillna(df[&#x27;</span>Income&#x27;].mean(), inplace=<span class="kw">True</span>)</span></pre><div class="gotcha">inplace=True modifies original. Without it returns new DataFrame.</div><div class="cmp">fillna replaces NaN; dropna removes rows.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Income&#x27;</span>].fillna(df[<span class="st">&#x27;Income&#x27;</span>].mean(), inplace=<span class="kw">True</span>)</pre><div class="gotcha">inplace=True modifies original. Without it returns new DataFrame.</div><div class="cmp">fillna replaces NaN; dropna removes rows.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="fill missing values with a constant (zero or string) fillna() choose a fill value that makes domain sense. df[&#x27;experience&#x27;].fillna(0, inplace=true)
 df[&#x27;county&#x27;].fillna(&#x27;unknown&#x27;, inplace=true) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Fill missing values with a constant (zero or string)</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">fillna()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Experience&#x27;].fillna(<span class="num">0</span>, inplace=<span class="kw">True</span>)</span>
-df[&<span class=<span class="st">"cm"</span>>#x27;County<span class="st">&#x27;].fillna(&#x27;</span>Unknown&#x27;, inplace=<span class="kw">True</span>)</span></pre><div class="gotcha">Choose a fill value that makes domain sense.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Experience&#x27;</span>].fillna(<span class="num">0</span>, inplace=<span class="kw">True</span>)
+df[<span class="st">&#x27;County&#x27;</span>].fillna(<span class="st">&#x27;Unknown&#x27;</span>, inplace=<span class="kw">True</span>)</pre><div class="gotcha">Choose a fill value that makes domain sense.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="fill missing values using another column as fallback np.where(), .isna() np.where(condition, if_true, if_false) is element-wise. import numpy as np
 df[&#x27;discounted_price&#x27;] = np.where(
     df[&#x27;discounted_price&#x27;].isna(),
@@ -104,20 +104,20 @@ df[&#x27;discounted_price&#x27;] = np.where(
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Fill missing values using another column as fallback</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">np.where(), .isna()</div>
 <div class="card-body"><pre><span class="kw">import</span> numpy <span class="kw">as</span> np
-df[&<span class=<span class="st">"cm"</span>>#x27;discounted_price&#x27;] = np.where(</span>
-    df[&<span class=<span class="st">"cm"</span>>#x27;discounted_price&#x27;].isna(),</span>
-    df[&<span class=<span class="st">"cm"</span>>#x27;original_price&#x27;],</span>
-    df[&<span class=<span class="st">"cm"</span>>#x27;discounted_price&#x27;])</span></pre><div class="gotcha">np.where(condition, if_true, if_false) is element-wise.</div></div></div>
+df[<span class="st">&#x27;discounted_price&#x27;</span>] = np.where(
+    df[<span class="st">&#x27;discounted_price&#x27;</span>].isna(),
+    df[<span class="st">&#x27;original_price&#x27;</span>],
+    df[<span class="st">&#x27;discounted_price&#x27;</span>])</pre><div class="gotcha">np.where(condition, if_true, if_false) is element-wise.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="drop rows where a specific column has missing values df.dropna() subset= specifies columns. .copy() avoids settingwithcopywarning. df = df.dropna(subset=[&#x27;score&#x27;]).copy() data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Drop rows where a specific column has missing values</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">df.dropna()</div>
-<div class="card-body"><pre>df = df.dropna(subset=[&<span class=<span class="st">"cm"</span>>#x27;score&#x27;]).copy()</span></pre><div class="gotcha">subset= specifies columns. .copy() avoids SettingWithCopyWarning.</div><div class="cmp">dropna removes; fillna replaces.</div></div></div>
+<div class="card-body"><pre>df = df.dropna(subset=[<span class="st">&#x27;score&#x27;</span>]).copy()</pre><div class="gotcha">subset= specifies columns. .copy() avoids SettingWithCopyWarning.</div><div class="cmp">dropna removes; fillna replaces.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="drop a column from a dataframe df.drop() axis=1 means columns, axis=0 means rows. df = df.drop(&#x27;id&#x27;, axis=1)
 df = df.drop(columns=&#x27;cogs&#x27;) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Drop a column from a DataFrame</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">df.drop()</div>
-<div class="card-body"><pre>df = df.drop(&<span class=<span class="st">"cm"</span>>#x27;ID&#x27;, axis=<span class="num">1</span>)</span>
-df = df.drop(columns=&<span class=<span class="st">"cm"</span>>#x27;cogs&#x27;)</span></pre><div class="gotcha">axis=1 means columns, axis=0 means rows.</div></div></div>
+<div class="card-body"><pre>df = df.drop(<span class="st">&#x27;ID&#x27;</span>, axis=<span class="num">1</span>)
+df = df.drop(columns=<span class="st">&#x27;cogs&#x27;</span>)</pre><div class="gotcha">axis=1 means columns, axis=0 means rows.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="count missing values per column isnull().sum() isnull() and isna() are identical in pandas. df.isnull().sum() data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Count missing values per column</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">isnull().sum()</div>
@@ -127,27 +127,27 @@ df = pd.concat([df, credit], axis=1)
 df.drop(&#x27;creditcard&#x27;, axis=1, inplace=true) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create dummy variables (one-hot encoding) for a categorical column</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pd.get_dummies(), pd.concat()</div>
-<div class="card-body"><pre>credit = pd.get_dummies(df[&<span class=<span class="st">"cm"</span>>#x27;CreditCard<span class="st">&#x27;], prefix=&#x27;</span>credit&#x27;)</span>
+<div class="card-body"><pre>credit = pd.get_dummies(df[<span class="st">&#x27;CreditCard&#x27;</span>], prefix=<span class="st">&#x27;credit&#x27;</span>)
 df = pd.concat([df, credit], axis=<span class="num">1</span>)
-df.drop(&<span class=<span class="st">"cm"</span>>#x27;CreditCard&#x27;, axis=<span class="num">1</span>, inplace=<span class="kw">True</span>)</span></pre><div class="gotcha">drop_first=True avoids multicollinearity. dtype=int for 0/1.</div><div class="cmp">get_dummies is pandas; OneHotEncoder is sklearn.</div></div></div>
+df.drop(<span class="st">&#x27;CreditCard&#x27;</span>, axis=<span class="num">1</span>, inplace=<span class="kw">True</span>)</pre><div class="gotcha">drop_first=True avoids multicollinearity. dtype=int for 0/1.</div><div class="cmp">get_dummies is pandas; OneHotEncoder is sklearn.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="one-hot encode multiple categorical columns at once pd.get_dummies() passing columns= encodes all at once. original columns auto-dropped. movie = pd.get_dummies(movie,
     columns=[&#x27;genre&#x27;,&#x27;country&#x27;], dtype=int) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">One-hot encode multiple categorical columns at once</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pd.get_dummies()</div>
 <div class="card-body"><pre>movie = pd.get_dummies(movie,
-    columns=[&<span class=<span class="st">"cm"</span>>#x27;genre<span class="st">&#x27;,&#x27;</span>country&#x27;], dtype=int)</span></pre><div class="gotcha">Passing columns= encodes all at once. Original columns auto-dropped.</div></div></div>
+    columns=[<span class="st">&#x27;genre&#x27;</span>,<span class="st">&#x27;country&#x27;</span>], dtype=int)</pre><div class="gotcha">Passing columns= encodes all at once. Original columns auto-dropped.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="map categorical string values to numeric codes .map() values not in the mapping dictionary become nan. df[&#x27;creditcard&#x27;] = df[&#x27;creditcard&#x27;].map({&#x27;yes&#x27;:1, &#x27;no&#x27;:0}) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Map categorical string values to numeric codes</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">.map()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;CreditCard<span class="st">&#x27;] = df[&#x27;</span>CreditCard<span class="st">&#x27;].map({&#x27;</span>Yes<span class="st">&#x27;:<span class="num">1</span>, &#x27;</span>No&#x27;:<span class="num">0</span>})</span></pre><div class="gotcha">Values not in the mapping dictionary become NaN.</div><div class="cmp">map() on Series; replace() on DataFrame.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;CreditCard&#x27;</span>] = df[<span class="st">&#x27;CreditCard&#x27;</span>].map({<span class="st">&#x27;Yes&#x27;</span>:<span class="num">1</span>, <span class="st">&#x27;No&#x27;</span>:<span class="num">0</span>})</pre><div class="gotcha">Values not in the mapping dictionary become NaN.</div><div class="cmp">map() on Series; replace() on DataFrame.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="clip values to a valid range .clip() clip(lower, upper) caps values at both ends. df[&#x27;popularity&#x27;] = df[&#x27;popularity&#x27;].clip(0, 100) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Clip values to a valid range</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">.clip()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;popularity<span class="st">&#x27;] = df[&#x27;</span>popularity&#x27;].clip(<span class="num">0</span>, <span class="num">100</span>)</span></pre><div class="gotcha">clip(lower, upper) caps values at both ends.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;popularity&#x27;</span>] = df[<span class="st">&#x27;popularity&#x27;</span>].clip(<span class="num">0</span>, <span class="num">100</span>)</pre><div class="gotcha">clip(lower, upper) caps values at both ends.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="replace out-of-range values with the column mean .loc[], .mean() mean is computed before replacement, so outliers affect it. df.loc[(df[&#x27;age&#x27;]&lt;13)|(df[&#x27;age&#x27;]&gt;100), &#x27;age&#x27;] = df[&#x27;age&#x27;].mean() data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Replace out-of-range values with the column mean</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">.loc[], .mean()</div>
-<div class="card-body"><pre>df.loc[(df[&<span class=<span class="st">"cm"</span>>#x27;Age&#x27;]&lt;<span class="num">13</span>)|(df[<span class="st">&#x27;Age&#x27;</span>]&gt;<span class="num">100</span>), <span class="st">&#x27;Age&#x27;</span>] = df[<span class="st">&#x27;Age&#x27;</span>].mean()</span></pre><div class="gotcha">Mean is computed before replacement, so outliers affect it.</div></div></div>
+<div class="card-body"><pre>df.loc[(df[<span class="st">&#x27;Age&#x27;</span>]&lt;<span class="num">13</span>)|(df[<span class="st">&#x27;Age&#x27;</span>]&gt;<span class="num">100</span>), <span class="st">&#x27;Age&#x27;</span>] = df[<span class="st">&#x27;Age&#x27;</span>].mean()</pre><div class="gotcha">Mean is computed before replacement, so outliers affect it.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="cap percentage columns to 0-100 range .loc[] always validate rate/percentage columns in real data. for c in percent_cols:
     df.loc[df[c]&lt;0, c] = 0
     df.loc[df[c]&gt;100, c] = 100 data cleaning &amp; preprocessing">
@@ -159,33 +159,33 @@ df.drop(&<span class=<span class="st">"cm"</span>>#x27;CreditCard&#x27;, axis=<s
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="convert a column to numeric type, coercing errors to nan pd.to_numeric() errors=&#x27;coerce&#x27; turns unparseable strings into nan. df[&#x27;price&#x27;] = pd.to_numeric(df[&#x27;price&#x27;], errors=&#x27;coerce&#x27;) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert a column to numeric type, coercing errors to NaN</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pd.to_numeric()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;price<span class="st">&#x27;] = pd.to_numeric(df[&#x27;</span>price<span class="st">&#x27;], errors=&#x27;</span>coerce&#x27;)</span></pre><div class="gotcha">errors=&#x27;coerce&#x27; turns unparseable strings into NaN.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;price&#x27;</span>] = pd.to_numeric(df[<span class="st">&#x27;price&#x27;</span>], errors=<span class="st">&#x27;coerce&#x27;</span>)</pre><div class="gotcha">errors=&#x27;coerce&#x27; turns unparseable strings into NaN.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="convert a column to datetime and extract date parts pd.to_datetime(), .dt accessor dt.weekday: monday=0 through sunday=6. bad dates become nat. df[&#x27;dt&#x27;] = pd.to_datetime(df[&#x27;date&#x27;], errors=&#x27;coerce&#x27;)
 df[&#x27;month&#x27;] = df[&#x27;dt&#x27;].dt.month
 df[&#x27;weekday&#x27;] = df[&#x27;dt&#x27;].dt.weekday data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert a column to datetime and extract date parts</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pd.to_datetime(), .dt accessor</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;dt<span class="st">&#x27;] = pd.to_datetime(df[&#x27;</span>date<span class="st">&#x27;], errors=&#x27;</span>coerce&#x27;)</span>
-df[&<span class=<span class="st">"cm"</span>>#x27;month<span class="st">&#x27;] = df[&#x27;</span>dt&#x27;].dt.month</span>
-df[&<span class=<span class="st">"cm"</span>>#x27;weekday<span class="st">&#x27;] = df[&#x27;</span>dt&#x27;].dt.weekday</span></pre><div class="gotcha">dt.weekday: Monday=0 through Sunday=6. Bad dates become NaT.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;dt&#x27;</span>] = pd.to_datetime(df[<span class="st">&#x27;date&#x27;</span>], errors=<span class="st">&#x27;coerce&#x27;</span>)
+df[<span class="st">&#x27;month&#x27;</span>] = df[<span class="st">&#x27;dt&#x27;</span>].dt.month
+df[<span class="st">&#x27;weekday&#x27;</span>] = df[<span class="st">&#x27;dt&#x27;</span>].dt.weekday</pre><div class="gotcha">dt.weekday: Monday=0 through Sunday=6. Bad dates become NaT.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="compute the number of days between two date columns datetime subtraction, .dt.days result is timedelta; use .dt.days for integer. nat produces nan. df[&#x27;days&#x27;] = (df[&#x27;end_dt&#x27;] - df[&#x27;start_dt&#x27;]).dt.days data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute the number of days between two date columns</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">datetime subtraction, .dt.days</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;days<span class="st">&#x27;] = (df[&#x27;</span>end_dt<span class="st">&#x27;] - df[&#x27;</span>start_dt&#x27;]).dt.days</span></pre><div class="gotcha">Result is timedelta; use .dt.days for integer. NaT produces NaN.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;days&#x27;</span>] = (df[<span class="st">&#x27;end_dt&#x27;</span>] - df[<span class="st">&#x27;start_dt&#x27;</span>]).dt.days</pre><div class="gotcha">Result is timedelta; use .dt.days for integer. NaT produces NaN.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="parse a time string and extract the hour pd.to_datetime(), .dt.hour specify format= to match your time string pattern. t = pd.to_datetime(df[&#x27;time&#x27;], format=&#x27;%h:%m&#x27;)
 df[&#x27;hour&#x27;] = t.dt.hour data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Parse a time string and extract the hour</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pd.to_datetime(), .dt.hour</div>
-<div class="card-body"><pre>t = pd.to_datetime(df[&<span class=<span class="st">"cm"</span>>#x27;Time<span class="st">&#x27;], format=&#x27;</span>%H:%M&#x27;)</span>
-df[&<span class=<span class="st">"cm"</span>>#x27;Hour&#x27;] = t.dt.hour</span></pre><div class="gotcha">Specify format= to match your time string pattern.</div></div></div>
+<div class="card-body"><pre>t = pd.to_datetime(df[<span class="st">&#x27;Time&#x27;</span>], format=<span class="st">&#x27;%H:%M&#x27;</span>)
+df[<span class="st">&#x27;Hour&#x27;</span>] = t.dt.hour</pre><div class="gotcha">Specify format= to match your time string pattern.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="convert a boolean column to integer 0/1 .astype(int) true→1, false→0. nan values will cause an error — fill first. df[&#x27;explicit&#x27;] = df[&#x27;explicit&#x27;].astype(int) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert a boolean column to integer 0/1</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">.astype(int)</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;explicit<span class="st">&#x27;] = df[&#x27;</span>explicit&#x27;].astype(int)</span></pre><div class="gotcha">True→1, False→0. NaN values will cause an error — fill first.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;explicit&#x27;</span>] = df[<span class="st">&#x27;explicit&#x27;</span>].astype(int)</pre><div class="gotcha">True→1, False→0. NaN values will cause an error — fill first.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="convert milliseconds to minutes arithmetic  df[&#x27;duration_min&#x27;] = df[&#x27;duration_ms&#x27;] / 60000 data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert milliseconds to minutes</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">arithmetic</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;duration_min<span class="st">&#x27;] = df[&#x27;</span>duration_ms&#x27;] / <span class="num">60000</span></span></pre></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;duration_min&#x27;</span>] = df[<span class="st">&#x27;duration_ms&#x27;</span>] / <span class="num">60000</span></pre></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="standardize (z-score normalize) numeric features standardscaler, fit_transform() always fit on training data only, then transform both train and test. fit_transform on test leaks info. from sklearn.preprocessing import standardscaler
 scaler = standardscaler()
 x_train_s = pd.dataframe(
@@ -203,27 +203,27 @@ X_test_s = pd.DataFrame(
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="apply log transformation to skewed numeric columns np.log1p() log1p(x)=log(1+x), safe when x=0. cannot handle negatives — clip first. df[&#x27;col_log&#x27;] = np.log1p(df[&#x27;col&#x27;]) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Apply log transformation to skewed numeric columns</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">np.log1p()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;col_log<span class="st">&#x27;] = np.log1p(df[&#x27;</span>col&#x27;])</span></pre><div class="gotcha">log1p(x)=log(1+x), safe when x=0. Cannot handle negatives — clip first.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;col_log&#x27;</span>] = np.log1p(df[<span class="st">&#x27;col&#x27;</span>])</pre><div class="gotcha">log1p(x)=log(1+x), safe when x=0. Cannot handle negatives — clip first.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="create a binary flag column using a condition np.where() np.where returns an array. assigning to a column works fine. df[&#x27;prefer&#x27;] = np.where(df[&#x27;score&#x27;]&gt;=6.5, 1, 0) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create a binary flag column using a condition</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">np.where()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Prefer<span class="st">&#x27;] = np.where(df[&#x27;</span>score&#x27;]&gt;=<span class="num">6.5</span>, <span class="num">1</span>, <span class="num">0</span>)</span></pre><div class="gotcha">np.where returns an array. Assigning to a column works fine.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Prefer&#x27;</span>] = np.where(df[<span class="st">&#x27;score&#x27;</span>]&gt;=<span class="num">6.5</span>, <span class="num">1</span>, <span class="num">0</span>)</pre><div class="gotcha">np.where returns an array. Assigning to a column works fine.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="create polynomial / interaction features arithmetic too many interaction terms can cause overfitting. df[&#x27;runtime_sq&#x27;] = df[&#x27;runtime&#x27;] ** 2
 df[&#x27;spend&#x27;] = df[&#x27;purchases&#x27;] * df[&#x27;avg_order&#x27;] data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create polynomial / interaction features</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">arithmetic</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;runtime_sq<span class="st">&#x27;] = df[&#x27;</span>runtime&#x27;] ** <span class="num">2</span></span>
-df[&<span class=<span class="st">"cm"</span>>#x27;spend<span class="st">&#x27;] = df[&#x27;</span>purchases<span class="st">&#x27;] * df[&#x27;</span>avg_order&#x27;]</span></pre><div class="gotcha">Too many interaction terms can cause overfitting.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;runtime_sq&#x27;</span>] = df[<span class="st">&#x27;runtime&#x27;</span>] ** <span class="num">2</span>
+df[<span class="st">&#x27;spend&#x27;</span>] = df[<span class="st">&#x27;purchases&#x27;</span>] * df[<span class="st">&#x27;avg_order&#x27;</span>]</pre><div class="gotcha">Too many interaction terms can cause overfitting.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="create ratio features with safe division arithmetic adding a small constant to the denominator prevents division by zero. df[&#x27;rate&#x27;] = df[&#x27;count&#x27;] / (df[&#x27;years&#x27;] + 1e-6) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create ratio features with safe division</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">arithmetic</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;rate<span class="st">&#x27;] = df[&#x27;</span>count<span class="st">&#x27;] / (df[&#x27;</span>years&#x27;] + 1e-<span class="num">6</span>)</span></pre><div class="gotcha">Adding a small constant to the denominator prevents division by zero.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;rate&#x27;</span>] = df[<span class="st">&#x27;count&#x27;</span>] / (df[<span class="st">&#x27;years&#x27;</span>] + 1e-<span class="num">6</span>)</pre><div class="gotcha">Adding a small constant to the denominator prevents division by zero.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="identify categorical vs numeric columns automatically select_dtypes() &#x27;object&#x27; catches strings. boolean columns may need include=[&#x27;bool&#x27;]. cat_cols = df.select_dtypes(include=[&#x27;object&#x27;]).columns.tolist()
 num_cols = df.select_dtypes(include=[&#x27;number&#x27;]).columns.tolist() data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Identify categorical vs numeric columns automatically</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">select_dtypes()</div>
-<div class="card-body"><pre>cat_cols = df.select_dtypes(include=[&<span class=<span class="st">"cm"</span>>#x27;object&#x27;]).columns.tolist()</span>
-num_cols = df.select_dtypes(include=[&<span class=<span class="st">"cm"</span>>#x27;number&#x27;]).columns.tolist()</span></pre><div class="gotcha">&#x27;object&#x27; catches strings. Boolean columns may need include=[&#x27;bool&#x27;].</div></div></div>
+<div class="card-body"><pre>cat_cols = df.select_dtypes(include=[<span class="st">&#x27;object&#x27;</span>]).columns.tolist()
+num_cols = df.select_dtypes(include=[<span class="st">&#x27;number&#x27;</span>]).columns.tolist()</pre><div class="gotcha">&#x27;object&#x27; catches strings. Boolean columns may need include=[&#x27;bool&#x27;].</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="fill all missing numeric values with column means at once fillna(), .mean() numeric_only=true skips non-numeric columns. df = df.fillna(df.mean(numeric_only=true)) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Fill all missing numeric values with column means at once</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">fillna(), .mean()</div>
@@ -239,9 +239,9 @@ df[&#x27;county&#x27;] = out[&#x27;county_name&#x27;].values data cleaning &amp;
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Look up US ZIP codes to get county/state names</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">pgeocode.Nominatim, query_postal_code()</div>
 <div class="card-body"><pre><span class="kw">import</span> pgeocode
-nomi = pgeocode.Nominatim(&<span class=<span class="st">"cm"</span>>#x27;us&#x27;)</span>
-out = nomi.query_postal_code(df[&<span class=<span class="st">"cm"</span>>#x27;ZIP&#x27;].astype(str).tolist())</span>
-df[&<span class=<span class="st">"cm"</span>>#x27;County<span class="st">&#x27;] = out[&#x27;</span>county_name&#x27;].values</span></pre><div class="gotcha">Requires pip install pgeocode. ZIP codes must be strings.</div></div></div>
+nomi = pgeocode.Nominatim(<span class="st">&#x27;us&#x27;</span>)
+out = nomi.query_postal_code(df[<span class="st">&#x27;ZIP&#x27;</span>].astype(str).tolist())
+df[<span class="st">&#x27;County&#x27;</span>] = out[<span class="st">&#x27;county_name&#x27;</span>].values</pre><div class="gotcha">Requires pip install pgeocode. ZIP codes must be strings.</div></div></div>
 <div class="card" data-cat="Data Cleaning &amp; Preprocessing" data-search="check skewness of numeric columns .skew() absolute skewness &gt; 3 indicates strong skew. consider log transform. df[num_cols].skew().sort_values(ascending=false) data cleaning &amp; preprocessing">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Check skewness of numeric columns</span><span class="badge" style="background:#4caf50">Data Cleaning &amp; Preprocessing</span></div>
 <div class="card-fn">.skew()</div>
@@ -249,7 +249,7 @@ df[&<span class=<span class="st">"cm"</span>>#x27;County<span class="st">&#x27;]
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="select specific columns from a dataframe by name df[[col1, col2]] double brackets [[ ]] return a dataframe; single brackets return a series. df[[&#x27;customer type&#x27;, &#x27;city&#x27;]] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Select specific columns from a DataFrame by name</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df[[col1, col2]]</div>
-<div class="card-body"><pre>df[[&<span class=<span class="st">"cm"</span>>#x27;Customer type<span class="st">&#x27;, &#x27;</span>City&#x27;]]</span></pre><div class="gotcha">Double brackets [[ ]] return a DataFrame; single brackets return a Series.</div></div></div>
+<div class="card-body"><pre>df[[<span class="st">&#x27;Customer type&#x27;</span>, <span class="st">&#x27;City&#x27;</span>]]</pre><div class="gotcha">Double brackets [[ ]] return a DataFrame; single brackets return a Series.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="select rows and columns by integer position df.iloc[] iloc uses exclusive end index. iloc[0:2] returns rows 0 and 1, not 2. df.iloc[0:2, :3] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Select rows and columns by integer position</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.iloc[]</div>
@@ -257,23 +257,23 @@ df[&<span class=<span class="st">"cm"</span>>#x27;County<span class="st">&#x27;]
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="select rows and columns by label names df.loc[] loc end index is inclusive — loc[0:2] returns rows 0, 1, and 2. df.loc[0:2, :&#x27;customer type&#x27;] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Select rows and columns by label names</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.loc[]</div>
-<div class="card-body"><pre>df.loc[<span class="num">0</span>:<span class="num">2</span>, :&<span class=<span class="st">"cm"</span>>#x27;Customer type&#x27;]</span></pre><div class="gotcha">loc end index is inclusive — loc[0:2] returns rows 0, 1, AND 2.</div><div class="cmp">loc label-based; iloc position-based.</div></div></div>
+<div class="card-body"><pre>df.loc[<span class="num">0</span>:<span class="num">2</span>, :<span class="st">&#x27;Customer type&#x27;</span>]</pre><div class="gotcha">loc end index is inclusive — loc[0:2] returns rows 0, 1, AND 2.</div><div class="cmp">loc label-based; iloc position-based.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="filter rows by a single condition df.loc[condition] use == for comparison, not =. df.loc[df[&#x27;branch&#x27;]==&#x27;a&#x27;, &#x27;customer type&#x27;] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Filter rows by a single condition</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.loc[condition]</div>
-<div class="card-body"><pre>df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;Branch<span class="st">&#x27;]==&#x27;</span>A<span class="st">&#x27;, &#x27;</span>Customer type&#x27;]</span></pre><div class="gotcha">Use == for comparison, not =.</div></div></div>
+<div class="card-body"><pre>df.loc[df[<span class="st">&#x27;Branch&#x27;</span>]==<span class="st">&#x27;A&#x27;</span>, <span class="st">&#x27;Customer type&#x27;</span>]</pre><div class="gotcha">Use == for comparison, not =.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="filter rows by multiple conditions (and / or) df.loc[], &amp; | operators each condition must be in parentheses. use &amp; for and, | for or — not python and/or. df.loc[(df[&#x27;branch&#x27;]==&#x27;a&#x27;) &amp; (df[&#x27;qty&#x27;]&gt;5)]
 df.loc[(df[&#x27;gender&#x27;]==&#x27;f&#x27;) | (df[&#x27;line&#x27;]==&#x27;health&#x27;)] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Filter rows by multiple conditions (AND / OR)</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.loc[], &amp; | operators</div>
-<div class="card-body"><pre>df.loc[(df[&<span class=<span class="st">"cm"</span>>#x27;Branch<span class="st">&#x27;]==&#x27;</span>A&#x27;) &amp; (df[<span class="st">&#x27;Qty&#x27;</span>]&gt;<span class="num">5</span>)]</span>
-df.loc[(df[&<span class=<span class="st">"cm"</span>>#x27;Gender<span class="st">&#x27;]==&#x27;</span>F<span class="st">&#x27;) | (df[&#x27;</span>Line<span class="st">&#x27;]==&#x27;</span>Health&#x27;)]</span></pre><div class="gotcha">Each condition must be in parentheses. Use &amp; for AND, | for OR — not Python and/or.</div></div></div>
+<div class="card-body"><pre>df.loc[(df[<span class="st">&#x27;Branch&#x27;</span>]==<span class="st">&#x27;A&#x27;</span>) &amp; (df[<span class="st">&#x27;Qty&#x27;</span>]&gt;<span class="num">5</span>)]
+df.loc[(df[<span class="st">&#x27;Gender&#x27;</span>]==<span class="st">&#x27;F&#x27;</span>) | (df[<span class="st">&#x27;Line&#x27;</span>]==<span class="st">&#x27;Health&#x27;</span>)]</pre><div class="gotcha">Each condition must be in parentheses. Use &amp; for AND, | for OR — not Python and/or.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="create a filtered subset of a dataframe for analysis df.loc[] the filtered dataframe shares memory with the original. use .copy() to modify safely. member_df = df.loc[df[&#x27;customer type&#x27;]==&#x27;member&#x27;]
 normal_df = df.loc[df[&#x27;customer type&#x27;]==&#x27;normal&#x27;] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create a filtered subset of a DataFrame for analysis</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.loc[]</div>
-<div class="card-body"><pre>member_df = df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;Customer type<span class="st">&#x27;]==&#x27;</span>Member&#x27;]</span>
-normal_df = df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;Customer type<span class="st">&#x27;]==&#x27;</span>Normal&#x27;]</span></pre><div class="gotcha">The filtered DataFrame shares memory with the original. Use .copy() to modify safely.</div></div></div>
+<div class="card-body"><pre>member_df = df.loc[df[<span class="st">&#x27;Customer type&#x27;</span>]==<span class="st">&#x27;Member&#x27;</span>]
+normal_df = df.loc[df[<span class="st">&#x27;Customer type&#x27;</span>]==<span class="st">&#x27;Normal&#x27;</span>]</pre><div class="gotcha">The filtered DataFrame shares memory with the original. Use .copy() to modify safely.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="separate features (x) and target (y) for modeling df.drop(), df.iloc[] make sure x does not contain the target column. x = df.drop(&#x27;personal.loan&#x27;, axis=&#x27;columns&#x27;)
 y = df[&#x27;personal.loan&#x27;]
 # or:
@@ -281,82 +281,82 @@ x = df.iloc[:, :-1]
 y = df.iloc[:, -1] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Separate features (X) and target (y) for modeling</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">df.drop(), df.iloc[]</div>
-<div class="card-body"><pre>X = df.drop(&<span class=<span class="st">"cm"</span>>#x27;Personal.Loan<span class="st">&#x27;, axis=&#x27;</span>columns&#x27;)</span>
-y = df[&<span class=<span class="st">"cm"</span>>#x27;Personal.Loan&#x27;]</span>
-<span class=<span class="st">"cm"</span>># <span class="kw">or</span>:</span>
+<div class="card-body"><pre>X = df.drop(<span class="st">&#x27;Personal.Loan&#x27;</span>, axis=<span class="st">&#x27;columns&#x27;</span>)
+y = df[<span class="st">&#x27;Personal.Loan&#x27;</span>]
+<span class="cm"># or:</span>
 X = df.iloc[:, :-<span class="num">1</span>]
 y = df.iloc[:, -<span class="num">1</span>]</pre><div class="gotcha">Make sure X does not contain the target column.</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="collect column names matching a prefix pattern list comprehension case-sensitive unless you use .lower(). genre_cols = [c for c in df.columns if c.startswith(&#x27;genre_&#x27;)] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Collect column names matching a prefix pattern</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">list comprehension</div>
-<div class="card-body"><pre>genre_cols = [c <span class="kw">for</span> c <span class="kw">in</span> df.columns <span class="kw">if</span> c.startswith(&<span class=<span class="st">"cm"</span>>#x27;genre_&#x27;)]</span></pre><div class="gotcha">Case-sensitive unless you use .lower().</div></div></div>
+<div class="card-body"><pre>genre_cols = [c <span class="kw">for</span> c <span class="kw">in</span> df.columns <span class="kw">if</span> c.startswith(<span class="st">&#x27;genre_&#x27;</span>)]</pre><div class="gotcha">Case-sensitive unless you use .lower().</div></div></div>
 <div class="card" data-cat="Data Selection &amp; Filtering" data-search="remove cancellations and invalid rows from retail data boolean indexing, .str methods ~ is the not operator. na=false in str.contains prevents nan errors. df = df[df[&#x27;quantity&#x27;] &gt; 0]
 df = df[~df[&#x27;invoiceno&#x27;].astype(str).str.startswith(&#x27;c&#x27;)]
 df = df[~df[&#x27;description&#x27;].str.contains(&#x27;postage&#x27;, na=false)] data selection &amp; filtering">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Remove cancellations and invalid rows from retail data</span><span class="badge" style="background:#ff9800">Data Selection &amp; Filtering</span></div>
 <div class="card-fn">boolean indexing, .str methods</div>
-<div class="card-body"><pre>df = df[df[&<span class=<span class="st">"cm"</span>>#x27;Quantity&#x27;] &gt; <span class="num">0</span>]</span>
-df = df[~df[&<span class=<span class="st">"cm"</span>>#x27;InvoiceNo<span class="st">&#x27;].astype(str).str.startswith(&#x27;</span>C&#x27;)]</span>
-df = df[~df[&<span class=<span class="st">"cm"</span>>#x27;Description<span class="st">&#x27;].str.contains(&#x27;</span>POSTAGE&#x27;, na=<span class="kw">False</span>)]</span></pre><div class="gotcha">~ is the NOT operator. na=False in str.contains prevents NaN errors.</div></div></div>
+<div class="card-body"><pre>df = df[df[<span class="st">&#x27;Quantity&#x27;</span>] &gt; <span class="num">0</span>]
+df = df[~df[<span class="st">&#x27;InvoiceNo&#x27;</span>].astype(str).str.startswith(<span class="st">&#x27;C&#x27;</span>)]
+df = df[~df[<span class="st">&#x27;Description&#x27;</span>].str.contains(<span class="st">&#x27;POSTAGE&#x27;</span>, na=<span class="kw">False</span>)]</pre><div class="gotcha">~ is the NOT operator. na=False in str.contains prevents NaN errors.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="count occurrences of each unique value in a column value_counts() sorted descending. nan excluded by default — use dropna=false to include. df[&#x27;city&#x27;].value_counts() aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Count occurrences of each unique value in a column</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">value_counts()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;City&#x27;].value_counts()</span></pre><div class="gotcha">Sorted descending. NaN excluded by default — use dropna=False to include.</div><div class="cmp">value_counts() counts; nunique() just the count of distinct values.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;City&#x27;</span>].value_counts()</pre><div class="gotcha">Sorted descending. NaN excluded by default — use dropna=False to include.</div><div class="cmp">value_counts() counts; nunique() just the count of distinct values.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="get relative frequencies (proportions) of unique values value_counts(normalize=true) normalize=true converts counts to proportions summing to 1.0. df[&#x27;city&#x27;].value_counts(normalize=true) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Get relative frequencies (proportions) of unique values</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">value_counts(normalize=True)</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;City&#x27;].value_counts(normalize=<span class="kw">True</span>)</span></pre><div class="gotcha">normalize=True converts counts to proportions summing to 1.0.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;City&#x27;</span>].value_counts(normalize=<span class="kw">True</span>)</pre><div class="gotcha">normalize=True converts counts to proportions summing to 1.0.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="count the number of unique values in a column .nunique() nunique() excludes nan by default. df[&#x27;product line&#x27;].nunique() aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Count the number of unique values in a column</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">.nunique()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Product line&#x27;].nunique()</span></pre><div class="gotcha">nunique() excludes NaN by default.</div><div class="cmp">nunique() = count; unique() = actual values.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Product line&#x27;</span>].nunique()</pre><div class="gotcha">nunique() excludes NaN by default.</div><div class="cmp">nunique() = count; unique() = actual values.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="list all unique values in a column .unique() returns a numpy array, not a list. includes nan if present. df[&#x27;rating&#x27;].unique() aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">List all unique values in a column</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">.unique()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Rating&#x27;].unique()</span></pre><div class="gotcha">Returns a NumPy array, not a list. Includes NaN if present.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Rating&#x27;</span>].unique()</pre><div class="gotcha">Returns a NumPy array, not a list. Includes NaN if present.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="describe summary statistics for a subset of columns .describe() shows count, mean, std, min, 25%, 50%, 75%, max. member_df[[&#x27;total&#x27;,&#x27;gross income&#x27;,&#x27;quantity&#x27;]].describe() aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Describe summary statistics for a subset of columns</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">.describe()</div>
-<div class="card-body"><pre>member_df[[&<span class=<span class="st">"cm"</span>>#x27;Total<span class="st">&#x27;,&#x27;</span>gross income<span class="st">&#x27;,&#x27;</span>Quantity&#x27;]].describe()</span></pre><div class="gotcha">Shows count, mean, std, min, 25%, 50%, 75%, max.</div></div></div>
+<div class="card-body"><pre>member_df[[<span class="st">&#x27;Total&#x27;</span>,<span class="st">&#x27;gross income&#x27;</span>,<span class="st">&#x27;Quantity&#x27;</span>]].describe()</pre><div class="gotcha">Shows count, mean, std, min, 25%, 50%, 75%, max.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="compute aggregate statistics using .agg() .agg() agg() accepts a list of function names or actual functions. df[[&#x27;age&#x27;,&#x27;purchases&#x27;]].agg([&#x27;min&#x27;,&#x27;max&#x27;]) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute aggregate statistics using .agg()</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">.agg()</div>
-<div class="card-body"><pre>df[[&<span class=<span class="st">"cm"</span>>#x27;Age<span class="st">&#x27;,&#x27;</span>Purchases<span class="st">&#x27;]].agg([&#x27;</span>min<span class="st">&#x27;,&#x27;</span>max&#x27;])</span></pre><div class="gotcha">agg() accepts a list of function names or actual functions.</div></div></div>
+<div class="card-body"><pre>df[[<span class="st">&#x27;Age&#x27;</span>,<span class="st">&#x27;Purchases&#x27;</span>]].agg([<span class="st">&#x27;min&#x27;</span>,<span class="st">&#x27;max&#x27;</span>])</pre><div class="gotcha">agg() accepts a list of function names or actual functions.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="group by a column and count items per group using transform groupby(), .transform() transform returns same-length series for direct column assignment. df[&#x27;album_songs&#x27;] = df.groupby(
     [&#x27;artist&#x27;,&#x27;album&#x27;])[&#x27;track_id&#x27;].transform(&#x27;count&#x27;) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Group by a column and count items per group using transform</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">groupby(), .transform()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;album_songs&#x27;] = df.groupby(</span>
-    [&<span class=<span class="st">"cm"</span>>#x27;artist<span class="st">&#x27;,&#x27;</span>album<span class="st">&#x27;])[&#x27;</span>track_id<span class="st">&#x27;].transform(&#x27;</span>count&#x27;)</span></pre><div class="gotcha">transform returns same-length Series for direct column assignment.</div><div class="cmp">transform broadcasts back; agg collapses groups.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;album_songs&#x27;</span>] = df.groupby(
+    [<span class="st">&#x27;artist&#x27;</span>,<span class="st">&#x27;album&#x27;</span>])[<span class="st">&#x27;track_id&#x27;</span>].transform(<span class="st">&#x27;count&#x27;</span>)</pre><div class="gotcha">transform returns same-length Series for direct column assignment.</div><div class="cmp">transform broadcasts back; agg collapses groups.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="compute cumulative count within groups groupby().cumcount() cumcount starts at 0. data must be sorted first. df[&#x27;song_num&#x27;] = df.groupby(&#x27;artist&#x27;).cumcount() aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute cumulative count within groups</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">groupby().cumcount()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;song_num<span class="st">&#x27;] = df.groupby(&#x27;</span>artist&#x27;).cumcount()</span></pre><div class="gotcha">cumcount starts at 0. Data must be sorted first.</div><div class="cmp">cumcount = running position; transform(&#x27;count&#x27;) = total.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;song_num&#x27;</span>] = df.groupby(<span class="st">&#x27;artist&#x27;</span>).cumcount()</pre><div class="gotcha">cumcount starts at 0. Data must be sorted first.</div><div class="cmp">cumcount = running position; transform(&#x27;count&#x27;) = total.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="get the minimum value within each group using transform groupby().transform(&#x27;min&#x27;) broadcasts the group minimum back to every row. df[&#x27;first_year&#x27;] = df.groupby(&#x27;artist&#x27;)[&#x27;year&#x27;].transform(&#x27;min&#x27;) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Get the minimum value within each group using transform</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">groupby().transform(&#x27;min&#x27;)</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;first_year<span class="st">&#x27;] = df.groupby(&#x27;</span>artist<span class="st">&#x27;)[&#x27;</span>year<span class="st">&#x27;].transform(&#x27;</span>min&#x27;)</span></pre><div class="gotcha">Broadcasts the group minimum back to every row.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;first_year&#x27;</span>] = df.groupby(<span class="st">&#x27;artist&#x27;</span>)[<span class="st">&#x27;year&#x27;</span>].transform(<span class="st">&#x27;min&#x27;</span>)</pre><div class="gotcha">Broadcasts the group minimum back to every row.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="compute group-level means for cluster profiling groupby().mean() mean() only works on numeric columns. profile = df.groupby(&#x27;cluster&#x27;)[features].mean().round(2) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute group-level means for cluster profiling</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">groupby().mean()</div>
-<div class="card-body"><pre>profile = df.groupby(&<span class=<span class="st">"cm"</span>>#x27;cluster&#x27;)[features].mean().round(<span class="num">2</span>)</span></pre><div class="gotcha">mean() only works on numeric columns.</div></div></div>
+<div class="card-body"><pre>profile = df.groupby(<span class="st">&#x27;cluster&#x27;</span>)[features].mean().round(<span class="num">2</span>)</pre><div class="gotcha">mean() only works on numeric columns.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="compute value counts within filtered subsets and combine value_counts(), pd.concat() each value_counts returns a series; concat axis=1 joins side by side. sa = df.loc[df[&#x27;branch&#x27;]==&#x27;a&#x27;,&#x27;type&#x27;].value_counts(normalize=true)
 sb = df.loc[df[&#x27;branch&#x27;]==&#x27;b&#x27;,&#x27;type&#x27;].value_counts(normalize=true)
 shares = pd.concat([sa, sb], axis=1)
 shares.columns = [&#x27;a&#x27;,&#x27;b&#x27;] aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute value counts within filtered subsets and combine</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">value_counts(), pd.concat()</div>
-<div class="card-body"><pre>sA = df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;Branch<span class="st">&#x27;]==&#x27;</span>A<span class="st">&#x27;,&#x27;</span>Type&#x27;].value_counts(normalize=<span class="kw">True</span>)</span>
-sB = df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;Branch<span class="st">&#x27;]==&#x27;</span>B<span class="st">&#x27;,&#x27;</span>Type&#x27;].value_counts(normalize=<span class="kw">True</span>)</span>
+<div class="card-body"><pre>sA = df.loc[df[<span class="st">&#x27;Branch&#x27;</span>]==<span class="st">&#x27;A&#x27;</span>,<span class="st">&#x27;Type&#x27;</span>].value_counts(normalize=<span class="kw">True</span>)
+sB = df.loc[df[<span class="st">&#x27;Branch&#x27;</span>]==<span class="st">&#x27;B&#x27;</span>,<span class="st">&#x27;Type&#x27;</span>].value_counts(normalize=<span class="kw">True</span>)
 shares = pd.concat([sA, sB], axis=<span class="num">1</span>)
-shares.columns = [&<span class=<span class="st">"cm"</span>>#x27;A<span class="st">&#x27;,&#x27;</span>B&#x27;]</span></pre><div class="gotcha">Each value_counts returns a Series; concat axis=1 joins side by side.</div></div></div>
+shares.columns = [<span class="st">&#x27;A&#x27;</span>,<span class="st">&#x27;B&#x27;</span>]</pre><div class="gotcha">Each value_counts returns a Series; concat axis=1 joins side by side.</div></div></div>
 <div class="card" data-cat="Aggregation &amp; Grouping" data-search="analyze genre distribution within each cluster groupby, value_counts(normalize=true) k-means does not use genre labels, but comparing helps interpretation. for c in sorted(df[&#x27;cluster&#x27;].unique()):
     print(df.loc[df[&#x27;cluster&#x27;]==c,&#x27;genre&#x27;]
           .value_counts(normalize=true).head(5)) aggregation &amp; grouping">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Analyze genre distribution within each cluster</span><span class="badge" style="background:#9c27b0">Aggregation &amp; Grouping</span></div>
 <div class="card-fn">groupby, value_counts(normalize=True)</div>
-<div class="card-body"><pre><span class="kw">for</span> c <span class="kw">in</span> sorted(df[&<span class=<span class="st">"cm"</span>>#x27;cluster&#x27;].unique()):</span>
-    <span class="kw">print</span>(df.loc[df[&<span class=<span class="st">"cm"</span>>#x27;cluster<span class="st">&#x27;]==c,&#x27;</span>genre&#x27;]</span>
+<div class="card-body"><pre><span class="kw">for</span> c <span class="kw">in</span> sorted(df[<span class="st">&#x27;cluster&#x27;</span>].unique()):
+    <span class="kw">print</span>(df.loc[df[<span class="st">&#x27;cluster&#x27;</span>]==c,<span class="st">&#x27;genre&#x27;</span>]
           .value_counts(normalize=<span class="kw">True</span>).head(<span class="num">5</span>))</pre><div class="gotcha">K-means does not use genre labels, but comparing helps interpretation.</div></div></div>
 <div class="card" data-cat="Merging &amp; Joining" data-search="concatenate dataframes vertically (stack rows) pd.concat(), axis=0 axis=0 stacks rows (default). ignore_index=true resets the index. pd.concat([d1, d2], ignore_index=true, axis=0) merging &amp; joining">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Concatenate DataFrames vertically (stack rows)</span><span class="badge" style="background:#00bcd4">Merging &amp; Joining</span></div>
@@ -371,13 +371,13 @@ shares.columns = [&<span class=<span class="st">"cm"</span>>#x27;A<span class="s
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Merge location data back into the main DataFrame</span><span class="badge" style="background:#00bcd4">Merging &amp; Joining</span></div>
 <div class="card-fn">df.merge()</div>
 <div class="card-body"><pre>df = df.merge(other_df,
-    on=[&<span class=<span class="st">"cm"</span>>#x27;artist<span class="st">&#x27;,&#x27;</span>album<span class="st">&#x27;], how=&#x27;</span>left&#x27;)</span></pre><div class="gotcha">Default how=&#x27;inner&#x27; drops non-matching rows. Use how=&#x27;left&#x27; to keep all left rows.</div><div class="cmp">merge on column values; concat on index.</div></div></div>
+    on=[<span class="st">&#x27;artist&#x27;</span>,<span class="st">&#x27;album&#x27;</span>], how=<span class="st">&#x27;left&#x27;</span>)</pre><div class="gotcha">Default how=&#x27;inner&#x27; drops non-matching rows. Use how=&#x27;left&#x27; to keep all left rows.</div><div class="cmp">merge on column values; concat on index.</div></div></div>
 <div class="card" data-cat="Reshaping &amp; Pivoting" data-search="pivot a long transaction table into a wide basket matrix groupby().unstack() unstack moves inner index to columns. fill_value=0 replaces nan. basket = df.groupby([&#x27;invoiceno&#x27;,&#x27;description&#x27;])[&#x27;qty&#x27;]\
     .sum().unstack(fill_value=0)
 basket = (basket &gt; 0).astype(int) reshaping &amp; pivoting">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Pivot a long transaction table into a wide basket matrix</span><span class="badge" style="background:#795548">Reshaping &amp; Pivoting</span></div>
 <div class="card-fn">groupby().unstack()</div>
-<div class="card-body"><pre>basket = df.groupby([&<span class=<span class="st">"cm"</span>>#x27;InvoiceNo<span class="st">&#x27;,&#x27;</span>Description<span class="st">&#x27;])[&#x27;</span>Qty&#x27;]\</span>
+<div class="card-body"><pre>basket = df.groupby([<span class="st">&#x27;InvoiceNo&#x27;</span>,<span class="st">&#x27;Description&#x27;</span>])[<span class="st">&#x27;Qty&#x27;</span>]\
     .sum().unstack(fill_value=<span class="num">0</span>)
 basket = (basket &gt; <span class="num">0</span>).astype(int)</pre><div class="gotcha">unstack moves inner index to columns. fill_value=0 replaces NaN.</div><div class="cmp">unstack inverse of stack. pivot_table alternative.</div></div></div>
 <div class="card" data-cat="Reshaping &amp; Pivoting" data-search="transpose a dataframe (swap rows and columns) .t .t is shorthand for .transpose(). column names become the new index. shares.t reshaping &amp; pivoting">
@@ -396,39 +396,39 @@ plt.ylabel(&#x27;frequency&#x27;)
 plt.title(&#x27;price distribution&#x27;) visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot a histogram for a single column</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">.hist(), plt labels</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Unit price&#x27;].hist()</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;Unit price&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;Frequency&#x27;)</span>
-plt.title(&<span class=<span class="st">"cm"</span>>#x27;Price distribution&#x27;)</span></pre><div class="gotcha">Default bins=10. Increase bins for finer granularity.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Unit price&#x27;</span>].hist()
+plt.xlabel(<span class="st">&#x27;Unit price&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;Frequency&#x27;</span>)
+plt.title(<span class="st">&#x27;Price distribution&#x27;</span>)</pre><div class="gotcha">Default bins=10. Increase bins for finer granularity.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot a bar chart from value counts value_counts().plot(kind=&#x27;bar&#x27;) kind=&#x27;bar&#x27; for vertical; kind=&#x27;barh&#x27; for horizontal. df[&#x27;gender&#x27;].value_counts().plot(kind=&#x27;bar&#x27;) visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot a bar chart from value counts</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">value_counts().plot(kind=&#x27;bar&#x27;)</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;Gender<span class="st">&#x27;].value_counts().plot(kind=&#x27;</span>bar&#x27;)</span></pre><div class="gotcha">kind=&#x27;bar&#x27; for vertical; kind=&#x27;barh&#x27; for horizontal.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;Gender&#x27;</span>].value_counts().plot(kind=<span class="st">&#x27;bar&#x27;</span>)</pre><div class="gotcha">kind=&#x27;bar&#x27; for vertical; kind=&#x27;barh&#x27; for horizontal.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot a grouped bar chart comparing categories .plot(kind=&#x27;bar&#x27;) bbox_to_anchor moves the legend outside the plot area. shares.t.plot(kind=&#x27;bar&#x27;)
 plt.legend(title=&#x27;customer type&#x27;,
     bbox_to_anchor=(1.01, 1), loc=&#x27;upper left&#x27;)
 plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot a grouped bar chart comparing categories</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">.plot(kind=&#x27;bar&#x27;)</div>
-<div class="card-body"><pre>shares.T.plot(kind=&<span class=<span class="st">"cm"</span>>#x27;bar&#x27;)</span>
-plt.legend(title=&<span class=<span class="st">"cm"</span>>#x27;Customer type&#x27;,</span>
-    bbox_to_anchor=(<span class="num">1.01</span>, <span class="num">1</span>), loc=&<span class=<span class="st">"cm"</span>>#x27;upper left&#x27;)</span>
+<div class="card-body"><pre>shares.T.plot(kind=<span class="st">&#x27;bar&#x27;</span>)
+plt.legend(title=<span class="st">&#x27;Customer type&#x27;</span>,
+    bbox_to_anchor=(<span class="num">1.01</span>, <span class="num">1</span>), loc=<span class="st">&#x27;upper left&#x27;</span>)
 plt.show()</pre><div class="gotcha">bbox_to_anchor moves the legend outside the plot area.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="create a scatter plot to visualize correlation plt.scatter() scatter plots show relationships but do not prove causation. plt.scatter(x=df[&#x27;quantity&#x27;], y=df[&#x27;gross income&#x27;])
 plt.xlabel(&#x27;quantity&#x27;)
 plt.ylabel(&#x27;gross income&#x27;) visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create a scatter plot to visualize correlation</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">plt.scatter()</div>
-<div class="card-body"><pre>plt.scatter(x=df[&<span class=<span class="st">"cm"</span>>#x27;Quantity<span class="st">&#x27;], y=df[&#x27;</span>gross income&#x27;])</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;Quantity&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;gross income&#x27;)</span></pre><div class="gotcha">Scatter plots show relationships but do not prove causation.</div></div></div>
+<div class="card-body"><pre>plt.scatter(x=df[<span class="st">&#x27;Quantity&#x27;</span>], y=df[<span class="st">&#x27;gross income&#x27;</span>])
+plt.xlabel(<span class="st">&#x27;Quantity&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;gross income&#x27;</span>)</pre><div class="gotcha">Scatter plots show relationships but do not prove causation.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="create a scatter plot with regression trend line and confidence band sns.regplot() regplot adds a linear fit + 95% ci band by default. sns.regplot(data=df, x=&#x27;unit price&#x27;, y=&#x27;rating&#x27;)
 plt.title(&#x27;regplot: unit price vs rating&#x27;)
 plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Create a scatter plot with regression trend line and confidence band</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">sns.regplot()</div>
-<div class="card-body"><pre>sns.regplot(data=df, x=&<span class=<span class="st">"cm"</span>>#x27;Unit price<span class="st">&#x27;, y=&#x27;</span>Rating&#x27;)</span>
-plt.title(&<span class=<span class="st">"cm"</span>>#x27;regplot: Unit price vs Rating&#x27;)</span>
+<div class="card-body"><pre>sns.regplot(data=df, x=<span class="st">&#x27;Unit price&#x27;</span>, y=<span class="st">&#x27;Rating&#x27;</span>)
+plt.title(<span class="st">&#x27;regplot: Unit price vs Rating&#x27;</span>)
 plt.show()</pre><div class="gotcha">regplot adds a linear fit + 95% CI band by default.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot a heatmap of correlations among numeric columns sns.heatmap(), .corr() corr() computes pearson correlation (linear only). annot=true prints values. sns.heatmap(final.corr(numeric_only=true),
     annot=true, cmap=&#x27;coolwarm&#x27;)
@@ -436,7 +436,7 @@ plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot a heatmap of correlations among numeric columns</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">sns.heatmap(), .corr()</div>
 <div class="card-body"><pre>sns.heatmap(final.corr(numeric_only=<span class="kw">True</span>),
-    annot=<span class="kw">True</span>, cmap=&<span class=<span class="st">"cm"</span>>#x27;coolwarm&#x27;)</span>
+    annot=<span class="kw">True</span>, cmap=<span class="st">&#x27;coolwarm&#x27;</span>)
 plt.show()</pre><div class="gotcha">corr() computes Pearson correlation (linear only). annot=True prints values.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot a confusion matrix confusionmatrixdisplay from_predictions takes actual and predicted labels. from_estimator takes model + test data. from sklearn.metrics import confusionmatrixdisplay
 confusionmatrixdisplay.from_predictions(y_test, y_pred)
@@ -464,9 +464,9 @@ plt.show() visualization">
 <div class="card-fn">plt.scatter(), plt.plot()</div>
 <div class="card-body"><pre>plt.scatter(y_test, y_pred)
 plt.plot([y_test.min(), y_test.max()],
-         [y_test.min(), y_test.max()], &<span class=<span class="st">"cm"</span>>#x27;r--&#x27;)</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;Actual&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;Predicted&#x27;)</span>
+         [y_test.min(), y_test.max()], <span class="st">&#x27;r--&#x27;</span>)
+plt.xlabel(<span class="st">&#x27;Actual&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;Predicted&#x27;</span>)
 plt.show()</pre><div class="gotcha">Points on the diagonal = perfect predictions. Spread = error.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot training vs test error to visualize overfitting plt.plot() when train error drops but test error rises, the model is overfitting. plt.plot(curve_df[&#x27;nodes&#x27;], curve_df[&#x27;train_error&#x27;], label=&#x27;train&#x27;)
 plt.plot(curve_df[&#x27;nodes&#x27;], curve_df[&#x27;test_error&#x27;], &#x27;--&#x27;, label=&#x27;test&#x27;)
@@ -475,9 +475,9 @@ plt.legend()
 plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot training vs test error to visualize overfitting</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">plt.plot()</div>
-<div class="card-body"><pre>plt.plot(curve_df[&<span class=<span class="st">"cm"</span>>#x27;nodes<span class="st">&#x27;], curve_df[&#x27;</span>train_error<span class="st">&#x27;], label=&#x27;</span>Train&#x27;)</span>
-plt.plot(curve_df[&<span class=<span class="st">"cm"</span>>#x27;nodes<span class="st">&#x27;], curve_df[&#x27;</span>test_error<span class="st">&#x27;], &#x27;</span>--<span class="st">&#x27;, label=&#x27;</span>Test&#x27;)</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;Number of nodes&#x27;)</span>
+<div class="card-body"><pre>plt.plot(curve_df[<span class="st">&#x27;nodes&#x27;</span>], curve_df[<span class="st">&#x27;train_error&#x27;</span>], label=<span class="st">&#x27;Train&#x27;</span>)
+plt.plot(curve_df[<span class="st">&#x27;nodes&#x27;</span>], curve_df[<span class="st">&#x27;test_error&#x27;</span>], <span class="st">&#x27;--&#x27;</span>, label=<span class="st">&#x27;Test&#x27;</span>)
+plt.xlabel(<span class="st">&#x27;Number of nodes&#x27;</span>)
 plt.legend()
 plt.show()</pre><div class="gotcha">When train error drops but test error rises, the model is overfitting.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot the elbow method for k-means clustering kmeans.inertia_, plt.plot() inertia_ is sum of squared distances to cluster centers. look for the elbow bend. ssd = []
@@ -496,17 +496,17 @@ plt.show() visualization">
     km = KMeans(n_clusters=k, n_init=<span class="num">10</span>, random_state=<span class="num">42</span>)
     km.fit(X_scaled)
     ssd.append(km.inertia_)
-plt.plot(range(<span class="num">1</span>,<span class="num">20</span>), ssd, &<span class=<span class="st">"cm"</span>>#x27;o-&#x27;)</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;k&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;SSD / inertia&#x27;)</span>
+plt.plot(range(<span class="num">1</span>,<span class="num">20</span>), ssd, <span class="st">&#x27;o-&#x27;</span>)
+plt.xlabel(<span class="st">&#x27;k&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;SSD / inertia&#x27;</span>)
 plt.show()</pre><div class="gotcha">inertia_ is sum of squared distances to cluster centers. Look for the elbow bend.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot a 2d scatter plot colored by cluster assignment sns.scatterplot(), hue= hue= colors points by a categorical column. sns.scatterplot(data=df, x=&#x27;danceability&#x27;, y=&#x27;energy&#x27;,
     hue=&#x27;cluster&#x27;, palette=&#x27;deep&#x27;)
 plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot a 2D scatter plot colored by cluster assignment</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">sns.scatterplot(), hue=</div>
-<div class="card-body"><pre>sns.scatterplot(data=df, x=&<span class=<span class="st">"cm"</span>>#x27;danceability<span class="st">&#x27;, y=&#x27;</span>energy&#x27;,</span>
-    hue=&<span class=<span class="st">"cm"</span>>#x27;cluster<span class="st">&#x27;, palette=&#x27;</span>deep&#x27;)</span>
+<div class="card-body"><pre>sns.scatterplot(data=df, x=<span class="st">&#x27;danceability&#x27;</span>, y=<span class="st">&#x27;energy&#x27;</span>,
+    hue=<span class="st">&#x27;cluster&#x27;</span>, palette=<span class="st">&#x27;deep&#x27;</span>)
 plt.show()</pre><div class="gotcha">hue= colors points by a categorical column.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot knn accuracy or rmse vs k to choose optimal k plt.plot() very small k overfits; very large k over-smooths. plt.plot(k_values, test_acc, marker=&#x27;o&#x27;, label=&#x27;test accuracy&#x27;)
 plt.xlabel(&#x27;k&#x27;)
@@ -515,9 +515,9 @@ plt.legend()
 plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot KNN accuracy or RMSE vs K to choose optimal K</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">plt.plot()</div>
-<div class="card-body"><pre>plt.plot(k_values, test_acc, marker=&<span class=<span class="st">"cm"</span>>#x27;o<span class="st">&#x27;, label=&#x27;</span>Test accuracy&#x27;)</span>
-plt.xlabel(&<span class=<span class="st">"cm"</span>>#x27;K&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;Accuracy&#x27;)</span>
+<div class="card-body"><pre>plt.plot(k_values, test_acc, marker=<span class="st">&#x27;o&#x27;</span>, label=<span class="st">&#x27;Test accuracy&#x27;</span>)
+plt.xlabel(<span class="st">&#x27;K&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;Accuracy&#x27;</span>)
 plt.legend()
 plt.show()</pre><div class="gotcha">Very small K overfits; very large K over-smooths.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot feature importances from a decision tree .feature_importances_, .plot(kind=&#x27;bar&#x27;) feature_importances_ sums to 1.0. higher = more important for splitting. imp = pd.series(best_tree.feature_importances_,
@@ -529,8 +529,8 @@ plt.show() visualization">
 <div class="card-fn">.feature_importances_, .plot(kind=&#x27;bar&#x27;)</div>
 <div class="card-body"><pre>imp = pd.Series(best_tree.feature_importances_,
     index=X.columns).sort_values(ascending=<span class="kw">False</span>)
-imp.head(<span class="num">20</span>).plot(kind=&<span class=<span class="st">"cm"</span>>#x27;bar&#x27;)</span>
-plt.ylabel(&<span class=<span class="st">"cm"</span>>#x27;importance&#x27;)</span>
+imp.head(<span class="num">20</span>).plot(kind=<span class="st">&#x27;bar&#x27;</span>)
+plt.ylabel(<span class="st">&#x27;importance&#x27;</span>)
 plt.show()</pre><div class="gotcha">feature_importances_ sums to 1.0. Higher = more important for splitting.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="plot regression coefficients as a horizontal bar chart pd.series, .plot(kind=&#x27;barh&#x27;) coefficients are only comparable if features are standardized. coefs = pd.series(model.coef_, index=x.columns)
 coefs.sort_values().plot(kind=&#x27;barh&#x27;)
@@ -538,7 +538,7 @@ plt.show() visualization">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Plot regression coefficients as a horizontal bar chart</span><span class="badge" style="background:#e91e63">Visualization</span></div>
 <div class="card-fn">pd.Series, .plot(kind=&#x27;barh&#x27;)</div>
 <div class="card-body"><pre>coefs = pd.Series(model.coef_, index=X.columns)
-coefs.sort_values().plot(kind=&<span class=<span class="st">"cm"</span>>#x27;barh&#x27;)</span>
+coefs.sort_values().plot(kind=<span class="st">&#x27;barh&#x27;</span>)
 plt.show()</pre><div class="gotcha">Coefficients are only comparable if features are standardized.</div></div></div>
 <div class="card" data-cat="Visualization" data-search="create subplots to show histograms of many columns in a grid plt.subplots(), sns.histplot() axes.ravel() flattens the 2d array for easy looping. turn off unused subplots. fig, axes = plt.subplots(n_rows, n_cols, figsize=(14,8))
 for i, col in enumerate(num_cols):
@@ -574,7 +574,7 @@ dt.fit(x_train, y_train) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Train a Decision Tree Classifier</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">DecisionTreeClassifier(), .fit()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.tree <span class="kw">import</span> DecisionTreeClassifier
-dt = DecisionTreeClassifier(criterion=&<span class=<span class="st">"cm"</span>>#x27;entropy&#x27;, random_state=<span class="num">42</span>)</span>
+dt = DecisionTreeClassifier(criterion=<span class="st">&#x27;entropy&#x27;</span>, random_state=<span class="num">42</span>)
 dt.fit(X_train, y_train)</pre><div class="gotcha">criterion=&#x27;entropy&#x27; uses information gain; &#x27;gini&#x27; (default) uses Gini impurity.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="train a decision tree classifier with pruning to reduce overfitting decisiontreeclassifier(max_depth=, min_samples_leaf=) smaller max_depth and larger min_samples_leaf = simpler trees (pre-pruning). dt = decisiontreeclassifier(
     max_depth=5, min_samples_split=20,
@@ -604,14 +604,14 @@ graphviz.source(dot) statistical analysis &amp; regression">
 <div class="card-body"><pre><span class="kw">from</span> sklearn <span class="kw">import</span> tree
 <span class="kw">import</span> graphviz
 dot = tree.export_graphviz(dt, feature_names=X.columns,
-    class_names=[&<span class=<span class="st">"cm"</span>>#x27;<span class="num">0</span><span class="st">&#x27;,&#x27;</span><span class="num">1</span>&#x27;], filled=<span class="kw">True</span>, proportion=<span class="kw">True</span>)</span>
+    class_names=[<span class="st">&#x27;0&#x27;</span>,<span class="st">&#x27;1&#x27;</span>], filled=<span class="kw">True</span>, proportion=<span class="kw">True</span>)
 graphviz.Source(dot)</pre><div class="gotcha">max_depth= in export_graphviz limits visualization depth, not the actual tree. class_names must be strings.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="check tree complexity (node count and depth) .tree_.node_count, .tree_.max_depth accessed via .tree_ attribute of the fitted model. print(&#x27;nodes:&#x27;, dt.tree_.node_count)
 print(&#x27;depth:&#x27;, dt.tree_.max_depth) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Check tree complexity (node count and depth)</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">.tree_.node_count, .tree_.max_depth</div>
-<div class="card-body"><pre><span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;Nodes:&#x27;, dt.tree_.node_count)</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;Depth:&#x27;, dt.tree_.max_depth)</span></pre><div class="gotcha">Accessed via .tree_ attribute of the fitted model.</div></div></div>
+<div class="card-body"><pre><span class="kw">print</span>(<span class="st">&#x27;Nodes:&#x27;</span>, dt.tree_.node_count)
+<span class="kw">print</span>(<span class="st">&#x27;Depth:&#x27;</span>, dt.tree_.max_depth)</pre><div class="gotcha">Accessed via .tree_ attribute of the fitted model.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="predict class labels using a trained classifier .predict() predict() returns class labels (0/1). for probabilities use predict_proba(). y_pred = dt.predict(x_test) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Predict class labels using a trained classifier</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">.predict()</div>
@@ -636,10 +636,10 @@ print(&#x27;auc:&#x27;, roc_auc_score(y_test, y_proba)) statistical analysis &am
 <div class="card-fn">precision_score(), recall_score(), f1_score(), roc_auc_score()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.metrics <span class="kw">import</span> (precision_score, recall_score,
     f1_score, roc_auc_score)
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;Prec:&#x27;, precision_score(y_test, y_pred, zero_division=<span class="num">0</span>))</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;Rec:&#x27;, recall_score(y_test, y_pred))</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;F1:&#x27;, f1_score(y_test, y_pred))</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;AUC:&#x27;, roc_auc_score(y_test, y_proba))</span></pre><div class="gotcha">Precision=TP/(TP+FP), Recall=TP/(TP+FN). AUC needs probabilities not labels.</div></div></div>
+<span class="kw">print</span>(<span class="st">&#x27;Prec:&#x27;</span>, precision_score(y_test, y_pred, zero_division=<span class="num">0</span>))
+<span class="kw">print</span>(<span class="st">&#x27;Rec:&#x27;</span>, recall_score(y_test, y_pred))
+<span class="kw">print</span>(<span class="st">&#x27;F1:&#x27;</span>, f1_score(y_test, y_pred))
+<span class="kw">print</span>(<span class="st">&#x27;AUC:&#x27;</span>, roc_auc_score(y_test, y_proba))</pre><div class="gotcha">Precision=TP/(TP+FP), Recall=TP/(TP+FN). AUC needs probabilities not labels.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="generate a full classification report classification_report() shows precision, recall, f1 for each class plus macro/weighted averages. from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred)) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Generate a full classification report</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
@@ -654,8 +654,8 @@ pd.dataframe(confusion_matrix(y_test, y_pred),
 <div class="card-fn">confusion_matrix()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.metrics <span class="kw">import</span> confusion_matrix
 pd.DataFrame(confusion_matrix(y_test, y_pred),
-    columns=[&<span class=<span class="st">"cm"</span>>#x27;Pred <span class="num">0</span><span class="st">&#x27;,&#x27;</span>Pred <span class="num">1</span>&#x27;],</span>
-    index=[&<span class=<span class="st">"cm"</span>>#x27;Act <span class="num">0</span><span class="st">&#x27;,&#x27;</span>Act <span class="num">1</span>&#x27;])</span></pre><div class="gotcha">Rows = actual, columns = predicted. Top-left = TN, bottom-right = TP.</div></div></div>
+    columns=[<span class="st">&#x27;Pred 0&#x27;</span>,<span class="st">&#x27;Pred 1&#x27;</span>],
+    index=[<span class="st">&#x27;Act 0&#x27;</span>,<span class="st">&#x27;Act 1&#x27;</span>])</pre><div class="gotcha">Rows = actual, columns = predicted. Top-left = TN, bottom-right = TP.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="evaluate regression with mae, rmse, and r-squared mean_absolute_error(), mean_squared_error(), r2_score() sklearn returns mse not rmse — take np.sqrt(). r2 can be negative if worse than mean. from sklearn.metrics import (mean_absolute_error,
     mean_squared_error, r2_score)
 print(&#x27;mae:&#x27;, mean_absolute_error(y_test, y_pred))
@@ -665,9 +665,9 @@ print(&#x27;r2:&#x27;, r2_score(y_test, y_pred)) statistical analysis &amp; regr
 <div class="card-fn">mean_absolute_error(), mean_squared_error(), r2_score()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.metrics <span class="kw">import</span> (mean_absolute_error,
     mean_squared_error, r2_score)
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;MAE:&#x27;, mean_absolute_error(y_test, y_pred))</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;RMSE:&#x27;, np.sqrt(mean_squared_error(y_test, y_pred)))</span>
-<span class="kw">print</span>(&<span class=<span class="st">"cm"</span>>#x27;R2:&#x27;, r2_score(y_test, y_pred))</span></pre><div class="gotcha">sklearn returns MSE not RMSE — take np.sqrt(). R2 can be negative if worse than mean.</div></div></div>
+<span class="kw">print</span>(<span class="st">&#x27;MAE:&#x27;</span>, mean_absolute_error(y_test, y_pred))
+<span class="kw">print</span>(<span class="st">&#x27;RMSE:&#x27;</span>, np.sqrt(mean_squared_error(y_test, y_pred)))
+<span class="kw">print</span>(<span class="st">&#x27;R2:&#x27;</span>, r2_score(y_test, y_pred))</pre><div class="gotcha">sklearn returns MSE not RMSE — take np.sqrt(). R2 can be negative if worse than mean.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="perform 5-fold cross-validation for classification stratifiedkfold, cross_validate() stratifiedkfold preserves class proportions in each fold. from sklearn.model_selection import stratifiedkfold, cross_validate
 cv = stratifiedkfold(n_splits=5, shuffle=true, random_state=42)
 scores = cross_validate(dt, x, y, cv=cv,
@@ -677,7 +677,7 @@ scores = cross_validate(dt, x, y, cv=cv,
 <div class="card-body"><pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> StratifiedKFold, cross_validate
 cv = StratifiedKFold(n_splits=<span class="num">5</span>, shuffle=<span class="kw">True</span>, random_state=<span class="num">42</span>)
 scores = cross_validate(dt, X, y, cv=cv,
-    scoring=[&<span class=<span class="st">"cm"</span>>#x27;accuracy<span class="st">&#x27;,&#x27;</span>f1<span class="st">&#x27;,&#x27;</span>roc_auc&#x27;])</span></pre><div class="gotcha">StratifiedKFold preserves class proportions in each fold.</div></div></div>
+    scoring=[<span class="st">&#x27;accuracy&#x27;</span>,<span class="st">&#x27;f1&#x27;</span>,<span class="st">&#x27;roc_auc&#x27;</span>])</pre><div class="gotcha">StratifiedKFold preserves class proportions in each fold.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="perform 5-fold cross-validation for regression kfold, cross_validate() sklearn uses negative mae/rmse for cv scoring. multiply by -1 to get normal values. from sklearn.model_selection import kfold, cross_validate
 cv = kfold(n_splits=5, shuffle=true, random_state=42)
 scores = cross_validate(model, x, y, cv=cv,
@@ -687,7 +687,7 @@ scores = cross_validate(model, x, y, cv=cv,
 <div class="card-body"><pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> KFold, cross_validate
 cv = KFold(n_splits=<span class="num">5</span>, shuffle=<span class="kw">True</span>, random_state=<span class="num">42</span>)
 scores = cross_validate(model, X, y, cv=cv,
-    scoring=[&<span class=<span class="st">"cm"</span>>#x27;neg_mean_absolute_error<span class="st">&#x27;,&#x27;</span>r2&#x27;])</span></pre><div class="gotcha">sklearn uses NEGATIVE MAE/RMSE for CV scoring. Multiply by -1 to get normal values.</div></div></div>
+    scoring=[<span class="st">&#x27;neg_mean_absolute_error&#x27;</span>,<span class="st">&#x27;r2&#x27;</span>])</pre><div class="gotcha">sklearn uses NEGATIVE MAE/RMSE for CV scoring. Multiply by -1 to get normal values.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="get out-of-fold predictions from cross-validation cross_val_predict() each sample is predicted by a model that did not train on it. from sklearn.model_selection import cross_val_predict
 oof_proba = cross_val_predict(dt, x, y, cv=cv,
     method=&#x27;predict_proba&#x27;)[:, 1] statistical analysis &amp; regression">
@@ -695,7 +695,7 @@ oof_proba = cross_val_predict(dt, x, y, cv=cv,
 <div class="card-fn">cross_val_predict()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> cross_val_predict
 oof_proba = cross_val_predict(dt, X, y, cv=cv,
-    method=&<span class=<span class="st">"cm"</span>>#x27;predict_proba&#x27;)[:, <span class="num">1</span>]</span></pre><div class="gotcha">Each sample is predicted by a model that did NOT train on it.</div></div></div>
+    method=<span class="st">&#x27;predict_proba&#x27;</span>)[:, <span class="num">1</span>]</pre><div class="gotcha">Each sample is predicted by a model that did NOT train on it.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="tune hyperparameters using gridsearchcv gridsearchcv() refit= selects metric for best model. n_jobs=-1 uses all cores. tune on train only. from sklearn.model_selection import gridsearchcv
 param_grid = {&#x27;max_depth&#x27;:[3,5,8],
     &#x27;min_samples_leaf&#x27;:[1,5,10]}
@@ -705,17 +705,17 @@ grid.fit(x_train, y_train) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Tune hyperparameters using GridSearchCV</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">GridSearchCV()</div>
 <div class="card-body"><pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> GridSearchCV
-param_grid = {&<span class=<span class="st">"cm"</span>>#x27;max_depth&#x27;:[<span class="num">3</span>,<span class="num">5</span>,<span class="num">8</span>],</span>
-    &<span class=<span class="st">"cm"</span>>#x27;min_samples_leaf&#x27;:[<span class="num">1</span>,<span class="num">5</span>,<span class="num">10</span>]}</span>
+param_grid = {<span class="st">&#x27;max_depth&#x27;</span>:[<span class="num">3</span>,<span class="num">5</span>,<span class="num">8</span>],
+    <span class="st">&#x27;min_samples_leaf&#x27;</span>:[<span class="num">1</span>,<span class="num">5</span>,<span class="num">10</span>]}
 grid = GridSearchCV(dt, param_grid, cv=<span class="num">5</span>,
-    scoring=&<span class=<span class="st">"cm"</span>>#x27;roc_auc<span class="st">&#x27;, refit=&#x27;</span>roc_auc&#x27;, n_jobs=-<span class="num">1</span>)</span>
+    scoring=<span class="st">&#x27;roc_auc&#x27;</span>, refit=<span class="st">&#x27;roc_auc&#x27;</span>, n_jobs=-<span class="num">1</span>)
 grid.fit(X_train, y_train)</pre><div class="gotcha">refit= selects metric for best model. n_jobs=-1 uses all cores. Tune on train only.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="inspect gridsearchcv results and rank parameter combinations grid.cv_results_ cv_results_ contains mean/std scores for every parameter combination. results = pd.dataframe(grid.cv_results_)
 results.sort_values(&#x27;rank_test_score&#x27;).head() statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Inspect GridSearchCV results and rank parameter combinations</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">grid.cv_results_</div>
 <div class="card-body"><pre>results = pd.DataFrame(grid.cv_results_)
-results.sort_values(&<span class=<span class="st">"cm"</span>>#x27;rank_test_score&#x27;).head()</span></pre><div class="gotcha">cv_results_ contains mean/std scores for every parameter combination.</div></div></div>
+results.sort_values(<span class="st">&#x27;rank_test_score&#x27;</span>).head()</pre><div class="gotcha">cv_results_ contains mean/std scores for every parameter combination.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="train a baseline linear regression model linearregression(), .fit() linear regression has no hyperparameters to tune (ols). minimizes squared error. from sklearn.linear_model import linearregression
 lr = linearregression()
 lr.fit(x_train, y_train) statistical analysis &amp; regression">
@@ -751,12 +751,12 @@ nb.fit(X_train, y_train)</pre><div class="gotcha">Assumes feature independence g
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Inspect Naive Bayes class priors</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">.class_prior_, .classes_</div>
 <div class="card-body"><pre><span class="kw">for</span> c, p <span class="kw">in</span> zip(nb.classes_, nb.class_prior_):
-    <span class="kw">print</span>(f&<span class=<span class="st">"cm"</span>>#x27;Class {c}: {p:.4f}&#x27;)</span></pre><div class="gotcha">class_prior_ reflects the training set class distribution.</div></div></div>
+    <span class="kw">print</span>(f<span class="st">&#x27;Class {c}: {p:.4f}&#x27;</span>)</pre><div class="gotcha">class_prior_ reflects the training set class distribution.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="compare feature means between classes for interpretation groupby, mean difference positive difference = feature is higher for class 1. means = df.groupby(&#x27;target&#x27;)[features].mean()
 diff = (means.loc[1] - means.loc[0]).sort_values() statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compare feature means between classes for interpretation</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">groupby, mean difference</div>
-<div class="card-body"><pre>means = df.groupby(&<span class=<span class="st">"cm"</span>>#x27;target&#x27;)[features].mean()</span>
+<div class="card-body"><pre>means = df.groupby(<span class="st">&#x27;target&#x27;</span>)[features].mean()
 diff = (means.loc[<span class="num">1</span>] - means.loc[<span class="num">0</span>]).sort_values()</pre><div class="gotcha">Positive difference = feature is higher for class 1.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="train a k-means clustering model kmeans(), .fit_predict() unsupervised — no target variable. always standardize first. n_init=10 runs 10 times. from sklearn.cluster import kmeans
 km = kmeans(n_clusters=9, n_init=10, random_state=42)
@@ -773,7 +773,7 @@ labels = km.fit_predict(X_scaled)</pre><div class="gotcha">Unsupervised — no t
 <div class="card-fn">inertia_, percentage drop</div>
 <div class="card-body"><pre><span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">1</span>, len(ssd)):
     drop = (ssd[i-<span class="num">1</span>]-ssd[i])/ssd[i-<span class="num">1</span>]*<span class="num">100</span>
-    <span class="kw">print</span>(f&<span class=<span class="st">"cm"</span>>#x27;k={i+<span class="num">2</span>}: {drop:.1f}% drop&#x27;)</span></pre><div class="gotcha">Look for where percentage drop becomes small — that is the elbow.</div></div></div>
+    <span class="kw">print</span>(f<span class="st">&#x27;k={i+2}: {drop:.1f}% drop&#x27;</span>)</pre><div class="gotcha">Look for where percentage drop becomes small — that is the elbow.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="train a knn classifier kneighborsclassifier(), .fit() distance-based — always standardize features. small k overfits; large k over-smooths. from sklearn.neighbors import kneighborsclassifier
 knn = kneighborsclassifier(n_neighbors=3)
 knn.fit(x_train_scaled, y_train) statistical analysis &amp; regression">
@@ -796,7 +796,7 @@ knn_r.fit(X_train_scaled, y_train)</pre><div class="gotcha">Predicts the average
     print(name, accuracy_score(y_test, pred)) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compare multiple classifiers on the same dataset</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">model loop</div>
-<div class="card-body"><pre><span class="kw">for</span> name, model <span class="kw">in</span> [(&<span class=<span class="st">"cm"</span>>#x27;DT<span class="st">&#x27;, dt), (&#x27;</span>LR<span class="st">&#x27;, lg), (&#x27;</span>NB&#x27;, nb)]:</span>
+<div class="card-body"><pre><span class="kw">for</span> name, model <span class="kw">in</span> [(<span class="st">&#x27;DT&#x27;</span>, dt), (<span class="st">&#x27;LR&#x27;</span>, lg), (<span class="st">&#x27;NB&#x27;</span>, nb)]:
     model.fit(X_train, y_train)
     pred = model.predict(X_test)
     <span class="kw">print</span>(name, accuracy_score(y_test, pred))</pre><div class="gotcha">Use the same train/test split for all models for fair comparison.</div></div></div>
@@ -827,24 +827,24 @@ rules = rules[(rules[&#x27;lift&#x27;]&gt;1) &amp; (rules[&#x27;leverage&#x27;]&
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Generate association rules from frequent itemsets</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">association_rules()</div>
 <div class="card-body"><pre><span class="kw">from</span> mlxtend.frequent_patterns <span class="kw">import</span> association_rules
-rules = association_rules(freq, metric=&<span class=<span class="st">"cm"</span>>#x27;confidence&#x27;,</span>
+rules = association_rules(freq, metric=<span class="st">&#x27;confidence&#x27;</span>,
     min_threshold=<span class="num">0.25</span>)
-rules = rules[(rules[&<span class=<span class="st">"cm"</span>>#x27;lift&#x27;]&gt;<span class="num">1</span>) &amp; (rules[<span class="st">&#x27;leverage&#x27;</span>]&gt;<span class="num">0</span>)]</span></pre><div class="gotcha">High confidence alone misleads if consequent is very common. Always check lift &gt; 1.</div></div></div>
+rules = rules[(rules[<span class="st">&#x27;lift&#x27;</span>]&gt;<span class="num">1</span>) &amp; (rules[<span class="st">&#x27;leverage&#x27;</span>]&gt;<span class="num">0</span>)]</pre><div class="gotcha">High confidence alone misleads if consequent is very common. Always check lift &gt; 1.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="build product recommendations from association rules frozenset filtering antecedents and consequents are frozensets. use frozenset([item]) for queries. item = frozenset([&#x27;item_name&#x27;])
 recs = rules[rules[&#x27;antecedents&#x27;]==item]\
     .sort_values(&#x27;lift&#x27;, ascending=false) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Build product recommendations from association rules</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">frozenset filtering</div>
-<div class="card-body"><pre>item = frozenset([&<span class=<span class="st">"cm"</span>>#x27;ITEM_NAME&#x27;])</span>
-recs = rules[rules[&<span class=<span class="st">"cm"</span>>#x27;antecedents&#x27;]==item]\</span>
-    .sort_values(&<span class=<span class="st">"cm"</span>>#x27;lift&#x27;, ascending=<span class="kw">False</span>)</span></pre><div class="gotcha">antecedents and consequents are frozensets. Use frozenset([item]) for queries.</div></div></div>
+<div class="card-body"><pre>item = frozenset([<span class="st">&#x27;ITEM_NAME&#x27;</span>])
+recs = rules[rules[<span class="st">&#x27;antecedents&#x27;</span>]==item]\
+    .sort_values(<span class="st">&#x27;lift&#x27;</span>, ascending=<span class="kw">False</span>)</pre><div class="gotcha">antecedents and consequents are frozensets. Use frozenset([item]) for queries.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="find recommendations for a multi-item cart frozenset, .issubset() issubset checks if the antecedent is fully contained in the cart. cart = frozenset([&#x27;a&#x27;,&#x27;b&#x27;])
 recs = rules[rules[&#x27;antecedents&#x27;].apply(
     lambda x: x.issubset(cart))] statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Find recommendations for a multi-item cart</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">frozenset, .issubset()</div>
-<div class="card-body"><pre>cart = frozenset([&<span class=<span class="st">"cm"</span>>#x27;A<span class="st">&#x27;,&#x27;</span>B&#x27;])</span>
-recs = rules[rules[&<span class=<span class="st">"cm"</span>>#x27;antecedents&#x27;].apply(</span>
+<div class="card-body"><pre>cart = frozenset([<span class="st">&#x27;A&#x27;</span>,<span class="st">&#x27;B&#x27;</span>])
+recs = rules[rules[<span class="st">&#x27;antecedents&#x27;</span>].apply(
     <span class="kw">lambda</span> x: x.issubset(cart))]</pre><div class="gotcha">issubset checks if the antecedent is fully contained in the cart.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="compute association rule metrics manually counting, arithmetic lift~1=independent. lift&gt;1=positive association. leverage&gt;0=exceeds expectation. sup_a = (basket[&#x27;a&#x27;]==1).mean()
 sup_b = (basket[&#x27;b&#x27;]==1).mean()
@@ -853,9 +853,9 @@ conf = sup_ab / sup_a
 lift = sup_ab / (sup_a * sup_b) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Compute association rule metrics manually</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">counting, arithmetic</div>
-<div class="card-body"><pre>sup_A = (basket[&<span class=<span class="st">"cm"</span>>#x27;A&#x27;]==<span class="num">1</span>).mean()</span>
-sup_B = (basket[&<span class=<span class="st">"cm"</span>>#x27;B&#x27;]==<span class="num">1</span>).mean()</span>
-sup_AB = ((basket[&<span class=<span class="st">"cm"</span>>#x27;A&#x27;]==<span class="num">1</span>)&amp;(basket[<span class="st">&#x27;B&#x27;</span>]==<span class="num">1</span>)).mean()</span>
+<div class="card-body"><pre>sup_A = (basket[<span class="st">&#x27;A&#x27;</span>]==<span class="num">1</span>).mean()
+sup_B = (basket[<span class="st">&#x27;B&#x27;</span>]==<span class="num">1</span>).mean()
+sup_AB = ((basket[<span class="st">&#x27;A&#x27;</span>]==<span class="num">1</span>)&amp;(basket[<span class="st">&#x27;B&#x27;</span>]==<span class="num">1</span>)).mean()
 conf = sup_AB / sup_A
 lift = sup_AB / (sup_A * sup_B)</pre><div class="gotcha">Lift~1=independent. Lift&gt;1=positive association. Leverage&gt;0=exceeds expectation.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="encode a list of transactions into a boolean basket matrix transactionencoder converts list of lists into boolean dataframe suitable for apriori(). from mlxtend.preprocessing import transactionencoder
@@ -872,58 +872,58 @@ basket = pd.DataFrame(te.fit_transform(transactions),
 # split rule, samples %, value (proportions), class statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Interpret a decision tree node</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">tree visualization</div>
-<div class="card-body"><pre><span class=<span class="st">"cm"</span>># Read <span class="kw">from</span> tree plot:</span>
-<span class=<span class="st">"cm"</span>># Split rule, samples %, value (proportions), class</span></pre><div class="gotcha">&#x27;value&#x27; shows proportions when proportion=True, otherwise raw counts.</div></div></div>
+<div class="card-body"><pre><span class="cm"># Read from tree plot:</span>
+<span class="cm"># Split rule, samples %, value (proportions), class</span></pre><div class="gotcha">&#x27;value&#x27; shows proportions when proportion=True, otherwise raw counts.</div></div></div>
 <div class="card" data-cat="Statistical Analysis &amp; Regression" data-search="use weighted precision/recall/f1 for multi-class classification precision_score(average=&#x27;weighted&#x27;) &#x27;weighted&#x27; weights each class by its support. use &#x27;macro&#x27; for equal weight per class. precision_score(y_test, y_pred, average=&#x27;weighted&#x27;)
 recall_score(y_test, y_pred, average=&#x27;weighted&#x27;)
 f1_score(y_test, y_pred, average=&#x27;weighted&#x27;) statistical analysis &amp; regression">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Use weighted precision/recall/F1 for multi-class classification</span><span class="badge" style="background:#3f51b5">Statistical Analysis &amp; Regression</span></div>
 <div class="card-fn">precision_score(average=&#x27;weighted&#x27;)</div>
-<div class="card-body"><pre>precision_score(y_test, y_pred, average=&<span class=<span class="st">"cm"</span>>#x27;weighted&#x27;)</span>
-recall_score(y_test, y_pred, average=&<span class=<span class="st">"cm"</span>>#x27;weighted&#x27;)</span>
-f1_score(y_test, y_pred, average=&<span class=<span class="st">"cm"</span>>#x27;weighted&#x27;)</span></pre><div class="gotcha">&#x27;weighted&#x27; weights each class by its support. Use &#x27;macro&#x27; for equal weight per class.</div></div></div>
+<div class="card-body"><pre>precision_score(y_test, y_pred, average=<span class="st">&#x27;weighted&#x27;</span>)
+recall_score(y_test, y_pred, average=<span class="st">&#x27;weighted&#x27;</span>)
+f1_score(y_test, y_pred, average=<span class="st">&#x27;weighted&#x27;</span>)</pre><div class="gotcha">&#x27;weighted&#x27; weights each class by its support. Use &#x27;macro&#x27; for equal weight per class.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="split a string by a delimiter .split() split() with no argument splits on whitespace. &#x27;hello world&#x27;.split()
 &#x27;a,b,c&#x27;.split(&#x27;,&#x27;) string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Split a string by a delimiter</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">.split()</div>
-<div class="card-body"><pre>&<span class=<span class="st">"cm"</span>>#x27;hello world&#x27;.split()</span>
-&<span class=<span class="st">"cm"</span>>#x27;a,b,c<span class="st">&#x27;.split(&#x27;</span>,&#x27;)</span></pre><div class="gotcha">split() with no argument splits on whitespace.</div></div></div>
+<div class="card-body"><pre><span class="st">&#x27;hello world&#x27;</span>.split()
+<span class="st">&#x27;a,b,c&#x27;</span>.split(<span class="st">&#x27;,&#x27;</span>)</pre><div class="gotcha">split() with no argument splits on whitespace.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="slice a string to extract a substring string[start:stop] slicing is exclusive of the stop index, like list slicing. s = &#x27;python&#x27;
 s[0:3]  # &#x27;pyt&#x27; string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Slice a string to extract a substring</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">string[start:stop]</div>
-<div class="card-body"><pre>s = &<span class=<span class="st">"cm"</span>>#x27;Python&#x27;</span>
-s[<span class="num">0</span>:<span class="num">3</span>]  <span class=<span class="st">"cm"</span>># <span class="st">&#x27;Pyt&#x27;</span></span></pre><div class="gotcha">Slicing is exclusive of the stop index, like list slicing.</div></div></div>
+<div class="card-body"><pre>s = <span class="st">&#x27;Python&#x27;</span>
+s[<span class="num">0</span>:<span class="num">3</span>]  <span class="cm"># &#x27;Pyt&#x27;</span></pre><div class="gotcha">Slicing is exclusive of the stop index, like list slicing.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="convert a string to uppercase or lowercase .upper(), .lower() returns new strings; originals are immutable. &#x27;hello&#x27;.upper()  # &#x27;hello&#x27;
 &#x27;hello&#x27;.lower()  # &#x27;hello&#x27; string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert a string to uppercase or lowercase</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">.upper(), .lower()</div>
-<div class="card-body"><pre>&<span class=<span class="st">"cm"</span>>#x27;hello&#x27;.upper()  # <span class="st">&#x27;HELLO&#x27;</span></span>
-&<span class=<span class="st">"cm"</span>>#x27;HELLO&#x27;.lower()  # <span class="st">&#x27;hello&#x27;</span></span></pre><div class="gotcha">Returns new strings; originals are immutable.</div></div></div>
+<div class="card-body"><pre><span class="st">&#x27;hello&#x27;</span>.upper()  <span class="cm"># &#x27;HELLO&#x27;</span>
+<span class="st">&#x27;HELLO&#x27;</span>.lower()  <span class="cm"># &#x27;hello&#x27;</span></pre><div class="gotcha">Returns new strings; originals are immutable.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="concatenate strings with type conversion + operator, str() must convert numbers to strings with str() before concatenating with +. &#x27;age: &#x27; + str(25) string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Concatenate strings with type conversion</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">+ operator, str()</div>
-<div class="card-body"><pre>&<span class=<span class="st">"cm"</span>>#x27;Age: &#x27; + str(<span class="num">25</span>)</span></pre><div class="gotcha">Must convert numbers to strings with str() before concatenating with +.</div></div></div>
+<div class="card-body"><pre><span class="st">&#x27;Age: &#x27;</span> + str(<span class="num">25</span>)</pre><div class="gotcha">Must convert numbers to strings with str() before concatenating with +.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="count words in a text column .str.split().str.len() astype(str) prevents errors if column contains nan. df[&#x27;word_count&#x27;] = df[&#x27;text&#x27;].astype(str).str.split().str.len() string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Count words in a text column</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">.str.split().str.len()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;word_count<span class="st">&#x27;] = df[&#x27;</span>text&#x27;].astype(str).str.split().str.len()</span></pre><div class="gotcha">astype(str) prevents errors if column contains NaN.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;word_count&#x27;</span>] = df[<span class="st">&#x27;text&#x27;</span>].astype(str).str.split().str.len()</pre><div class="gotcha">astype(str) prevents errors if column contains NaN.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="check if a string column contains a keyword .str.contains() case=false = case-insensitive. na=false returns false for nan. df[df[&#x27;desc&#x27;].str.contains(&#x27;sale&#x27;, case=false, na=false)] string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Check if a string column contains a keyword</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">.str.contains()</div>
-<div class="card-body"><pre>df[df[&<span class=<span class="st">"cm"</span>>#x27;desc<span class="st">&#x27;].str.contains(&#x27;</span>sale&#x27;, case=<span class="kw">False</span>, na=<span class="kw">False</span>)]</span></pre><div class="gotcha">case=False = case-insensitive. na=False returns False for NaN.</div></div></div>
+<div class="card-body"><pre>df[df[<span class="st">&#x27;desc&#x27;</span>].str.contains(<span class="st">&#x27;sale&#x27;</span>, case=<span class="kw">False</span>, na=<span class="kw">False</span>)]</pre><div class="gotcha">case=False = case-insensitive. na=False returns False for NaN.</div></div></div>
 <div class="card" data-cat="String &amp; Text Operations" data-search="fill missing string descriptions with a fallback column .fillna() fillna can accept a series — fills nan using values from another column row by row. df[&#x27;desc&#x27;] = df[&#x27;desc&#x27;].fillna(df[&#x27;title&#x27;]) string &amp; text operations">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Fill missing string descriptions with a fallback column</span><span class="badge" style="background:#607d8b">String &amp; Text Operations</span></div>
 <div class="card-fn">.fillna()</div>
-<div class="card-body"><pre>df[&<span class=<span class="st">"cm"</span>>#x27;desc<span class="st">&#x27;] = df[&#x27;</span>desc<span class="st">&#x27;].fillna(df[&#x27;</span>title&#x27;])</span></pre><div class="gotcha">fillna can accept a Series — fills NaN using values from another column row by row.</div></div></div>
+<div class="card-body"><pre>df[<span class="st">&#x27;desc&#x27;</span>] = df[<span class="st">&#x27;desc&#x27;</span>].fillna(df[<span class="st">&#x27;title&#x27;</span>])</pre><div class="gotcha">fillna can accept a Series — fills NaN using values from another column row by row.</div></div></div>
 <div class="card" data-cat="Other" data-search="perform basic arithmetic in python + - * / // ** / always returns float. // rounds down (floor), so -3//2 = -2. 10 / 3   # 3.333
 10 // 3  # 3
 2 ** 3   # 8 other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Perform basic arithmetic in Python</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">+ - * / // **</div>
-<div class="card-body"><pre><span class="num">10</span> / <span class="num">3</span>   <span class=<span class="st">"cm"</span>># <span class="num">3.333</span></span>
-<span class="num">10</span> // <span class="num">3</span>  <span class=<span class="st">"cm"</span>># <span class="num">3</span></span>
-<span class="num">2</span> ** <span class="num">3</span>   <span class=<span class="st">"cm"</span>># <span class="num">8</span></span></pre><div class="gotcha">/ always returns float. // rounds DOWN (floor), so -3//2 = -2.</div></div></div>
+<div class="card-body"><pre><span class="num">10</span> / <span class="num">3</span>   <span class="cm"># 3.333</span>
+<span class="num">10</span> // <span class="num">3</span>  <span class="cm"># 3</span>
+<span class="num">2</span> ** <span class="num">3</span>   <span class="cm"># 8</span></pre><div class="gotcha">/ always returns float. // rounds DOWN (floor), so -3//2 = -2.</div></div></div>
 <div class="card" data-cat="Other" data-search="use comparison operators ==, !=, &gt;=, &lt;= == checks equality; = is assignment. common beginner mistake. x == 5
 x != 3
 x &gt;= 10 other">
@@ -941,11 +941,11 @@ else:
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Use conditional logic with if/elif/else</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">if, elif, else</div>
 <div class="card-body"><pre><span class="kw">if</span> score &gt;= <span class="num">90</span>:
-    grade = &<span class=<span class="st">"cm"</span>>#x27;A&#x27;</span>
+    grade = <span class="st">&#x27;A&#x27;</span>
 <span class="kw">elif</span> score &gt;= <span class="num">80</span>:
-    grade = &<span class=<span class="st">"cm"</span>>#x27;B&#x27;</span>
+    grade = <span class="st">&#x27;B&#x27;</span>
 <span class="kw">else</span>:
-    grade = &<span class=<span class="st">"cm"</span>>#x27;C&#x27;</span></pre><div class="gotcha">Use and/or in if statements, not &amp;/|. &amp;/| are for pandas Series.</div></div></div>
+    grade = <span class="st">&#x27;C&#x27;</span></pre><div class="gotcha">Use and/or in if statements, not &amp;/|. &amp;/| are for pandas Series.</div></div></div>
 <div class="card" data-cat="Other" data-search="create and manipulate a python list list, .append(), len(), indexing indexing starts at 0. negative indices count from end: -1 is last. nums = [1, 2, 3]
 nums.append(4)
 len(nums)  # 4
@@ -954,12 +954,12 @@ nums[-1]   # 4 other">
 <div class="card-fn">list, .append(), len(), indexing</div>
 <div class="card-body"><pre>nums = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
 nums.append(<span class="num">4</span>)
-len(nums)  <span class=<span class="st">"cm"</span>># <span class="num">4</span></span>
-nums[-<span class="num">1</span>]   <span class=<span class="st">"cm"</span>># <span class="num">4</span></span></pre><div class="gotcha">Indexing starts at 0. Negative indices count from end: -1 is last.</div></div></div>
+len(nums)  <span class="cm"># 4</span>
+nums[-<span class="num">1</span>]   <span class="cm"># 4</span></pre><div class="gotcha">Indexing starts at 0. Negative indices count from end: -1 is last.</div></div></div>
 <div class="card" data-cat="Other" data-search="combine two lists + operator + creates a new list; does not modify originals. [1,2] + [3,4]  # [1,2,3,4] other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Combine two lists</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">+ operator</div>
-<div class="card-body"><pre>[<span class="num">1</span>,<span class="num">2</span>] + [<span class="num">3</span>,<span class="num">4</span>]  <span class=<span class="st">"cm"</span>># [<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>]</span></pre><div class="gotcha">+ creates a new list; does not modify originals.</div></div></div>
+<div class="card-body"><pre>[<span class="num">1</span>,<span class="num">2</span>] + [<span class="num">3</span>,<span class="num">4</span>]  <span class="cm"># [1,2,3,4]</span></pre><div class="gotcha">+ creates a new list; does not modify originals.</div></div></div>
 <div class="card" data-cat="Other" data-search="loop through a list using range for, range(), len() range(n) produces 0..n-1. range(i,j) produces i..j-1. for i in range(len(nums)):
     print(i, nums[i]) other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Loop through a list using range</span><span class="badge" style="background:#9e9e9e">Other</span></div>
@@ -970,22 +970,22 @@ nums[-<span class="num">1</span>]   <span class=<span class="st">"cm"</span>># <
 type(&#x27;hello&#x27;)  # &lt;class &#x27;str&#x27;&gt; other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Check the type of a variable</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">type()</div>
-<div class="card-body"><pre>type(<span class="num">42</span>)       <span class=<span class="st">"cm"</span>># &lt;class <span class="st">&#x27;int&#x27;</span>&gt;</span>
-type(&<span class=<span class="st">"cm"</span>>#x27;hello&#x27;)  # &lt;class <span class="st">&#x27;str&#x27;</span>&gt;</span></pre><div class="gotcha">type() returns the class. Use isinstance() for type checking in conditions.</div></div></div>
+<div class="card-body"><pre>type(<span class="num">42</span>)       <span class="cm"># &lt;class &#x27;int&#x27;&gt;</span>
+type(<span class="st">&#x27;hello&#x27;</span>)  <span class="cm"># &lt;class &#x27;str&#x27;&gt;</span></pre><div class="gotcha">type() returns the class. Use isinstance() for type checking in conditions.</div></div></div>
 <div class="card" data-cat="Other" data-search="convert between numeric types float(), int(), str() int() truncates toward zero, does not round. int(-3.7) = -3. float(&#x27;3.14&#x27;)  # 3.14
 int(3.7)       # 3
 str(42)        # &#x27;42&#x27; other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Convert between numeric types</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">float(), int(), str()</div>
-<div class="card-body"><pre>float(&<span class=<span class="st">"cm"</span>>#x27;<span class="num">3.14</span>&#x27;)  # <span class="num">3.14</span></span>
-int(<span class="num">3.7</span>)       <span class=<span class="st">"cm"</span>># <span class="num">3</span></span>
-str(<span class="num">42</span>)        <span class=<span class="st">"cm"</span>># <span class="st">&#x27;<span class="num">42</span>&#x27;</span></span></pre><div class="gotcha">int() truncates toward zero, does not round. int(-3.7) = -3.</div></div></div>
+<div class="card-body"><pre>float(<span class="st">&#x27;3.14&#x27;</span>)  <span class="cm"># 3.14</span>
+int(<span class="num">3.7</span>)       <span class="cm"># 3</span>
+str(<span class="num">42</span>)        <span class="cm"># &#x27;42&#x27;</span></pre><div class="gotcha">int() truncates toward zero, does not round. int(-3.7) = -3.</div></div></div>
 <div class="card" data-cat="Other" data-search="define a reusable function def, return functions must be defined before called. return sends output back. def greet(name):
     return &#x27;hello &#x27; + name other">
 <div class="card-head" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="card-title">Define a reusable function</span><span class="badge" style="background:#9e9e9e">Other</span></div>
 <div class="card-fn">def, return</div>
 <div class="card-body"><pre><span class="kw">def</span> greet(name):
-    <span class="kw">return</span> &<span class=<span class="st">"cm"</span>>#x27;Hello &#x27; + name</span></pre><div class="gotcha">Functions must be defined before called. return sends output back.</div></div></div>
+    <span class="kw">return</span> <span class="st">&#x27;Hello &#x27;</span> + name</pre><div class="gotcha">Functions must be defined before called. return sends output back.</div></div></div>
 <script>
 let activeCat='all';
 function filterCat(btn,cat){

@@ -573,6 +573,8 @@ tr:nth-child(even){background:#f8f9fb}
 .go{color:#b71c1c;font-size:.85em}
 .confused{margin-top:30px}
 .confused table td:first-child{font-weight:600;white-space:nowrap;width:30%}
+.concept{background:#eef2ff;border-left:3px solid #4a6fa5;padding:6px 10px;margin:4px 0 8px;font-size:.86em;border-radius:0 4px 4px 0;line-height:1.5}
+.concept-title{font-weight:700;color:#2c3e50}
 @media print{body{padding:10px;font-size:11px}h1{font-size:1.3em}h2{font-size:1em;margin:14px 0 8px}table{font-size:.8em;page-break-inside:auto}td,th{padding:4px 6px}tr{page-break-inside:avoid}}
 </style></head><body>
 <div class="nav"><a href="repository.html">&#8594; Code Repository</a></div>
@@ -581,13 +583,20 @@ tr:nth-child(even){background:#f8f9fb}
 
 for cat in CAT_ORDER:
     rows = by_cat.get(cat, [])
-    if not rows:
+    cat_concepts = concepts_by_cat.get(cat, [])
+    if not rows and not cat_concepts:
         continue
     review_lines.append(f'<h2>{esc(cat)}</h2>')
-    review_lines.append('<table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>')
-    for e in rows:
-        review_lines.append(f'<tr><td>{esc(e["task"])}</td><td class="fn">{esc(e["fn"])}</td><td class="go">{esc(e.get("gotcha",""))}</td></tr>')
-    review_lines.append('</table>')
+    # Render concept cards for this category
+    if cat_concepts:
+        for c in cat_concepts:
+            review_lines.append(f'<div class="concept"><span class="concept-title">{esc(c["title"])}</span> &mdash; {esc(c["body"])}</div>')
+    # Render task table
+    if rows:
+        review_lines.append('<table><tr><th>Task</th><th>Key Functions</th><th>Gotcha</th></tr>')
+        for e in rows:
+            review_lines.append(f'<tr><td>{esc(e["task"])}</td><td class="fn">{esc(e["fn"])}</td><td class="go">{esc(e.get("gotcha",""))}</td></tr>')
+        review_lines.append('</table>')
 
 review_lines.append('<div class="confused"><h2>Commonly Confused Pairs</h2>')
 review_lines.append('<table><tr><th>Pair</th><th>Distinction</th></tr>')
@@ -662,15 +671,45 @@ BADGE_COLORS = {
 import re
 
 def highlight_code(code):
-    """Very basic syntax highlighting via regex."""
-    code = esc(code)
-    # order matters: comments first, then strings, then keywords
-    code = re.sub(r'(#[^\n]*)', r'<span class="cm">\1</span>', code)
-    code = re.sub(r"(&#x27;[^&#]*?&#x27;|&quot;[^&]*?&quot;|'[^']*?'|\"[^\"]*?\")", r'<span class="st">\1</span>', code)
-    kws = r'\b(import|from|for|in|if|elif|else|def|return|as|not|and|or|True|False|None|print|lambda)\b'
-    code = re.sub(kws, r'<span class="kw">\1</span>', code)
-    code = re.sub(r'\b(\d+\.?\d*)\b', r'<span class="num">\1</span>', code)
-    return code
+    """Very basic syntax highlighting via regex on raw code, then escape the text parts."""
+    tokens = []  # list of (text, css_class_or_None)
+
+    # Regex that captures comments, strings, keywords, numbers — in priority order
+    kw_list = r'import|from|for|in|if|elif|else|def|return|as|not|and|or|True|False|None|print|lambda'
+    pattern = re.compile(
+        r'(#[^\n]*)'                          # group 1: comment
+        r"|('(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\")"  # group 2: string
+        r'|(\b(?:' + kw_list + r')\b)'        # group 3: keyword
+        r'|(\b\d+\.?\d*\b)'                   # group 4: number
+    )
+
+    last = 0
+    for m in pattern.finditer(code):
+        # plain text before this match
+        if m.start() > last:
+            tokens.append((code[last:m.start()], None))
+        if m.group(1):
+            tokens.append((m.group(1), "cm"))
+        elif m.group(2):
+            tokens.append((m.group(2), "st"))
+        elif m.group(3):
+            tokens.append((m.group(3), "kw"))
+        elif m.group(4):
+            tokens.append((m.group(4), "num"))
+        last = m.end()
+    # trailing plain text
+    if last < len(code):
+        tokens.append((code[last:], None))
+
+    # Build HTML: escape each token's text, then wrap with span if needed
+    parts = []
+    for text, cls in tokens:
+        escaped = esc(text)
+        if cls:
+            parts.append(f'<span class="{cls}">{escaped}</span>')
+        else:
+            parts.append(escaped)
+    return "".join(parts)
 
 def build_card_html(e, idx):
     cat = e["cat"]
