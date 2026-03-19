@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MM5425 Practice Quiz — 150 Questions</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f6fa;color:#333;line-height:1.7;padding:20px;max-width:860px;margin:0 auto}
+.nav{text-align:center;margin-bottom:10px;font-size:14px}
+.nav a{color:#4a6fa5;text-decoration:none;font-weight:600;margin:0 10px}
+h1{text-align:center;color:#2c3e50;margin-bottom:4px;font-size:1.5em}
+.sub{text-align:center;color:#666;margin-bottom:18px;font-size:.9em}
+.controls{text-align:center;margin-bottom:18px}
+.controls button{padding:6px 16px;border:1px solid #4a6fa5;border-radius:6px;background:#fff;color:#4a6fa5;cursor:pointer;font-size:14px;margin:0 4px}
+.controls button:hover{background:#4a6fa5;color:#fff}
+.section-title{color:#2c3e50;border-bottom:2px solid #4a6fa5;padding-bottom:4px;margin:28px 0 14px;font-size:1.15em}
+.q{background:#fff;border:1px solid #e0e0e0;border-radius:8px;margin-bottom:12px;overflow:hidden}
+.q-head{padding:10px 14px;cursor:pointer;display:flex;align-items:flex-start;gap:8px}
+.q-head:hover{background:#f0f4f8}
+.q-num{font-weight:700;color:#4a6fa5;min-width:32px;flex-shrink:0}
+.q-text{flex:1}
+.q-badge{font-size:11px;padding:2px 8px;border-radius:10px;color:#fff;flex-shrink:0;margin-top:2px}
+.ans{display:none;padding:10px 14px 14px 54px;border-top:1px solid #eee;background:#f9fdf9}
+.ans.show{display:block}
+.ans-label{font-weight:700;color:#2e7d32;font-size:.85em;margin-bottom:2px}
+code{background:#eef;padding:1px 5px;border-radius:3px;font-family:Consolas,'SFMono-Regular',monospace;font-size:.9em}
+pre{background:#1e1e2e;color:#cdd6f4;padding:10px;border-radius:6px;overflow-x:auto;font-size:13px;margin:6px 0}
+@media print{.ans{display:block!important}.controls,.nav{display:none}}
+</style>
+</head>
+<body>
+<div class="nav">
+<a href="repository.html">Code Repository</a>
+<a href="review.html">Quick Review</a>
+</div>
+<h1>MM5425 Practice Quiz</h1>
+<p class="sub">150 questions &mdash; click any question to reveal the answer</p>
+<div class="controls">
+<button onclick="document.querySelectorAll('.ans').forEach(a=>a.classList.add('show'))">Show All Answers</button>
+<button onclick="document.querySelectorAll('.ans').forEach(a=>a.classList.remove('show'))">Hide All Answers</button>
+</div>
+
+<script>
+function tog(el){el.parentElement.querySelector('.ans').classList.toggle('show')}
+</script>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Python Basics &amp; Data Types (Q1–Q12)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q1</span><span class="q-text">What does <code>10 / 3</code> return in Python? What about <code>10 // 3</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>10 / 3</code> returns <code>3.333...</code> (a float). <code>10 // 3</code> returns <code>3</code> (integer/floor division — it rounds down).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q2</span><span class="q-text">You try to run <code>"Revenue: " + 5000</code> and get an error. Why, and how do you fix it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Python can't concatenate a string with a number directly. Fix: <code>"Revenue: " + str(5000)</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q3</span><span class="q-text">What is the difference between <code>=</code> and <code>==</code> in Python?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>=</code> is assignment (stores a value). <code>==</code> is comparison (checks if two values are equal). A very common beginner mistake.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q4</span><span class="q-text">You have a list <code>sales = [200, 180, 220]</code>. How do you add a new week's sales of 210 to the end?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>sales.append(210)</code>. The list becomes <code>[200, 180, 220, 210]</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q5</span><span class="q-text">How do you get the last element of a list without knowing its length?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use negative indexing: <code>sales[-1]</code>. In Python, <code>-1</code> always refers to the last element.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q6</span><span class="q-text">What does <code>range(5)</code> produce?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>The numbers 0, 1, 2, 3, 4 (five values starting from 0). The end value 5 is excluded.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q7</span><span class="q-text">What does <code>"hello world".split()</code> return?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>['hello', 'world']</code> — it splits the string on whitespace into a list of words.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q8</span><span class="q-text">What does <code>int(3.7)</code> return? Does it round?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It returns <code>3</code>. It does not round — it truncates (cuts off the decimal part) toward zero.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q9</span><span class="q-text">In an <code>if</code> statement, should you use <code>and</code>/<code>or</code> or <code>&amp;</code>/<code>|</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use <code>and</code>/<code>or</code> in regular Python if/else statements. Use <code>&amp;</code>/<code>|</code> only for element-wise pandas Series operations (and wrap each condition in parentheses).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q10</span><span class="q-text">Why do we write functions with <code>def</code>? What's the benefit?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Functions let you package reusable code. Instead of copying the same block multiple times, you define it once and call it whenever needed. This reduces errors and makes code easier to maintain.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q11</span><span class="q-text">What does <code>type(42)</code> return?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>&lt;class 'int'&gt;</code> — it tells you the variable is an integer.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q12</span><span class="q-text">You write <code>s = "Analytics"</code>. What does <code>s[0:4]</code> give you?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>"Anal"</code> — characters at positions 0, 1, 2, 3. The stop index (4) is excluded, just like list slicing.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Loading &amp; Inspecting Data (Q13–Q25)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q13</span><span class="q-text">Your manager emails you a file called <code>customers.csv</code>. What pandas function loads it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>pd.read_csv('customers.csv')</code>. For Excel files (.xlsx), use <code>pd.read_excel()</code> instead.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q14</span><span class="q-text">You loaded a dataset and want to quickly see the first few rows. What do you type?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.head()</code> — shows the first 5 rows by default. Use <code>df.head(10)</code> to see 10.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q15</span><span class="q-text">You want to know how many rows and columns your dataset has. What do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.shape</code> — returns something like <code>(5000, 14)</code> meaning 5000 rows and 14 columns. Note: no parentheses — it's an attribute, not a method.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q16</span><span class="q-text">What is the difference between <code>df.info()</code> and <code>df.describe()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.info()</code> shows column names, data types, and non-null counts (good for spotting missing values). <code>df.describe()</code> shows numeric summary statistics like mean, std, min, max, and quartiles.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q17</span><span class="q-text">You run <code>df.describe()</code> but don't see your <code>Gender</code> column. Why?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>describe()</code> only summarizes numeric columns by default. For text/object columns, use <code>df[['Gender']].describe()</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q18</span><span class="q-text">How do you check how many missing values each column has?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.isnull().sum()</code> — shows the count of NaN values per column. <code>isnull()</code> and <code>isna()</code> are identical.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q19</span><span class="q-text">What does <code>df.columns</code> return?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>An Index object listing all column names. Use <code>list(df.columns)</code> if you need a plain Python list.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q20</span><span class="q-text">Before building any model, what are the first things you should check about your dataset?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use <code>df.shape</code> for dimensions, <code>df.info()</code> for types and missing values, <code>df.describe()</code> for numeric summaries, <code>value_counts()</code> for categorical distributions, and <code>isnull().sum()</code> for missing counts. Plot histograms to see distributions.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q21</span><span class="q-text">You want to see how many unique product categories exist in your data. What do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['Product line'].nunique()</code> for the count, or <code>df['Product line'].unique()</code> to see the actual values.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q22</span><span class="q-text">What is the difference between <code>value_counts()</code> and <code>nunique()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>value_counts()</code> returns the count for each unique value (a full breakdown). <code>nunique()</code> returns just a single number — how many distinct values there are.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q23</span><span class="q-text">You want to see the bottom 5 rows of your DataFrame. What do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.tail(5)</code> or just <code>df.tail()</code> (default is 5).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q24</span><span class="q-text">Your dataset has a column called <code>Rating</code>. You want to see the average, min, max, and quartiles for just that column. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['Rating'].describe()</code> — gives count, mean, std, min, 25%, 50% (median), 75%, and max.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q25</span><span class="q-text">Why is it important to look at the median (50%) and not just the mean when exploring data?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>The mean can be pulled by extreme values (outliers). The median shows the "typical" value — 50% of data is above it and 50% below. If mean and median are very different, the data is likely skewed.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Data Cleaning &amp; Preprocessing (Q26–Q45)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q26</span><span class="q-text">You notice that the <code>Income</code> column has 50 missing values. Your manager says "just fill them with something reasonable." What would you do?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use <code>df['Income'].fillna(df['Income'].mean(), inplace=True)</code> to replace missing values with the column average. If the data is skewed, the median is a safer choice: <code>df['Income'].fillna(df['Income'].median(), inplace=True)</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q27</span><span class="q-text">What is the difference between <code>fillna()</code> and <code>dropna()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>fillna()</code> replaces missing values with a value you choose (mean, median, zero, etc.). <code>dropna()</code> removes entire rows (or columns) that contain missing values. Use fillna when you want to keep all your data; use dropna when missing rows are few and not worth guessing.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q28</span><span class="q-text">You want to remove the <code>ID</code> column because it has no analytical value. How do you drop it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df = df.drop('ID', axis=1)</code>. Remember: <code>axis=1</code> means columns, <code>axis=0</code> means rows.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q29</span><span class="q-text">A colleague says "I used <code>fillna</code> but the DataFrame still has NaN values." What did they probably forget?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>They probably forgot <code>inplace=True</code>. Without it, <code>fillna()</code> returns a new DataFrame and the original stays unchanged. Either use <code>inplace=True</code> or reassign: <code>df['col'] = df['col'].fillna(0)</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q30</span><span class="q-text">Your dataset has a <code>Gender</code> column with values "Male" and "Female". A machine learning model needs numbers. How do you convert it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>For a two-value column, use <code>df['Gender'] = df['Gender'].map({'Male': 1, 'Female': 0})</code>. For columns with many categories, use <code>pd.get_dummies()</code> to create one-hot encoded columns.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q31</span><span class="q-text">What does one-hot encoding do, and when would you use it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It converts a categorical column into multiple 0/1 columns — one per category. For example, a "Color" column with Red/Blue/Green becomes three columns: Color_Red, Color_Blue, Color_Green. Use it when a column has more than two categories and you need numeric input for a model.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q32</span><span class="q-text">You run <code>pd.get_dummies(df, columns=['City'])</code> and now have 50 new columns. Is there a way to reduce that?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use <code>drop_first=True</code>: <code>pd.get_dummies(df, columns=['City'], drop_first=True)</code>. This drops one category per column (it can be inferred from the others), reducing columns by one and avoiding multicollinearity.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q33</span><span class="q-text">You have a <code>price</code> column that should be numeric, but <code>df.info()</code> shows it as "object" (text). How do you fix it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['price'] = pd.to_numeric(df['price'], errors='coerce')</code>. The <code>errors='coerce'</code> turns any unparseable text values into NaN instead of crashing.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q34</span><span class="q-text">Your dataset has a <code>Date</code> column stored as text. How do you convert it so you can extract the month?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['Date'] = pd.to_datetime(df['Date'])</code>, then <code>df['Month'] = df['Date'].dt.month</code>. The <code>.dt</code> accessor gives you year, month, day, weekday, hour, etc.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q35</span><span class="q-text">You find that the <code>Age</code> column has values like 200 and -5. How would you handle these?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>These are out-of-range values. You can replace them with the column mean: <code>df.loc[(df['Age'] < 0) | (df['Age'] > 120), 'Age'] = df['Age'].mean()</code>. Or use <code>.clip(0, 120)</code> to cap values at a valid range.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q36</span><span class="q-text">What does <code>axis=0</code> vs <code>axis=1</code> mean in pandas?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>axis=0</code> means "along rows" (vertically — the default). <code>axis=1</code> means "along columns" (horizontally). So <code>df.drop('col', axis=1)</code> drops a column, while <code>df.drop(0, axis=0)</code> drops a row.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q37</span><span class="q-text">Why would you standardize (z-score normalize) your data before building a model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Some models (like KNN and K-means) use distances. If one feature ranges 0–1000 and another 0–1, the large-scale feature dominates. Standardizing puts all features on the same scale (mean=0, std=1) so they contribute equally.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q38</span><span class="q-text">You standardize your training data with <code>StandardScaler</code>. Should you fit the scaler again on the test data?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>No. Use <code>scaler.fit_transform(X_train)</code> on training data, then <code>scaler.transform(X_test)</code> on test data. Fitting on test data would leak information and give unrealistic results.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q39</span><span class="q-text">Your <code>Revenue</code> column is heavily right-skewed (a few very large values). What transformation can help?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Apply a log transformation: <code>df['Revenue_log'] = np.log1p(df['Revenue'])</code>. <code>log1p</code> means log(1+x), which is safe when values are zero. This compresses large values and makes the distribution more bell-shaped.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q40</span><span class="q-text">You want to create a new column that flags customers who spent more than $500. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['HighSpender'] = np.where(df['Spending'] > 500, 1, 0)</code>. This creates a binary 0/1 column based on a condition.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q41</span><span class="q-text">What is feature engineering? Give a simple example.</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Feature engineering means creating new columns from existing data to help a model. Example: if you have <code>purchases</code> and <code>avg_order_value</code>, you could create <code>total_spend = purchases * avg_order_value</code>. The new feature might be more predictive than either original column alone.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q42</span><span class="q-text">How do you quickly identify which columns are categorical (text) and which are numeric?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.select_dtypes(include=['object']).columns</code> for text columns, and <code>df.select_dtypes(include=['number']).columns</code> for numeric ones.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q43</span><span class="q-text">You have a boolean column <code>is_member</code> with True/False values. How do you convert it to 1/0?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['is_member'] = df['is_member'].astype(int)</code>. True becomes 1, False becomes 0. Make sure there are no NaN values first — they'll cause an error.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q44</span><span class="q-text">You want to fill all missing numeric values across the entire DataFrame at once. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df = df.fillna(df.mean(numeric_only=True))</code>. This fills each numeric column's NaN values with that column's mean. <code>numeric_only=True</code> skips text columns.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q45</span><span class="q-text">How do you check if your numeric columns are skewed?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df[num_cols].skew()</code> — this returns the skewness for each column. Values close to 0 are roughly symmetric. Absolute skewness greater than 3 indicates strong skew, and you might want to apply a log transform.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Data Selection &amp; Filtering (Q46–Q57)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q46</span><span class="q-text">You want to see only the <code>Name</code> and <code>Salary</code> columns from your DataFrame. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df[['Name', 'Salary']]</code>. Use double brackets <code>[[ ]]</code> to select multiple columns — this returns a DataFrame. Single brackets return a Series.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q47</span><span class="q-text">What is the difference between <code>loc</code> and <code>iloc</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>loc</code> selects by label names (and the end index is inclusive). <code>iloc</code> selects by integer position (and the end index is exclusive, like Python slicing). Example: <code>df.loc[0:2]</code> returns 3 rows; <code>df.iloc[0:2]</code> returns 2 rows.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q48</span><span class="q-text">Your manager asks: "Show me all transactions from Branch A." How do you filter?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.loc[df['Branch'] == 'A']</code>. This returns only the rows where the Branch column equals 'A'.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q49</span><span class="q-text">You need transactions from Branch A where quantity is greater than 5. How do you combine two conditions?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.loc[(df['Branch'] == 'A') & (df['Qty'] > 5)]</code>. Each condition must be in parentheses. Use <code>&</code> for AND and <code>|</code> for OR — not Python's <code>and</code>/<code>or</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q50</span><span class="q-text">You filter your DataFrame and then try to modify the result, but get a <code>SettingWithCopyWarning</code>. Why?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>The filtered DataFrame shares memory with the original. Add <code>.copy()</code> to create an independent copy: <code>subset = df.loc[df['City'] == 'London'].copy()</code>. Now you can safely modify <code>subset</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q51</span><span class="q-text">Before building a model, you need to separate features (X) from the target (y). How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>X = df.drop('Target', axis=1)</code> and <code>y = df['Target']</code>. Make sure X does not contain the target column — that would be data leakage.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q52</span><span class="q-text">You want to select all columns that start with "genre_". How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>genre_cols = [c for c in df.columns if c.startswith('genre_')]</code>. This is a list comprehension that filters column names by prefix.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q53</span><span class="q-text">You have retail data with cancelled orders (invoice numbers starting with "C"). How do you remove them?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df = df[~df['InvoiceNo'].astype(str).str.startswith('C')]</code>. The <code>~</code> is the NOT operator — it keeps rows that do NOT start with 'C'.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q54</span><span class="q-text">What does the <code>~</code> operator do in a pandas filter?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It means NOT — it inverts the boolean condition. <code>df[~condition]</code> returns rows where the condition is False. Useful for excluding rows that match a pattern.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q55</span><span class="q-text">You want to check if a text column contains the word "sale" (case-insensitive). How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df[df['Description'].str.contains('sale', case=False, na=False)]</code>. <code>case=False</code> makes it case-insensitive. <code>na=False</code> treats NaN values as False instead of raising an error.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q56</span><span class="q-text">You want to compare Member vs Normal customers. How do you create two separate DataFrames?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>members = df.loc[df['Customer type'] == 'Member']</code> and <code>normals = df.loc[df['Customer type'] == 'Normal']</code>. Then compare using <code>.describe()</code> on each.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q57</span><span class="q-text">What happens if you write <code>df['Branch'] = 'A'</code> instead of <code>df['Branch'] == 'A'</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>=</code> is assignment — it would overwrite the entire Branch column with the value 'A'. <code>==</code> is comparison — it returns True/False for each row. This is a very common beginner mistake.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Aggregation &amp; Grouping (Q58–Q68)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q58</span><span class="q-text">Your manager asks: "How many customers are in each city?" What do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['City'].value_counts()</code>. This counts how many times each city appears, sorted from most to least frequent.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q59</span><span class="q-text">Instead of raw counts, you want to see what percentage of customers are in each city. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['City'].value_counts(normalize=True)</code>. Adding <code>normalize=True</code> converts counts to proportions that sum to 1.0.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q60</span><span class="q-text">What is the difference between <code>value_counts()</code> and <code>nunique()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>value_counts()</code> gives you a full breakdown — how many times each value appears. <code>nunique()</code> gives you just one number — how many distinct values exist. Think of it as the detailed list vs the summary count.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q61</span><span class="q-text">You want to compute the average and maximum sales for each product category. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.groupby('Category')['Sales'].agg(['mean', 'max'])</code>. The <code>agg()</code> method lets you apply multiple functions at once.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q62</span><span class="q-text">What is the difference between <code>groupby().agg()</code> and <code>groupby().transform()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>agg()</code> collapses each group into one summary row (fewer rows). <code>transform()</code> broadcasts the group result back to every original row (same number of rows). Use transform when you want to add a group statistic as a new column.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q63</span><span class="q-text">You want to add a column showing how many songs each artist has in the dataset. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['artist_songs'] = df.groupby('artist')['track_id'].transform('count')</code>. Transform broadcasts the count back to every row for that artist.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q64</span><span class="q-text">You want to see the min and max of Age and Purchases side by side. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df[['Age', 'Purchases']].agg(['min', 'max'])</code>. This produces a table with min and max for each column.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q65</span><span class="q-text">After clustering your data, you want to see the average feature values per cluster. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.groupby('cluster')[features].mean().round(2)</code>. This creates a "cluster profile" showing what makes each cluster different.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q66</span><span class="q-text">You want to compare the customer type distribution between Branch A and Branch B. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Compute <code>value_counts(normalize=True)</code> for each branch separately, then combine with <code>pd.concat([sA, sB], axis=1)</code>. This gives you a side-by-side comparison of proportions.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q67</span><span class="q-text">What does <code>groupby().cumcount()</code> do?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It gives a running count within each group, starting from 0. For example, if an artist has 5 songs, they get numbered 0, 1, 2, 3, 4. Useful for creating a "song number" or "visit number" column.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q68</span><span class="q-text">You run <code>value_counts()</code> but NaN values are not shown. How do you include them?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['col'].value_counts(dropna=False)</code>. By default, NaN is excluded. Adding <code>dropna=False</code> includes it in the count.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Visualization (Q69–Q80)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q69</span><span class="q-text">You want to quickly see the distribution of every numeric column in your dataset. What's the fastest way?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df.hist(figsize=(20, 25))</code> followed by <code>plt.show()</code>. This creates one histogram per numeric column in a grid layout.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q70</span><span class="q-text">Your manager asks for a bar chart showing how many customers are Male vs Female. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>df['Gender'].value_counts().plot(kind='bar')</code>. Use <code>kind='barh'</code> for horizontal bars if labels are long.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q71</span><span class="q-text">You want to see if there's a relationship between Quantity and Gross Income. What chart do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A scatter plot: <code>plt.scatter(df['Quantity'], df['gross income'])</code>. Scatter plots show relationships between two numeric variables. But remember — correlation does not prove causation.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q72</span><span class="q-text">What does <code>sns.regplot()</code> add compared to a regular scatter plot?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It adds a linear regression trend line and a 95% confidence band. This helps you visually assess whether there's a linear relationship and how strong it is.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q73</span><span class="q-text">You want to see which numeric columns are correlated with each other. What visualization do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A correlation heatmap: <code>sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')</code>. Values close to +1 or -1 indicate strong correlation. <code>annot=True</code> prints the numbers on the heatmap.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q74</span><span class="q-text">After building a classifier, you want to see where it makes mistakes. What do you plot?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A confusion matrix: <code>ConfusionMatrixDisplay.from_predictions(y_test, y_pred)</code>. It shows how many predictions were correct (diagonal) and where the model confused one class for another (off-diagonal).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q75</span><span class="q-text">What does an ROC curve show, and what does AUC mean?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>An ROC curve plots the True Positive Rate vs False Positive Rate at different thresholds. AUC (Area Under the Curve) summarizes it: 1.0 = perfect, 0.5 = random guessing. Higher AUC = better at ranking positives above negatives.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q76</span><span class="q-text">You built a regression model and want to see how close predictions are to actual values. What do you plot?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A predicted vs actual scatter plot. Points on the diagonal line mean perfect predictions. The more spread out the points, the larger the errors. Use <code>plt.scatter(y_test, y_pred)</code> and draw a diagonal reference line.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q77</span><span class="q-text">You're plotting training error and test error as you increase model complexity. What pattern indicates overfitting?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>When training error keeps going down but test error starts going up — the gap between them widens. This means the model is memorizing training data instead of learning general patterns.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q78</span><span class="q-text">What is the "elbow method" in K-means clustering?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Plot the sum of squared distances (SSD/inertia) for different values of K. The SSD always decreases as K increases. Look for the "elbow" — the point where adding more clusters gives diminishing returns. That's your optimal K.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q79</span><span class="q-text">You want to color scatter plot points by their cluster assignment. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>sns.scatterplot(data=df, x='feature1', y='feature2', hue='cluster')</code>. The <code>hue=</code> parameter colors each point by its cluster label.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q80</span><span class="q-text">After training a decision tree, you want to see which features matter most. How do you visualize this?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Plot feature importances as a bar chart: create a Series from <code>model.feature_importances_</code> with column names as index, sort it, and call <code>.plot(kind='bar')</code>. Higher bars = more important for the tree's decisions.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Supervised vs Unsupervised &amp; General ML Concepts (Q81–Q95)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q81</span><span class="q-text">Your manager asks: "What's the difference between supervised and unsupervised learning?" How do you explain it simply?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Supervised learning has a target variable (something you're trying to predict) — like predicting whether a customer will buy. Unsupervised learning has no target — it discovers patterns on its own, like grouping similar customers together.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q82</span><span class="q-text">Which of these are supervised: Decision Trees, K-Means, Logistic Regression, Association Rules, KNN?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Supervised: Decision Trees, Logistic Regression, KNN (they all need a target variable to learn from). Unsupervised: K-Means (clustering) and Association Rules (finding item co-occurrences).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q83</span><span class="q-text">Why do we split data into training and testing sets?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>To estimate how well the model will perform on new, unseen data. If you evaluate on the same data you trained on, you get an overly optimistic score. The test set simulates "real world" data the model has never seen.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q84</span><span class="q-text">What does <code>test_size=0.2</code> mean in <code>train_test_split()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It means 20% of the data goes to the test set and 80% to the training set. A common split. <code>random_state=42</code> ensures you get the same split every time you run the code.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q85</span><span class="q-text">What does <code>stratify=y</code> do in <code>train_test_split()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It ensures both the training and test sets have the same proportion of each class. Essential when classes are imbalanced — for example, if only 10% of customers churned, stratify ensures both sets have roughly 10% churners.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q86</span><span class="q-text">What is overfitting, and how can you tell it's happening?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Overfitting means the model memorized the training data (including noise) instead of learning general patterns. Sign: very high accuracy on training data but much lower accuracy on test data. The gap between train and test performance is the red flag.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q87</span><span class="q-text">What is cross-validation, and why is it better than a single train/test split?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Cross-validation (e.g., 5-fold) splits data into 5 parts, trains on 4 and tests on 1, rotating 5 times. Every data point gets tested once. It gives a more reliable performance estimate than a single random split.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q88</span><span class="q-text">What is the difference between <code>predict()</code> and <code>predict_proba()</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>predict()</code> gives you the final class label (e.g., 0 or 1). <code>predict_proba()</code> gives you the probability for each class (e.g., 30% chance of class 0, 70% chance of class 1). You need probabilities for ROC curves and AUC.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q89</span><span class="q-text">Your model has 95% accuracy but your dataset is 95% "No" and 5% "Yes". Is the model good?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Not necessarily. A model that always predicts "No" would also get 95% accuracy. With imbalanced data, look at precision, recall, F1-score, and AUC instead of just accuracy.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q90</span><span class="q-text">In a confusion matrix, what are True Positives, False Positives, True Negatives, and False Negatives?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>TP = correctly predicted positive. FP = predicted positive but actually negative (false alarm). TN = correctly predicted negative. FN = predicted negative but actually positive (missed case). Rows = actual, columns = predicted.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q91</span><span class="q-text">What is precision, and when does it matter most?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Precision = TP / (TP + FP) — of all the items you predicted as positive, how many actually were? It matters when false positives are costly. Example: flagging legitimate transactions as fraud (annoying customers).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q92</span><span class="q-text">What is recall, and when does it matter most?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Recall = TP / (TP + FN) — of all the actual positives, how many did you catch? It matters when false negatives are costly. Example: missing a disease diagnosis (patient doesn't get treatment).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q93</span><span class="q-text">What is the F1 score?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>F1 is the harmonic mean of precision and recall. It balances both metrics into a single number. F1 = 1.0 is perfect. Use it when you care about both false positives and false negatives equally.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q94</span><span class="q-text">What is the difference between MAE and RMSE for regression?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>MAE (Mean Absolute Error) treats all errors equally. RMSE (Root Mean Squared Error) penalizes large errors more because it squares them first. If a few big mistakes are worse than many small ones, RMSE is more informative.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q95</span><span class="q-text">What does R-squared (R²) tell you about a regression model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>R² measures how much of the variance in the target your model explains. R²=1 means perfect predictions. R²=0 means the model is no better than just predicting the average. R² can even be negative if the model is worse than the mean.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Decision Trees (Q96–Q108)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q96</span><span class="q-text">In simple terms, how does a decision tree make predictions?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It asks a series of yes/no questions about the features (e.g., "Is Age > 42?"), splitting the data at each step. It keeps splitting until it reaches a final prediction (a leaf node). Think of it like a flowchart.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q97</span><span class="q-text">What is the difference between a Decision Tree Classifier and a Decision Tree Regressor?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A Classifier predicts categories (e.g., Yes/No, churned/not churned) and is evaluated with accuracy, F1, AUC. A Regressor predicts continuous numbers (e.g., price, revenue) and is evaluated with MAE, RMSE, R².</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q98</span><span class="q-text">What does <code>criterion='entropy'</code> vs <code>criterion='gini'</code> mean when training a decision tree?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Both measure how "impure" a node is. Entropy uses information gain; Gini uses Gini impurity. They usually produce similar trees. Gini is the default and slightly faster to compute.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q99</span><span class="q-text">Your decision tree has 500 nodes and gets 99% training accuracy but only 70% test accuracy. What's happening?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>The tree is overfitting — it's too complex and has memorized the training data. You need to simplify it using pruning: set <code>max_depth</code>, increase <code>min_samples_leaf</code>, or increase <code>min_samples_split</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q100</span><span class="q-text">What is pre-pruning in decision trees? Name three parameters you can set.</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Pre-pruning limits the tree's growth during training. Key parameters: <code>max_depth</code> (maximum tree depth), <code>min_samples_split</code> (minimum samples to split a node), <code>min_samples_leaf</code> (minimum samples in a leaf). Smaller depth and larger min_samples = simpler tree.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q101</span><span class="q-text">How do you read a decision tree node when you visualize it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Each node shows: (1) the split rule (e.g., Age ≤ 42.5), (2) samples = percentage of data reaching this node, (3) value = class distribution, (4) class = the majority prediction. If <code>proportion=True</code>, value shows proportions instead of counts.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q102</span><span class="q-text">What does <code>feature_importances_</code> tell you after training a decision tree?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It shows how much each feature contributed to the tree's decisions. Values sum to 1.0. Higher importance = the feature was used more often and effectively for splitting. It helps you understand which variables matter most.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q103</span><span class="q-text">What is GridSearchCV, and why would you use it with a decision tree?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>GridSearchCV tries every combination of hyperparameters you specify (e.g., max_depth=[3,5,8], min_samples_leaf=[1,5,10]) using cross-validation. It finds the best combination automatically instead of you guessing.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q104</span><span class="q-text">After running GridSearchCV, how do you get the best model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>grid.best_estimator_</code> gives you the model with the best parameters, already refit on the full training data. <code>grid.best_params_</code> shows which parameter values won.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q105</span><span class="q-text">Should you run GridSearchCV on the full dataset or just the training set?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Only on the training set. The test set should be used once at the very end to evaluate the best model. If you include test data in tuning, you're leaking information and your results won't reflect real-world performance.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q106</span><span class="q-text">You want to compare how a decision tree performs at different max_depth values. How do you do this manually?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Loop through depth values, train a tree at each depth, and record both training and test accuracy. Then plot them. Where test accuracy peaks (before it starts dropping) is the sweet spot.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q107</span><span class="q-text">What does <code>classification_report()</code> show you?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It prints precision, recall, and F1-score for each class, plus macro and weighted averages. It's a quick one-stop summary of how well your classifier performs on every class.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q108</span><span class="q-text">You trained a decision tree and want to check how many nodes and how deep it is. How?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>dt.tree_.node_count</code> for the number of nodes and <code>dt.tree_.max_depth</code> for the depth. These are accessed via the <code>.tree_</code> attribute of the fitted model.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Linear &amp; Logistic Regression (Q109–Q118)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q109</span><span class="q-text">In plain English, what does linear regression do?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It draws the best-fit straight line through your data to predict a continuous number. For example, predicting house price based on square footage. It minimizes the sum of squared errors between predictions and actual values.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q110</span><span class="q-text">What is the difference between linear regression and logistic regression?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Linear regression predicts a continuous number (e.g., price, revenue). Logistic regression predicts a probability of belonging to a class (e.g., will the customer buy? Yes/No). Despite the name, logistic regression is a classification method.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q111</span><span class="q-text">After training a linear regression model, how do you interpret the coefficients?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Each coefficient tells you how much the prediction changes when that feature increases by 1 unit (holding others constant). Positive coefficient = increases prediction. Negative = decreases. But coefficients are only comparable if features are standardized.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q112</span><span class="q-text">Does linear regression have hyperparameters to tune?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Basic linear regression (OLS) has no hyperparameters — it just finds the line that minimizes squared error. That's one of its advantages: simplicity. Regularized versions (Ridge, Lasso) do have a tuning parameter.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q113</span><span class="q-text">You train a logistic regression model and get a convergence warning. What should you do?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Increase <code>max_iter</code>: <code>LogisticRegression(max_iter=5000)</code>. The default (100) may not be enough for the algorithm to find the optimal solution, especially with many features.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q114</span><span class="q-text">How does logistic regression decide whether to predict class 0 or class 1?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It computes a probability. If the probability of class 1 is ≥ 0.5, it predicts 1; otherwise 0. You can get the actual probabilities with <code>model.predict_proba(X)[:, 1]</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q115</span><span class="q-text">You want to compare the coefficients of a logistic regression model. Why should you standardize features first?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>If features are on different scales (e.g., age 0–100 vs income 0–100000), the coefficients reflect the scale, not the importance. After standardization, all features have mean=0 and std=1, so coefficients become directly comparable.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q116</span><span class="q-text">You're predicting house prices. Should you use linear regression or logistic regression?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Linear regression — because house price is a continuous number. Logistic regression is for classification (predicting categories like Yes/No). Use MAE, RMSE, and R² to evaluate the linear regression model.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q117</span><span class="q-text">You're predicting whether a customer will accept a personal loan offer. Which model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Logistic regression (or any classifier like decision tree, KNN, naive bayes) — because the target is binary (Yes/No). Evaluate with accuracy, precision, recall, F1, and AUC.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q118</span><span class="q-text">Can linear regression capture non-linear relationships?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>By itself, no — it fits a straight line. But you can add polynomial or interaction features (e.g., <code>x²</code>, <code>x1 * x2</code>) to capture curves. Linear regression is "linear in parameters" — the features themselves can be transformed.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Naive Bayes (Q119–Q124)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q119</span><span class="q-text">In simple terms, how does Naive Bayes work?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It learns the distribution of each feature for each class (e.g., what does "Income" look like for customers who bought vs didn't buy). For a new data point, it combines the evidence from all features to compute the probability of each class. The "naive" part: it assumes features are independent of each other.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q120</span><span class="q-text">Why is it called "naive"?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Because it assumes all features are independent given the class — meaning knowing one feature tells you nothing about another. This is rarely true in real data (e.g., income and education are correlated), but the model often works surprisingly well anyway.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q121</span><span class="q-text">Should you standardize or transform features before using Gaussian Naive Bayes?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Yes. Gaussian Naive Bayes assumes features follow a bell-shaped (normal) distribution. If your data is heavily skewed, apply a log transform (<code>np.log1p()</code>) first. Standardization also helps.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q122</span><span class="q-text">How do you interpret which features are most important in a Naive Bayes model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Compare the mean of each feature between classes: <code>df.groupby('target')[features].mean()</code>. Features where the means differ a lot between classes are the most discriminating — they help the model tell classes apart.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q123</span><span class="q-text">What does <code>nb.class_prior_</code> show after training a Naive Bayes model?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It shows the prior probability of each class based on the training data. For example, if 70% of training samples are class 0 and 30% are class 1, the priors are [0.7, 0.3]. The model uses these as a starting point before looking at features.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q124</span><span class="q-text">What is the difference between Naive Bayes and Logistic Regression?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Naive Bayes learns the distribution of features per class and combines them (generative). Logistic Regression directly models the decision boundary between classes (discriminative). NB assumes feature independence; LR does not. NB can work well with small data; LR often better with large data.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">Association Rules (Q125–Q135)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q125</span><span class="q-text">A supermarket wants to know which products are frequently bought together. What technique do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Association rule mining. You find frequent itemsets (products that appear together often) and then generate rules like "customers who buy bread and butter also tend to buy milk." This is unsupervised — no target variable.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q126</span><span class="q-text">What do support, confidence, and lift mean in association rules?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Support = how often the itemset appears in all transactions. Confidence = P(B|A) — if someone buys A, how likely they also buy B. Lift = observed co-occurrence / expected if independent. Lift > 1 means positive association; lift = 1 means independent.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q127</span><span class="q-text">A rule has high confidence (0.9) but lift close to 1.0. Should you trust it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Be cautious. High confidence can be misleading if the consequent (the "then" item) is very popular. Lift close to 1 means the items are essentially independent — buying A doesn't really increase the chance of buying B. Always check lift.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q128</span><span class="q-text">What is the Apriori algorithm, and what is its key insight?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Apriori finds frequent itemsets efficiently. Its key insight: if an itemset is NOT frequent, then no superset of it can be frequent either. This lets it prune the search space dramatically instead of checking every possible combination.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q129</span><span class="q-text">Before running the Apriori algorithm, what format does your data need to be in?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>A boolean (True/False) or binary (0/1) "basket matrix" where rows are transactions and columns are products. A 1 means the product was in that transaction. Use <code>TransactionEncoder</code> or <code>groupby().unstack()</code> to create it.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q130</span><span class="q-text">What does <code>min_support=0.02</code> mean when running Apriori?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Only itemsets that appear in at least 2% of all transactions will be kept. Too low = slow computation and too many results. Too high = you miss less common but interesting patterns. It's a trade-off.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q131</span><span class="q-text">You generated association rules and want to filter for meaningful ones. What conditions do you apply?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Filter for <code>lift > 1</code> (positive association) and <code>leverage > 0</code> (co-occurrence exceeds expectation). You can also set a minimum confidence threshold. Example: <code>rules[(rules['lift'] > 1) & (rules['leverage'] > 0)]</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q132</span><span class="q-text">A customer has items A and B in their cart. How do you find product recommendations using association rules?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Filter rules where the antecedent is a subset of the cart: <code>cart = frozenset(['A', 'B'])</code>, then <code>rules[rules['antecedents'].apply(lambda x: x.issubset(cart))]</code>. Sort by lift to get the strongest recommendations.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q133</span><span class="q-text">Why are antecedents and consequents stored as <code>frozenset</code> objects?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Because itemsets can contain multiple items and need to be hashable (usable as dictionary keys or in sets). A frozenset is an immutable set. To query a single item, use <code>frozenset(['item_name'])</code>.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q134</span><span class="q-text">How would you manually calculate the confidence of the rule {A} → {B}?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Confidence = Support(A and B) / Support(A). Count how many transactions contain both A and B, divide by how many contain A. Example: if A appears in 100 transactions and A+B appear together in 40, confidence = 40/100 = 0.4.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q135</span><span class="q-text">Is association rule mining supervised or unsupervised? Why?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Unsupervised. There is no target variable to predict. You're simply counting co-occurrences in transaction data to discover patterns. No training/test split is needed.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="section-title">K-Means Clustering &amp; KNN (Q136–Q150)</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q136</span><span class="q-text">Your marketing team wants to segment customers into groups based on their behavior. What technique do you use?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>K-Means clustering. It's an unsupervised method that groups similar data points into K clusters. You don't need a target variable — the algorithm discovers the groups on its own based on feature similarity.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q137</span><span class="q-text">Why must you standardize features before running K-Means?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>K-Means uses distances to assign points to clusters. If one feature ranges 0–100000 (income) and another 0–10 (rating), income will dominate all distance calculations. Standardizing puts all features on the same scale.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q138</span><span class="q-text">How do you choose the right number of clusters (K) in K-Means?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use the elbow method: run K-Means for K=1 to 20, plot the SSD (inertia) for each K. Look for the "elbow" — the point where adding more clusters gives diminishing returns. Also consider whether the clusters make business sense.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q139</span><span class="q-text">What does <code>inertia_</code> measure in K-Means?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>It's the sum of squared distances from each point to its assigned cluster center. Lower inertia = tighter clusters. It always decreases as K increases (more clusters = closer centers), which is why you look for the elbow, not the minimum.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q140</span><span class="q-text">What does <code>n_init=10</code> mean in K-Means?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>K-Means starts with random cluster centers, so different runs can give different results. <code>n_init=10</code> runs the algorithm 10 times with different starting points and keeps the best result (lowest inertia).</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q141</span><span class="q-text">After clustering, how do you understand what each cluster represents?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Create a cluster profile: <code>df.groupby('cluster')[features].mean()</code>. This shows the average feature values per cluster. For example, Cluster 0 might have high income and low age — "young professionals." Give each cluster a meaningful business label.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q142</span><span class="q-text">What is the key difference between K-Means and KNN?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>K-Means is unsupervised clustering (no target variable, discovers groups). KNN is supervised prediction (needs labeled data, predicts based on nearest neighbors). They both use distances, but for completely different purposes.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q143</span><span class="q-text">How does KNN (K-Nearest Neighbors) make a prediction?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>For a new data point, it finds the K closest points in the training data. For classification, it predicts the majority class among those K neighbors. For regression, it predicts the average of their target values.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q144</span><span class="q-text">Why must you standardize features before using KNN?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Same reason as K-Means — KNN uses distances. Without standardization, features with larger scales dominate the distance calculation, and the model effectively ignores small-scale features.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q145</span><span class="q-text">What happens if you set K=1 in KNN? What about a very large K?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>K=1 means the prediction is based on the single closest neighbor — very sensitive to noise (overfitting). Very large K smooths out predictions too much (underfitting). You need to find the sweet spot, often by plotting accuracy vs K.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q146</span><span class="q-text">What is the difference between <code>KNeighborsClassifier</code> and <code>KNeighborsRegressor</code>?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Classifier predicts the majority class among K neighbors (for categorical targets). Regressor predicts the average target value of K neighbors (for continuous targets). Same algorithm, different output.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q147</span><span class="q-text">You want to compare Decision Tree, Logistic Regression, and Naive Bayes on the same dataset. What's the fair way to do it?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Use the same train/test split for all models. Train each, predict on the same test set, and compare metrics (accuracy, F1, AUC). Using different splits would make the comparison unfair.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q148</span><span class="q-text">A colleague says "the hardest part of machine learning is choosing the right algorithm." Do you agree?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Not really. The hardest part is usually data cleaning and feature engineering — getting the data into good shape. Most algorithms follow the same fit/predict pattern and are easy to swap. Good features matter more than the perfect algorithm.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q149</span><span class="q-text">What does <code>cross_val_predict()</code> give you that <code>cross_validate()</code> does not?</span></div>
+<div class="ans"><div class="ans-label">Answer</div><code>cross_validate()</code> returns metric scores per fold (e.g., accuracy for each of 5 folds). <code>cross_val_predict()</code> returns actual predictions for every sample — each predicted by a model that did NOT train on it. Useful for building ROC curves from CV.</div>
+</div>
+
+<div class="q">
+<div class="q-head" onclick="tog(this)"><span class="q-num">Q150</span><span class="q-text">You've built a model and your manager asks: "Can we use this in production?" What should you check first?</span></div>
+<div class="ans"><div class="ans-label">Answer</div>Check test set performance (not training performance). Look at precision, recall, and F1 — not just accuracy. Make sure the model was evaluated on data it never saw during training or tuning. Also consider: is the test data representative of real-world conditions? If performance is good and the data is representative, it's a reasonable candidate.</div>
+</div>
+
+</body>
+</html>
